@@ -5,16 +5,16 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.1</version>
+        <version>2.7.13</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.museum</groupId>
-    <artifactId>Museum-of-World-Statues</artifactId>
+    <groupId>cn.highedu</groupId>
+    <artifactId>yxnu</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Museum-of-World-Statues</name>
-    <description>Museum-of-World-Statues</description>
+    <name>yxnu</name>
+    <description>Demo project for Spring Boot</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>1.8</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
+            <version>2.3.1</version>
         </dependency>
 
         <dependency>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter-test</artifactId>
-            <version>3.0.2</version>
+            <version>2.3.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -55,7 +55,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.1.1</version>
                 <configuration>
                     <excludes>
                         <exclude>
@@ -63,6 +62,14 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
         </plugins>
