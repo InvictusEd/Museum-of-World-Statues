@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace="对应的接口文件路径"-->
+<mapper namespace="com.museum.museumofworldstatues.mapper.UserMapper">
+    <!--    让字段匹配-->
+    <resultMap id="userMap" type="com.museum.museumofworldstatues.entity.User">
+        <!--        proerty:mybatic里的字段 column：数据库里的字段-->
+        <result property="id" column="id"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="nickName" column="nick_name"></result>
+        <result property="password" column="user_password"></result>
+        <result property="email" column="email"></result>
+        <result property="brithday" column="brithday"></result>
+    </resultMap>
+<!--    添加用户信息-->
+    <insert id="addUser">
+        insert into users values(null,#{userName},#{nickName},
+                                #{password},#{email},#{birthday})
+    </insert>
+    <select id="selectByName" resultType="com.museum.museumofworldstatues.entity.User">
+        select * from users where user_name = #{userName}
+    </select>
+</mapper>
