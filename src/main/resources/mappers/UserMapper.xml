@@ -12,14 +12,17 @@
         <result property="nickName" column="nick_name"></result>
         <result property="password" column="user_password"></result>
         <result property="email" column="email"></result>
-        <result property="brithday" column="brithday"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="isAdmin" column="is_admin"></result>
     </resultMap>
 <!--    添加用户信息-->
     <insert id="addUser">
         insert into users values(null,#{userName},#{nickName},
-                                #{password},#{email},#{birthday})
+                                #{password},#{email},#{birthday},0)
     </insert>
-    <select id="selectByName" resultType="com.museum.museumofworldstatues.entity.User">
+<!--    通过id查询用户名是否存在-->
+    <select id="selectByName" resultMap="userMap">
         select * from users where user_name = #{userName}
     </select>
+
 </mapper>
