@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>管理员页面</title>
+  <!--引入自定义主题-->
+  <link rel="stylesheet" href="element-ui/index.css">
+  <link rel="stylesheet" href="element-ui/fonts/element-icons.ttf">
+  <link rel="stylesheet" href="element-ui/fonts/element-icons.woff">
+  <style>
+    body{
+        margin: 0;
+    }
+
+    .el-header{
+        background-color: #000000;
+        color: #ffffff;
+    }
+
+    .el-footer{
+        background-color: #303133;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <el-container>
+      <!--后台管理的页头-->
+      <el-header height="100px">
+        <span style="float: left; margin-top: 5px;"><img src="imagesAll/adminImages/logo.jpg" width="300px"></span>
+        <span style="float: right; line-height: 100px; font-size: 30px">
+          Welcome
+          <span>admin</span>
+          <!--注销按钮-->
+          <el-popover placement="top" width="160" v-model="visible">
+            <p style="font-size: 15px; color: #000000">是否注销用户</p>
+            <div style="text-align: right; margin: 0">
+              <el-button type="info" size="mini" type="text" @click="visible = false">取消</el-button>
+              <el-button type="primary" size="mini" @click="visible = false">确定</el-button>
+            </div>
+            <el-button slot="reference"><i class="el-icon-s-tools"></i></el-button>
+          </el-popover>
+        </span>
+      </el-header>
+
+      <el-container>
+
+        <el-aside width="200px">
+            <el-menu  default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+              <el-menu-item index="1">
+                <template slot="title">
+                  <i class="el-icon-user-solid"></i>
+                  <span>用户管理</span>
+                </template>
+              </el-menu-item>
+              <el-menu-item index="2">
+                <template slot="title">
+                  <i class="el-icon-picture"></i>
+                  <span>轮播图管理</span>
+                </template>
+              </el-menu-item>
+              <el-submenu index="3">
+                <template slot="title">
+                  <i class="el-icon-star-on"></i>
+                  <span>雕像管理</span>
+                </template>
+                <el-menu-item index="3-1">
+                  <i class="el-icon-picture"></i>
+                  雕像图片
+                </el-menu-item>
+                <el-menu-item index="3-2">
+                  <i class="el-icon-tickets"></i>
+                  雕像信息
+                </el-menu-item>
+              </el-submenu>
+              <el-submenu index="4">
+                <template slot="title">
+                  <i class="el-icon-s-grid"></i>
+                  <span>分类管理</span>
+                </template>
+                <el-menu-item index="4-1">
+                  <i class="el-icon-map-location"></i>
+                  国家
+                </el-menu-item>
+                <el-menu-item index="4-2">
+                  <i class="el-icon-time"></i>
+                  时代
+                </el-menu-item>
+              </el-submenu>
+            </el-menu>
+        </el-aside>
+
+        <el-container>
+          <el-main></el-main>
+
+          <el-footer>Footer</el-footer>
+        </el-container>
+      </el-container>
+    </el-container>
+  </div>
+</body>
+
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+  let v = new Vue({
+      el: '#app',
+      data: function () {
+        return {
+            //变量
+            visible: false
+        }
+      },
+      create(){
+
+      },
+      method:{
+          handleOpen(key, keyPath) {
+              console.log(key, keyPath);
+          },
+          handleClose(key, keyPath) {
+              console.log(key, keyPath);
+          }
+      }
+  })
+</script>
+</html>
