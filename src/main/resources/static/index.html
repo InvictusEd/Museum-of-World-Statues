@@ -1,10 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- 引入elementUI组件库的 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="homePage.css">
 </head>
 <body>
+    <div id="app">
+        <el-container>
+<!--            头部-->
+            <el-header style="padding: 0">
+                <el-row>
+                    <el-col span="3">
+                        <img src="./imgs/logo.jpg" style="width: 100%;height: 60px">
+                    </el-col>
+                    <el-col span="21">
+                        <el-menu
+                                :default-active="activeIndex1"
+                                class="el-menu-demo"
+                                mode="horizontal"
+                                @select="handleSelect"
+                                background-color="rgba(0,0,0,0.8)"
+                                text-color="#fff"
+                                active-text-color="#ffd04b">
+                            <el-menu-item index="1">首页</el-menu-item>
+                            <el-submenu index="2">
+                                <template slot="title">参观服务</template>
+                                <el-submenu index="2-1">
+                                    <template slot="title">网上订票</template>
+                                    <el-menu-item index="2-1-1">开放时间</el-menu-item>
+                                    <el-menu-item index="2-1-2">在线预约</el-menu-item>
+                                    <el-menu-item index="2-1-3">餐饮服务</el-menu-item>
+                                </el-submenu>
+                                <el-menu-item index="2-2">参观须知</el-menu-item>
+                                <el-menu-item index="2-3">交通信息</el-menu-item>
+                            </el-submenu>
+                            <el-submenu index="3">
+                                <template slot="title">社会教育</template>
+                                <el-menu-item index="3-1">活动资讯</el-menu-item>
+                                <el-menu-item index="3-2">活动预约</el-menu-item>
+                                <el-menu-item index="3-3">教育资源</el-menu-item>
+                            </el-submenu>
+                            <el-submenu index="4">
+                                <template slot="title">资讯公告</template>
+                                <el-menu-item index="4-1">新闻资讯</el-menu-item>
+                                <el-menu-item index="4-2">文明宣传</el-menu-item>
+                                <el-menu-item index="4-3">数字文创</el-menu-item>
+                                <el-menu-item index="4-4">示范区创建</el-menu-item>
+                                <el-menu-item index="4-5">数字资源</el-menu-item>
+                            </el-submenu>
+                            <el-menu-item index="5">雕塑典藏</el-menu-item>
+                            <el-submenu index="6">
+                                <template slot="title">展览陈列</template>
+                                <el-menu-item index="6-1">临时展览</el-menu-item>
+                                <el-menu-item index="6-2">常设展览</el-menu-item>
+                                <el-menu-item index="6-3">虚拟展厅</el-menu-item>
+                            </el-submenu>
+                            <el-submenu index="7">
+                                <template slot="title">文化遗产</template>
+                                <el-menu-item index="7-1">考古发现</el-menu-item>
+                                <el-menu-item index="7-2">考古大事记</el-menu-item>
+                            </el-submenu>
+                            <el-submenu index="8">
+                                <template slot="title">学术研究</template>
+                                <el-menu-item index="8-1">雕塑研究文章</el-menu-item>
+                                <el-menu-item index="8-2">出版物</el-menu-item>
+                            </el-submenu>
+                            <el-menu-item index="9">文创精品</el-menu-item>
+                            <el-submenu index="10">
+                                <template slot="title">简体中文</template>
+                                <el-menu-item index="8-1">简体中文</el-menu-item>
+                                <el-menu-item index="8-2">English</el-menu-item>
+                            </el-submenu>
+                            <el-input placeholder="请输入搜索的关键字" style="width: 230px;margin-top: 10px;
+                            background-color: #7f7f7f">
+                                <el-button slot="append" icon="el-icon-search"></el-button>
+                            </el-input>
+                        </el-menu>
+                    </el-col>
 
+                </el-row>
+            </el-header>
+<!--            主体内容-->
+            <el-main style="padding: 0">
+                <img src="./imgs/banner1.jpg" style="width: 100%;height: 650px">
+<!--                博物院介绍-->
+                <el-row style="margin: 10px 50px">
+                    <el-col span="7">
+                        <img class="introduce" src="http://aurora4486.oss-cn-beijing.aliyuncs.com/01fc5185-b7ac-469b-b223-e518cdc9564ekk4.jpg" alt="">
+                    </el-col>
+                    <el-col span="17">
+                        <el-card id="card">
+                            dsgasgasdfasdfsdaf
+                        </el-card>
+                    </el-col>
+                </el-row>
+<!--                预约服务-->
+                <el-row gutter="20" style="margin: 10px 50px">
+                    <el-col span="17">
+                        <el-card id="service">
+                            dfgadgadgfdgfdaagddddddddddd
+                        </el-card>
+                    </el-col>
+                    <el-col span="7" id="link">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                    </el-col>
+                </el-row>
+<!--                新闻资讯-->
+                <el-row gutter="20" style="margin: 10px 50px">
+                    <el-col span="16">
+                        <el-card id="news">
+                            fddfdfg
+                            <img style="width: 200px;height: 200px" src="http://aurora4486.oss-cn-beijing.aliyuncs.com/01fc5185-b7ac-469b-b223-e518cdc9564ekk4.jpg" alt="">
+                        </el-card>
+                    </el-col>
+                    <el-col span="8">
+                        <el-card>
+                            fdhsdffg
+                        </el-card>
+                    </el-col>
+                </el-row>
+<!--                精品典藏-->
+                <h2 style="text-align: center">精品典藏</h2>
+                <el-row gutter="20" style="margin: 10px 50px">
+                    <el-col span="6">
+                        <el-card>
+                            ddfg
+                        </el-card>
+                    </el-col>
+                    <el-col span="6">
+                        <el-card>
+                            ddfg
+                        </el-card>
+                    </el-col>
+                    <el-col span="6">
+                        <el-card>
+                            ddfg
+                        </el-card>
+                    </el-col>
+                    <el-col span="6">
+                        <el-card>
+                            ddfg
+                        </el-card>
+                    </el-col>
+                </el-row>
+            </el-main>
+            <el-footer>
+
+            </el-footer>
+        </el-container>
+    </div>
 </body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                activeIndex: '1'
+            }
+          },
+        created(){
+        },
+        methods:{
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        }
+    })
+</script>
 </html>
+

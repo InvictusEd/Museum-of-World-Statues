@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+}
+/*首页轮播图*/
+.banner {
+}
+/*博物院介绍轮播图*/
+.introduce,#link{
+    width: 380px;
+    height: 256px;
+}
+/*博物院介绍卡片*/
+#card,#service {
+    width: 920px;
+    height: 256px;
+}
+/*新闻资讯*/
+#news {
+    width: 100%;
+    height: 256px;
+}
