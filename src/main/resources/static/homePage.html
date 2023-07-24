@@ -13,7 +13,9 @@
         <el-header style="padding: 0">
             <el-row>
                 <el-col span="3">
-                    <img src="./imgs/logo.jpg" style="width: 100%;height: 60px">
+                    <a href="./login.html">
+                        <img src="./imgs/logo.jpg" style="width: 100%;height: 60px">
+                    </a>
                 </el-col>
                 <el-col span="21">
                     <el-menu
@@ -84,67 +86,80 @@
         </el-header>
         <!--            主体内容-->
         <el-main style="padding: 0">
-            <img src="./imgs/banner1.jpg" style="width: 100%;height: 650px">
+            <img src="./imgs/banner1.jpg" style=" width: 100%;height: 650px">
             <!--                博物院介绍-->
-            <el-row style="margin: 10px 50px">
+            <el-row style="margin: 10px 70px">
                 <el-col span="7">
-                    <img class="introduce" src="http://aurora4486.oss-cn-beijing.aliyuncs.com/01fc5185-b7ac-469b-b223-e518cdc9564ekk4.jpg" alt="">
+                    <img class="introduce" src="./imgs/001.jpg" style="width: 100%">
                 </el-col>
                 <el-col span="17">
-                    <el-card id="card">
-                        dsgasgasdfasdfsdaf
+                    <el-card id="card" style="background-color: #a68049">
+                        <p style="text-indent: 2em">
+                            我们是一个致力于展示和保护人类文化遗产的博物馆。无论您是对历史、艺术、科学还是文化感兴趣，我们都将为您带来一次令人难忘的旅程。
+                        </p>
+                        <p style="text-indent: 2em">
+                            作为一家世界级的博物馆，我们拥有丰富而多样化的收藏品。您将能够欣赏到来自各个时期和地区的珍贵文物。我们展示的物品涵盖了古代文明的瑰宝、艺术大师的杰作、科学发现的里程碑以及当代文化的代表作品。
+                            除了展览外，我们还定期举办丰富多样的活动和教育项目。您可以参加导览讲解、工作坊、讲座等活动，深入了解各个领域的知识和技能。
+                        </p>
+                        <p style="text-indent: 2em">
+                            我们博物馆致力于使用最先进的技术手段，并保持与其他博物馆和文化机构的紧密合作。我们的目标是通过数字化展览、互动体验和全球合作，将文化遗产传播给更广泛的观众，促进跨文化交流和理解。
+                            无论您是学者、艺术爱好者还是普通观众，我们相信您在我们的世界博物馆中都能够找到心灵的滋养和启发。感谢您的光临，让我们一起探索人类的宝藏吧！
+                        </p>
                     </el-card>
                 </el-col>
             </el-row>
             <!--                预约服务-->
-            <el-row gutter="20" style="margin: 10px 50px">
-                <el-col span="17">
-                    <el-card id="service">
-                        dfgadgadgfdgfdaagddddddddddd
+            <el-row gutter="15" style="margin: 10px 60px">
+                <el-col span="17" >
+                    <el-card id="service" style="background-color: #376a5d">
+                        <h2 style="color: white">预约服务</h2>
+                        <p>1、门票限选定参观日当日使用，入园、综合馆、雕塑馆、青铜馆、修复馆各使用一次</p>
+                        <p>2、普通票、学生票请在三星堆博物馆微信公众号购买，游园票、免票请在售票窗口办理</p>
                     </el-card>
                 </el-col>
-                <el-col span="7" id="link">
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
+                <el-col span="7" id="link" style="padding-right: 0">
+                    <img src="./imgs/004.png" style="height: 256px;width: 395px" alt="">
                 </el-col>
             </el-row>
             <!--                新闻资讯-->
-            <el-row gutter="20" style="margin: 10px 50px">
-                <el-col span="16">
+            <el-row style="margin: 10px 70px">
+                <el-col span="13">
                     <el-card id="news">
-                        fddfdfg
-                        <img style="width: 200px;height: 200px" src="http://aurora4486.oss-cn-beijing.aliyuncs.com/01fc5185-b7ac-469b-b223-e518cdc9564ekk4.jpg" alt="">
+                        <h2>新闻资讯</h2>
+                        <h3>2023.06.15</h3>
+                        <p>世界博物院博览会现场：发掘好、保护好、研究好这笔丰厚的历史文化遗产</p>
+                        <h3>2023.07.25</h3>
+                        <p>亮相《国际宝藏》后，博物院还要续写新的传奇</p>
                     </el-card>
                 </el-col>
-                <el-col span="8">
-                    <el-card>
-                        fdhsdffg
-                    </el-card>
+                <el-col span="4">
+                    <img style="width: 210px;height: 256px;z-index: 5" src="./imgs/002.jpg">
+                </el-col>
+                <el-col span="7" >
+                        <img src="./imgs/003.png" style="width: 405px;height: 256px;" alt="">
                 </el-col>
             </el-row>
             <!--                精品典藏-->
             <h2 style="text-align: center">精品典藏</h2>
-            <el-row gutter="20" style="margin: 10px 50px">
-                <el-col span="6">
-                    <el-card>
-                        ddfg
+            <el-row gutter="20" style="margin: 10px 60px">
+                <el-col span="6" >
+                    <el-card >
+                        <img src="./imgs/005.jpg" style="width: 100%;height: 350px" alt="">
                     </el-card>
                 </el-col>
                 <el-col span="6">
                     <el-card>
-                        ddfg
+                        <img src="./imgs/006.jpg" style="width: 100%;height: 350px" alt="">
                     </el-card>
                 </el-col>
                 <el-col span="6">
                     <el-card>
-                        ddfg
+                        <img src="./imgs/007.jpg" style="width: 100%;height: 350px" alt="">
                     </el-card>
                 </el-col>
                 <el-col span="6">
                     <el-card>
-                        ddfg
+                        <img src="./imgs/008.png" style="width: 100%;height: 350px" alt="">
                     </el-card>
                 </el-col>
             </el-row>
