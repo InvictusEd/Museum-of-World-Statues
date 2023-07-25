@@ -32,7 +32,7 @@ public class UserController {
     }
 
     /*登录*/
-    @RequestMapping("login")
+    @RequestMapping("/login")
     public Integer login(String userName, String password, HttpSession session){
         //1、判断用户是否存在
         User user = userMapper.selectByName(userName);
@@ -52,5 +52,16 @@ public class UserController {
         }
         return 3;//管理员
     }
+    /*获取当前登录对象*/
+    @RequestMapping("/currentUser")
+    public User getUser(HttpSession session){
+        User u = (User)session.getAttribute("u");
+        return u;
+    }
 
+    /*退出登录，清除对象*/
+    @RequestMapping("/logout")
+    public void logout(HttpSession session){
+        session.removeAttribute("u");
+    }
 }

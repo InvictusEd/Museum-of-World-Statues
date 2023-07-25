@@ -20,7 +20,7 @@
         insert into users values(null,#{userName},#{nickName},
                                 #{password},#{email},#{birthday},0)
     </insert>
-<!--    通过id查询用户名是否存在-->
+    <!--    通过用户名查询用户名是否存在-->
     <select id="selectByName" resultMap="userMap">
         select * from users where user_name = #{userName}
     </select>
