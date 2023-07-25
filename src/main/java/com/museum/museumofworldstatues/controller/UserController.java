@@ -17,8 +17,6 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
-
-    /*注册*/
     @RequestMapping("/addUser")
     public Integer addUser(@RequestBody User user){
 //        1、根据用户名判断用户是否存在，如果已存在直接返回“该用户已存在”
@@ -34,7 +32,7 @@ public class UserController {
     }
 
     /*登录*/
-    @RequestMapping("/login")
+    @RequestMapping("login")
     public Integer login(String userName, String password, HttpSession session){
         //1、判断用户是否存在
         User user = userMapper.selectByName(userName);
@@ -45,6 +43,7 @@ public class UserController {
         if (!user.getPassword().equals(password)){
             return 1;//密码错误
         }
+
         //将user保存到u里面
         session.setAttribute("u",user);
         //登录成功普通用户和管理员，普通用户进入前台首页，管理员进入后台首页
@@ -54,18 +53,41 @@ public class UserController {
         return 3;//管理员
     }
 
-    /*获取当前登录对象*/
+    /**
+     * @description: 查询所有用户信息
+     * @param
+     * @return: java.util.List<com.museum.museumofworldstatues.entity.User>
+     * @author: qqdas
+     * @time: 2023/7/24 9:32
+     */
+    @RequestMapping("/selectUserList")
+    public List<User> selectAll(){
+        List<User> users = userMapper.selectAll();
+        return users;
+    }
+
+    /**
+     * @description: 获取当前登录对象
+     * @param session
+     * @return: com.museum.museumofworldstatues.entity.User
+     * @author: qqdas
+     * @time: 2023/7/25 8:59
+     */
     @RequestMapping("/currentUser")
     public User getUser(HttpSession session){
         User u = (User)session.getAttribute("u");
         return u;
     }
 
-    /*退出登录，清除对象*/
+    /**
+     * @description: 退出登录，清楚对象
+     * @param session
+     * @return: void
+     * @author: qqdas
+     * @time: 2023/7/25 14:21
+     */
     @RequestMapping("/logout")
     public void logout(HttpSession session){
         session.removeAttribute("u");
     }
-
-
 }

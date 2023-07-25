@@ -11,4 +11,6 @@ public interface UserMapper {
     void addUser(User user);
     //根据用户名查询用户信息
     User selectByName(String userName);
+    //查询所有用户信息
+    List<User> selectAll();
 }
