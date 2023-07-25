@@ -10,40 +10,49 @@
             margin: 0;
             background-color: rgb(260, 260, 260);
         }
+        .img{
+            width: 360px;
+            height: 280px;
+        }
+        /*#app{*/
+        /*    color: white;*/
+        /*}*/
     </style>
 <body>
 <div id="app">
 <el-container>
     <!--    维纳斯介绍-->
     <el-table v-if="currentIndex==1">>
-    <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+    <el-header><p style="text-align: center;font-size: 25px">维纳斯</p><h4>作者：阿海山纳</h4>
+    </el-header>
     <el-main>
         <div id="a" style="height: 400px;width: 2000px">
             <div class="a1" style="width: 1000px;float: left">
-                <h3 style="margin-top: auto">《阿尔勒的维纳斯》在前，《米洛的维纳斯》在后</h3>
+                <h3 style="margin-top: auto">起源</h3>
                 <p style="width: 900px">
-                    在《米洛的维纳斯》出土前，体现古希腊理想美的作品是《阿尔勒的维纳斯》，这件作品在1651年出土于法国阿尔勒古罗马剧场遗址。与《米洛的维纳斯》一样，《阿尔勒的维纳斯》也以其出土地点命名。其出土之时正值路易十四在位期间，太阳王对在法国发现这一古代杰作兴奋不已。当时，人们对她到底是维纳斯还是其他女神也很纠结。而太阳王则认定她是美神维纳斯，让法国古典雕塑家弗朗索瓦·吉拉登（Francois Girardon）进行修复，并给她配上美神维纳斯的标准属性元素——苹果与镜子柄。苹果代表的是特洛伊王子帕里斯献给他选中的最美女神的金苹果。
+                    维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
+                    因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
+                    维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
+                    因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说
                 </p>
             </div>
             <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/维纳斯/a1.jpg" style="height: 400px">
+                <img src="introduceImages/维纳斯/a1.jpg" style="height: 400px" class="img">
             </span>
         </div>
         <hr>
         <div style="height:400px;width:2000px">
             <div class="a2" style="width: 1000px;float: left">
-                <h3>起源</h3>
+                <h3>后期传说</h3>
                 <p>
-                    维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
-                    她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
-                    因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
-                    同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
-                    维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
-                    因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
+                    有关她的传说，屡次出现在历代文学家的作品里，其中最令人感动的，是莎翁为她撰写的一首长诗。诗内描述维纳斯的恋爱故事。
+                    据说，古希腊美男子阿多尼斯，身高九尺（190cm以上），如花一般俊美精致的五官，令世间所有人与物，在他面前都为之失色；但他对恋爱没有丝毫兴趣，只喜欢驰骋于山林之间打猎。他是一个每年死而复生，永远年轻容颜不老的植物神，他与年历有深厚的联系。他是一个受妇女崇拜的神，从莱斯瓦斯的莎孚公元前600年左右的诗歌残片可以看出当时莎孚周围的女孩崇拜临死的阿多尼斯。他的化身是秋牡丹花。也有说其化身是银莲花。在古希腊神话里，玫瑰是凝聚着美神和植物神阿多尼斯的容颜，洋溢着爱神和美神维纳斯的津血而变成的。阿多尼斯也是西方国家“花样美男”最早的出处，维纳斯和阿多尼斯的故事也体现了普通民众帅哥配美女的美好愿望。
+                    一天，维纳斯偶然碰到身高九尺的阿多尼斯，一见倾心，便招呼他，希望和他谈一会；但阿多尼斯不愿接近异性，一口便拒绝了维纳斯的好意。维纳斯只有用法力控制了他的行动，向他倾诉恋爱的奇妙，但阿多尼斯始终不为所动，更显出急欲摆脱她的神色。维纳斯用尽一切甜言蜜语，且愿意给予很多条件，阿多尼斯最后用轻视的眼神望着爱神，令她大受刺激，晕倒地上。
+                    阿多尼斯有点内疚，希望得到她的原谅，故此耐心等候维纳斯苏醒。维纳斯醒来后，继续尽力说服阿多尼斯，但依然受到拒绝。爱神突然有个预感，阿多尼斯会遭遇不测，奉劝他不要冒险去打猎，让她在他的身边，保护他的安全；但阿多尼斯并不相信，结果他真的于翌晨打猎时，被箭猪咬死。维纳斯赶到时，见爱郎已死，不禁悲恸欲绝
                 </p>
             </div>
             <span style="width: 1000px;float: right">
-        <img src="introduceImages/维纳斯/a2.jpg" style="height: 400px">
+        <img src="introduceImages/维纳斯/a2.jpg" style="height: 400px" class="img">
     </span>
         </div>
         <hr>
@@ -51,34 +60,37 @@
     </el-table>
 <!--    沉思者介绍-->
     <el-table v-if="currentIndex==2">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">沉思者</p><h4>作者：奥古斯特·罗丹</h4>
+        </el-header>
         <el-main>
             <div id="b" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
-                    <h3 style="margin-top: auto">《阿尔勒的维纳斯》在前，《米洛的维纳斯》在后</h3>
+                    <h3 style="margin-top: auto">创作背景</h3>
                     <p style="width: 900px">
-                        在《米洛的维纳斯》出土前，体现古希腊理想美的作品是《阿尔勒的维纳斯》，这件作品在1651年出土于法国阿尔勒古罗马剧场遗址。与《米洛的维纳斯》一样，《阿尔勒的维纳斯》也以其出土地点命名。其出土之时正值路易十四在位期间，太阳王对在法国发现这一古代杰作兴奋不已。当时，人们对她到底是维纳斯还是其他女神也很纠结。而太阳王则认定她是美神维纳斯，让法国古典雕塑家弗朗索瓦·吉拉登（Francois Girardon）进行修复，并给她配上美神维纳斯的标准属性元素——苹果与镜子柄。苹果代表的是特洛伊王子帕里斯献给他选中的最美女神的金苹果。
-                    </p>
+                        时代背景
+                        18世纪—19世纪，正是拿破仑统治时期，而且帝国正处在繁盛时期，社会生产力也在急剧上升，科学技术也在快速发展，并且取得了可喜的成果。但是在高额垄断资本统治地位的当时，随着科学技术的不断迸步，高额垄断资本的不断积累和膨胀，人民之间的贫富差距不断拉大。这给当时的社会时局进程无疑带来了巨大的隐患，革命斗争此起彼伏。而在艺术界和思想界，各种思潮也是一浪过于一浪。 [3]
+                        罗丹创作《思想者》时，正是法国工人阶级奋起反抗的年代。他对贫困者是持同情态度的。他并无明确的意图去歌颂无产者，但作品中流露和体现了对无产者的赞美和歌颂。 [6]
+                        创作历程
+                        1880年，法国装饰艺术博物馆即将动工，法国政府委托罗丹为它的青铜大门做装饰性的雕刻。这时，罗丹想到了雕塑家吉贝尔蒂于为意大利佛罗伦萨洗礼堂北门创作的青铜浮雕“天国之门”。受此启发，罗丹决定以但丁的《神曲·地狱篇》为主题，创作一件表现人间地狱的雕塑。这就是后来的《地狱之门》。
+                        在接受这项任务以后，法国政府出资为罗丹建立了一个工作室，而罗丹自己也有两处工作室。为了能够同时进行不同作品的创作，他在三处工作室之间来回奔波，每天工作达十六七个小时，有时甚至是二十四个小时。尽管如此，从1880年开始，直到1917年带着遗憾离开人世，他花了37年的时间也没能很好地完成这件作品。 [7]
+                        《思想者》最初是为《地狱之门》一件庞大的雕塑构图所作的小稿。《思想者》居于《地狱之门》的中心位置。题材取自于但丁《神曲》的《地狱篇》。在《地狱篇》里，并没有关于“思想者”的描写，只有地狱罪行裁判者的形象。 [6]最初，这尊雕像的名字并不叫《思想者》，罗丹给它命名为《诗人》，象征着但丁对于“人间地狱”中种种罪恶的思考。后来，这尊雕塑从《地狱之门》中独立了出来，参加一次展出，罗丹重新给它命名为《思想者—诗人》。就这样，《思想者》这个名字很快传开了。 [7]历来，西方的艺术家们都把这裁判者描绘成可怖的、权力无比的巨人。罗丹却赋予这形象以新的内容，把他雕刻成严肃和深沉思索问题的劳动者。这个劳动者有粗壮的体魄，但是他的力量却被桎梏着、束缚着。似乎在他的思考中凝聚着对自己，对人类命运忧虑和关注的心情。罗丹的《地狱之门》未能最后完成，他的许多小稿却发展成为独立的构图，《思想者》也被罗丹做成等人大小的雕刻，并铸成铜像。
+                        </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/沉思者/b1.jpg" style="height: 400px">
+                <img src="introduceImages/沉思者/b1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
             <div style="height:400px;width:2000px">
                 <div class="a2" style="width: 1000px;float: left">
-                    <h3>起源</h3>
+                    <h3>后世影响</h3>
                     <p>
-                        维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
-                        她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
-                        因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
-                        同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
-                        维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
-                        因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
+                        罗丹在1880年左右创作了第一个小型石膏《思想者》雕塑。第一个大型铜铸雕塑是在1902年完成的，直到1904年才与公众见面。由于罗丹仰慕者们一起募集资金买下了这尊雕塑，它才成为巴黎的财产，于1906年置于先祠寺门前。
+                        罗丹创作的第一个《思想者》铜雕现收藏于美国肯塔基州的路易斯维尔大学校园内。该铜雕创作于巴黎，于1901年在美国圣路易斯世界博览会进行首次展览，之后将之赠与该城市。该铜雕是独有的一版以脱蜡铸造法制成的《思想者》。
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/沉思者/b2.jpg" style="height: 400px">
+        <img src="introduceImages/沉思者/b2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -86,34 +98,36 @@
     </el-table>
 <!--    米开朗基罗-->
     <el-table v-if="currentIndex==3">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">米开朗基罗长廊</p>作者：米开朗基罗
+        </el-header>
         <el-main>
             <div id="c" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
-                    <h3 style="margin-top: auto">《阿尔勒的维纳斯》在前，《米洛的维纳斯》在后</h3>
+                    <h3 style="margin-top: auto">从米开朗基罗到卡诺瓦</h3>
                     <p style="width: 900px">
-                        在《米洛的维纳斯》出土前，体现古希腊理想美的作品是《阿尔勒的维纳斯》，这件作品在1651年出土于法国阿尔勒古罗马剧场遗址。与《米洛的维纳斯》一样，《阿尔勒的维纳斯》也以其出土地点命名。其出土之时正值路易十四在位期间，太阳王对在法国发现这一古代杰作兴奋不已。当时，人们对她到底是维纳斯还是其他女神也很纠结。而太阳王则认定她是美神维纳斯，让法国古典雕塑家弗朗索瓦·吉拉登（Francois Girardon）进行修复，并给她配上美神维纳斯的标准属性元素——苹果与镜子柄。苹果代表的是特洛伊王子帕里斯献给他选中的最美女神的金苹果。
+                        如今，米开朗基罗长廊向参观者呈现了一幅十六到十九世纪意大利雕塑全景图，其名称也源自意大利佛罗伦萨艺术大师米开朗基罗。长廊里收藏了这位大师创作的两座《奴隶》雕像。这两座雕像最初是为教皇尤利乌斯二世的陵墓而作，但这个项目最终夭折。即使尚未走进长廊，参观者也可从远处看到伫立在展厅中央的《垂死的奴隶》雕像，展厅布局创造出的远景透视效果也令其更加突出。雕像身后直立着一扇巨型大门，饰有大力神赫拉克勒斯及宙斯之子珀耳修斯的形象。这扇大门来自意大利克雷莫纳市的斯坦加-迪-卡斯德尔诺沃宫（Stanga di Castelnuovo）。其造型与古代凯旋门相仿。
+
+                        在这里还可看到雕塑家让·德·博洛尼亚（Jean de Bologne）创作的《飞行的墨丘利》。博洛尼亚又名詹波隆纳（Giambologna），出生于佛兰德地区，成名于佛罗伦萨。其学生阿德里亚恩·德·弗里斯（Adriaen de Vries）创作的雕像《墨丘利带走普西莎》也在这里展出。在离开长廊前，参观者可欣赏到卡诺瓦（Canova）创作的《爱神吻醒普西莎》。这座雕塑是大理石雕刻技艺的杰出典范，艺术家在大理石上完美再现了人体的柔软质感，表达出感人的爱情冲动。
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/米开朗基罗/c1.jpg" style="height: 400px">
+                <img src="introduceImages/米开朗基罗/c1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
             <div style="height:400px;width:2000px">
                 <div class="a2" style="width: 1000px;float: left">
-                    <h3>起源</h3>
+                    <h3>《奴隶》雕像“颠簸史”</h3>
                     <p>
-                        维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
-                        她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
-                        因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
-                        同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
-                        维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
-                        因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
-                    </p>
+                        最初，米开朗基罗为装饰教皇尤利乌斯二世的陵墓，创作了两座《奴隶》雕像。但在教皇于1513年逝世后，其继任者认为这项工程耗资过大而将之取消。
+                        于是，米开朗基罗将这两座雕像赠送给好友、佛罗伦萨人罗伯托·斯特罗齐（Roberto Strozzi）。
+                        斯特罗齐在流亡法国期间，将雕像转送给法国国王弗朗索瓦一世。然而，故事并未就此结束。
+                        后来，继位的新国王亨利二世又把它们送给亲信蒙莫朗西公爵（Montmorency），后者将其安置在自己的埃库恩城堡（Écouen）。
+                        1632年，红衣主教黎塞留买下《奴隶》雕像，将其搬到黎塞留城堡。在此后的近150年里，这两座雕像一直为黎塞留后代所有，直至在法国大革命时期被当时的执政者没收，并于1794年送至卢浮宫。从此，这两座雕像终于结束了颠沛流离的生活。
+                        </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/米开朗基罗/c2.jpg" style="height: 400px">
+        <img src="introduceImages/米开朗基罗/c2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -121,34 +135,32 @@
     </el-table>
 <!--    马利中庭-->
     <el-table v-if="currentIndex==4">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">马利骏马史诗</p>作者：奥古斯特·罗丹
+        </el-header>
         <el-main>
             <div id="d" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
-                    <h3 style="margin-top: auto">《阿尔勒的维纳斯》在前，《米洛的维纳斯》在后</h3>
+                    <h3 style="margin-top: auto">马利骏马 – 第一版/季</h3>
                     <p style="width: 900px">
-                        在《米洛的维纳斯》出土前，体现古希腊理想美的作品是《阿尔勒的维纳斯》，这件作品在1651年出土于法国阿尔勒古罗马剧场遗址。与《米洛的维纳斯》一样，《阿尔勒的维纳斯》也以其出土地点命名。其出土之时正值路易十四在位期间，太阳王对在法国发现这一古代杰作兴奋不已。当时，人们对她到底是维纳斯还是其他女神也很纠结。而太阳王则认定她是美神维纳斯，让法国古典雕塑家弗朗索瓦·吉拉登（Francois Girardon）进行修复，并给她配上美神维纳斯的标准属性元素——苹果与镜子柄。苹果代表的是特洛伊王子帕里斯献给他选中的最美女神的金苹果。
+                        安托万·柯塞沃（Antoine Coysevox）是路易十四最欣赏的雕塑家之一。为歌颂国王的无上荣耀，他取材于古希腊和古罗马神话，创作了这组大型雕塑，其中一座展现骑着带翼飞马的声望女神在宣告国王取得的军事胜利，另一座是同样骑着飞马的古罗马商业之神墨丘利，他代表着繁荣昌盛。
+                        由此，这组雕塑从多个角度称颂了路易十四的辉煌功绩。后来，这组杰作从马利城堡被移至巴黎的杜乐丽宫花园。
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/马利中庭/d1.jpg" style="height: 400px">
+                <img src="introduceImages/马利中庭/d1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
             <div style="height:400px;width:2000px">
                 <div class="a2" style="width: 1000px;float: left">
-                    <h3>起源</h3>
+                    <h3>马利骏马 – 第二版/季</h3>
                     <p>
-                        维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
-                        她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
-                        因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
-                        同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
-                        维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
-                        因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
+                        二十年以后，路易十五入主马利城堡，向柯塞沃的侄子、同是雕塑家的纪尧姆·库斯图（Guillaume Coustou）定制了新的雕塑，以填补此前被搬走的雕塑所留下的空位。当时流行的艺术主题不再是神话故事，而是大自然。
+                        库斯图以传神的自然主义手法，逼真再现了骏马桀骜不驯的原始本性，创造出极富动感的场景。
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/马利中庭/d3.jpg" style="height: 400px">
+        <img src="introduceImages/马利中庭/d3.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -156,34 +168,32 @@
     </el-table>
 <!--    胜利女神-->
     <el-table v-if="currentIndex==5">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">胜利女神</p>
+        </el-header>
         <el-main>
             <div id="e" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
-                    <h3 style="margin-top: auto">《阿尔勒的维纳斯》在前，《米洛的维纳斯》在后</h3>
+                    <h3 style="margin-top: auto">胜利女神</h3>
                     <p style="width: 900px">
-                        在《米洛的维纳斯》出土前，体现古希腊理想美的作品是《阿尔勒的维纳斯》，这件作品在1651年出土于法国阿尔勒古罗马剧场遗址。与《米洛的维纳斯》一样，《阿尔勒的维纳斯》也以其出土地点命名。其出土之时正值路易十四在位期间，太阳王对在法国发现这一古代杰作兴奋不已。当时，人们对她到底是维纳斯还是其他女神也很纠结。而太阳王则认定她是美神维纳斯，让法国古典雕塑家弗朗索瓦·吉拉登（Francois Girardon）进行修复，并给她配上美神维纳斯的标准属性元素——苹果与镜子柄。苹果代表的是特洛伊王子帕里斯献给他选中的最美女神的金苹果。
+                        《萨莫色雷斯岛的胜利女神》身姿轻盈，似乎在半空中飘浮。对于古希腊雕像，人们大多不知道其确切的来源地，但这座雕像是个例外。
+                        它最初作为献给神明的贡品，高高地伫立在希腊萨莫色雷斯岛的一座神庙中，正如它现在立于达鲁阶梯之上的情景。这座雕像展现了带翼的胜利女神尼凯飞降船头的瞬间。
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/胜利女神/e1.jpg" style="height: 400px">
+                <img src="introduceImages/胜利女神/e1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
             <div style="height:400px;width:2000px">
                 <div class="a2" style="width: 1000px;float: left">
-                    <h3>起源</h3>
+                    <h3>丢失的双臂与找回的（部分）右手</h3>
                     <p>
-                        维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
-                        她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
-                        因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
-                        同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
-                        维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
-                        因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
+                        继尚帕佐之后，许多考古学家都试图找到胜利女神的头部和手臂，但大多都无功而返。1875年，一支奥地利考古队发现了女神右手的大拇指和部分无名指。1950年，法国考古学家让·夏伯诺（Jean Charbonneaux）找到了手掌和无名指的另一部分。
+                        这些残片陈列在阶梯一侧的橱窗里。复原后的右手高27厘米，掌心朝天，摆出胜利的手势。
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/胜利女神/e2.jpg" style="height: 400px">
+        <img src="introduceImages/胜利女神/e2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -191,34 +201,33 @@
     </el-table>
 <!--    雅典娜-->
     <el-table v-if="currentIndex==6">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">雅典娜</p><h4>作者：菲迪亚斯</h4>
+        </el-header>
         <el-main>
             <div id="f" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
-                    <h3 style="margin-top: auto">《阿尔勒的维纳斯》在前，《米洛的维纳斯》在后</h3>
+                    <h3 style="margin-top: auto">历史渊源</h3>
                     <p style="width: 900px">
-                        在《米洛的维纳斯》出土前，体现古希腊理想美的作品是《阿尔勒的维纳斯》，这件作品在1651年出土于法国阿尔勒古罗马剧场遗址。与《米洛的维纳斯》一样，《阿尔勒的维纳斯》也以其出土地点命名。其出土之时正值路易十四在位期间，太阳王对在法国发现这一古代杰作兴奋不已。当时，人们对她到底是维纳斯还是其他女神也很纠结。而太阳王则认定她是美神维纳斯，让法国古典雕塑家弗朗索瓦·吉拉登（Francois Girardon）进行修复，并给她配上美神维纳斯的标准属性元素——苹果与镜子柄。苹果代表的是特洛伊王子帕里斯献给他选中的最美女神的金苹果。
+                        克里特岛的线性文字上出现了雅典娜的名字，在克里特女神崇拜时期，她是克里特岛的宫殿女神，被称为“迷宫夫人”。
+                        雅典娜在青铜时代获得了军事特征，成了一则奥林波斯神话的牺牲者，在这则神话中，她被描述成宙斯的女儿，全副武装地从他的头中蹦出来。
+                        因此关于她父母的身份还有很多不一样的说法。迈锡尼石板曾以“女主宰”来称呼她，在后来的一些史诗和祷歌中也常称雅典娜为“πότνια
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/雅典娜/f1.jpg" style="height: 400px">
+                <img src="introduceImages/雅典娜/f1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
             <div style="height:400px;width:2000px">
                 <div class="a2" style="width: 1000px;float: left">
-                    <h3>起源</h3>
+                    <h3>神话传说</h3>
                     <p>
-                        维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
-                        她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
-                        因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
-                        同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
-                        维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
-                        因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
+                        宙斯娶墨提斯为妻，而墨提斯曾经通过种种变化避免他的追求。盖亚预言，墨提斯将生下一对姐弟，姐为明眸少女，弟为狂傲的神人之王。宙斯由于惧怕此事，所以把墨提斯吞进了肚里。
+                        将到产期，宙斯剧烈头痛，火神赫菲斯托斯用斧子劈开他的头，于是雅典娜从其头颅里跳了出来。墨提斯仍留在宙斯头中，为其出谋划策。
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/雅典娜/f2.jpg" style="height: 400px">
+        <img src="introduceImages/雅典娜/f2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -226,34 +235,35 @@
     </el-table>
 <!--    阿瑞斯-->
     <el-table v-if="currentIndex==7">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">阿瑞斯</p><h4>作者：阿尔卡姆内斯</h4>
+        </el-header>
         <el-main>
             <div id="g" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
-                    <h3 style="margin-top: auto">《阿尔勒的维纳斯》在前，《米洛的维纳斯》在后</h3>
+                    <h3 style="margin-top: auto">人物起源</h3>
                     <p style="width: 900px">
-                        在《米洛的维纳斯》出土前，体现古希腊理想美的作品是《阿尔勒的维纳斯》，这件作品在1651年出土于法国阿尔勒古罗马剧场遗址。与《米洛的维纳斯》一样，《阿尔勒的维纳斯》也以其出土地点命名。其出土之时正值路易十四在位期间，太阳王对在法国发现这一古代杰作兴奋不已。当时，人们对她到底是维纳斯还是其他女神也很纠结。而太阳王则认定她是美神维纳斯，让法国古典雕塑家弗朗索瓦·吉拉登（Francois Girardon）进行修复，并给她配上美神维纳斯的标准属性元素——苹果与镜子柄。苹果代表的是特洛伊王子帕里斯献给他选中的最美女神的金苹果。
+                        阿瑞斯早在迈锡尼时期的线性文字B中就已经出现，这说明阿瑞斯是一个老牌的希腊神，但是他与狄俄尼索斯一样是一位富有野性色彩的神祇，因此被古希腊人想象成了来自周边的民族色雷斯 [1]
+                        。
+                        关于阿瑞斯的神话主要源于《荷马史诗》。
+                        他是宙斯和赫拉的儿子，嗜血、好战、凶残，同时也是血腥战斗的化身，武艺很高强。特洛伊战争中，他帮助特洛伊人与希腊人作战，曾被希腊英雄狄奥墨得斯刺伤，最终被雅典娜击败。他
+                        高大魁梧，深得爱与美之女神阿佛洛狄忒的爱慕，但一次与阿佛洛狄忒幽会时，他与阿芙洛狄忒被火神赫菲斯托斯用计当场捉住，成为神界的笑料。也有神话说他是亚马逊人的始祖。
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/阿瑞斯/j2.jpg" style="height: 400px">
+                <img src="introduceImages/阿瑞斯/j2.jpg" style="height: 400px" class="img">
             </span>
             </div>
             <hr>
             <div style="height:400px;width:2000px">
                 <div class="a2" style="width: 1000px;float: left">
-                    <h3>起源</h3>
+                    <h3>神话传说</h3>
                     <p>
-                        维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
-                        她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
-                        因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
-                        同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
-                        维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
-                        因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
+                        伟大的古代英雄阿尔米纽斯（Arminus）在一次出征中，不幸双眼染疾，一天夜里，战神阿瑞斯来到了阿尔米纽斯的梦里，告诉他清晨盛开在路边的蓝色小花可以治好他的眼睛。
+                        次日阿尔米纽斯果然在路边找到蓝色的小花，并将它捣碎敷眼。很快，阿尔米纽斯的眼睛康复了，并凯旋而归。于是他称矢车菊为“眼睛保护神”。
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/阿瑞斯/j1.jpg" style="height: 400px">
+        <img src="introduceImages/阿瑞斯/j1.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -261,7 +271,8 @@
     </el-table>
 <!--    狄安娜-->
     <el-table v-if="currentIndex==8">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">狄安娜</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="h" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -271,15 +282,33 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/狄安娜/h1.jpg" style="height: 400px">
+                <img src="introduceImages/狄安娜/h1.jpg" style="height: 400px"class="img">
             </span>
+            </div>
+            <hr>
+            <div style="height:400px;width:2000px">
+                <div class="a2" style="width: 1000px;float: left">
+                    <h3>起源</h3>
+                    <p>
+                        维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
+                        她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
+                        因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
+                        同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
+                        维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
+                        因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
+                    </p>
+                </div>
+                <span style="width: 1000px;float: right">
+        <img src="introduceImages/狄安娜/h2.jpg" style="height: 400px"class="img">
+    </span>
             </div>
             <hr>
         </el-main>
     </el-table>
 <!--    宙斯-->
     <el-table v-if="currentIndex==9">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">宙斯</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="i" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -289,7 +318,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/宙斯/i1.jpg" style="height: 400px">
+                <img src="introduceImages/宙斯/i1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
@@ -306,7 +335,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/宙斯/i2.jpg" style="height: 400px">
+        <img src="introduceImages/宙斯/i2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -314,7 +343,8 @@
     </el-table>
 <!--    阿佛洛狄忒-->
     <el-table v-if="currentIndex==10">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">阿佛洛狄忒</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="j" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -324,7 +354,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/阿佛洛狄忒/k1.jpg" style="height: 400px">
+                <img src="introduceImages/阿佛洛狄忒/k1.jpg" style="height: 400px" class="img">
             </span>
             </div>
             <hr>
@@ -341,7 +371,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/阿佛洛狄忒/k2.jpg" style="height: 400px">
+        <img src="introduceImages/阿佛洛狄忒/k2.jpg" style="height: 400px" class="img">
     </span>
             </div>
             <hr>
@@ -350,7 +380,8 @@
     </el-table>
 <!--    波塞冬-->
     <el-table v-if="currentIndex==11">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">波塞冬</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="k" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -360,7 +391,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/波塞冬/l1.jpg" style="height: 400px">
+                <img src="introduceImages/波塞冬/l1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
@@ -377,7 +408,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/波塞冬/l2.jpg" style="height: 400px">
+        <img src="introduceImages/波塞冬/l2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -385,7 +416,8 @@
     </el-table>
 <!--    德墨忒尔-->
     <el-table v-if="currentIndex==12">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">德墨忒尔</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="l" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -395,7 +427,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/德墨忒尔/m1.jpg" style="height: 400px">
+                <img src="introduceImages/德墨忒尔/m1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
@@ -412,7 +444,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/德墨忒尔/m2.JPG" style="height: 400px">
+        <img src="introduceImages/德墨忒尔/m2.JPG" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -420,7 +452,8 @@
     </el-table>
 <!--    赫尔墨斯-->
     <el-table v-if="currentIndex==13">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">德墨忒尔</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="m" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -430,7 +463,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/赫尔墨斯/n1.jpg" style="height: 400px">
+                <img src="introduceImages/赫尔墨斯/n1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
@@ -447,7 +480,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/赫尔墨斯/n2.jpg" style="height: 400px">
+        <img src="introduceImages/赫尔墨斯/n2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -455,7 +488,8 @@
     </el-table>
 <!--    赫拉-->
     <el-table v-if="currentIndex==14">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">赫拉</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="n" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -465,7 +499,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/赫拉/o1.jpg" style="height: 400px">
+                <img src="introduceImages/赫拉/o1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
@@ -482,7 +516,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/赫拉/o2.jpg" style="height: 400px">
+        <img src="introduceImages/赫拉/o2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -490,7 +524,8 @@
     </el-table>
 <!--    狮身人面像-->
     <el-table v-if="currentIndex==15">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">狮身人面像</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="o" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -500,7 +535,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/狮身人面像/q1.jpg" style="height: 400px">
+                <img src="introduceImages/狮身人面像/q1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
@@ -517,7 +552,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/狮身人面像/q2.jpg" style="height: 400px">
+        <img src="introduceImages/狮身人面像/q2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -525,34 +560,31 @@
     </el-table>
 <!--    缪斯-->
     <el-table v-if="currentIndex==16">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">缪斯</p>
+            <h4>作者：切利尼</h4></el-header>
         <el-main>
             <div id="p" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
-                    <h3 style="margin-top: auto">《阿尔勒的维纳斯》在前，《米洛的维纳斯》在后</h3>
+                    <h3 style="margin-top: auto">介绍</h3>
                     <p style="width: 900px">
-                        在《米洛的维纳斯》出土前，体现古希腊理想美的作品是《阿尔勒的维纳斯》，这件作品在1651年出土于法国阿尔勒古罗马剧场遗址。与《米洛的维纳斯》一样，《阿尔勒的维纳斯》也以其出土地点命名。其出土之时正值路易十四在位期间，太阳王对在法国发现这一古代杰作兴奋不已。当时，人们对她到底是维纳斯还是其他女神也很纠结。而太阳王则认定她是美神维纳斯，让法国古典雕塑家弗朗索瓦·吉拉登（Francois Girardon）进行修复，并给她配上美神维纳斯的标准属性元素——苹果与镜子柄。苹果代表的是特洛伊王子帕里斯献给他选中的最美女神的金苹果。
+                        塔利亚是希腊神话中九位缪斯女神（Muse）之一，是宙斯（Zeus）与记忆女神摩涅莫辛涅（Mnemosyne）的第八个孩子。九位缪斯女神是阿波罗（Apollo）的伴侣，掌管艺术与科学，为太阳神带去奇思妙想，这也是如今“缪斯”作为“灵感源泉”代名词的由来。“塔利亚”在希腊语中意为愉悦与繁盛，因此塔利亚女神主管喜剧、诗歌和牧谣。她的形象也通常与欢乐、优美、温柔等词汇联系起来，时常被塑造成一位年轻女子，头戴常青藤花环，手拿喜剧面具，有时也拿小号或牧羊手杖等代表戏剧和牧歌的元素。
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/缪斯/r1.jpg" style="height: 400px">
+                <img src="introduceImages/缪斯/r1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
             <div style="height:400px;width:2000px">
                 <div class="a2" style="width: 1000px;float: left">
-                    <h3>起源</h3>
+                    <h3>形象与位置</h3>
                     <p>
-                        维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
-                        她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
-                        因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
-                        同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
-                        维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
-                        因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
+                        在大英博物馆（The British Museum）中有这样一座雕像，女神头发卷曲，盘绕着常春藤和花蕾，优雅而充满生机。
+                        她身着轻薄的衬裙，左腿在薄薄的布料下隐约可见；右手握着一根牧羊手杖（Pedum），层叠的长袍环绕身体、左臂，垂坠而下。从这些特征上看，这位雕像应该是女神塔利亚（Thalia）。
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/缪斯/r2.jpg" style="height: 400px">
+        <img src="introduceImages/缪斯/r2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -560,7 +592,8 @@
     </el-table>
 <!--    大卫-->
     <el-table v-if="currentIndex==17">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">大卫</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="q" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -570,7 +603,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/大卫/p1.jpg" style="height: 400px">
+                <img src="introduceImages/大卫/p1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
@@ -587,7 +620,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/大卫/p2.jpg" style="height: 400px">
+        <img src="introduceImages/大卫/p2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -595,7 +628,8 @@
     </el-table>
 <!--    夫妇像-->
     <el-table v-if="currentIndex==18">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">夫妇像</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="r" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -605,7 +639,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/夫妇像/s1.jpg" style="height: 400px">
+                <img src="introduceImages/夫妇像/s1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
@@ -622,7 +656,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/夫妇像/s2.jpg" style="height: 400px">
+        <img src="introduceImages/夫妇像/s2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -630,7 +664,8 @@
     </el-table>
 <!--    掷铁饼者-->
     <el-table v-if="currentIndex==19">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">掷铁饼者</p><h4>作者：切利尼</h4>
+        </el-header>
         <el-main>
             <div id="s" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -640,7 +675,7 @@
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/掷铁饼者/t1.jpg" style="height: 400px">
+                <img src="introduceImages/掷铁饼者/t1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
@@ -657,7 +692,7 @@
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/掷铁饼者/t2.jpg" style="height: 400px">
+        <img src="introduceImages/掷铁饼者/t2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -665,34 +700,43 @@
     </el-table>
 <!--    爱神与普西莎-->
     <el-table v-if="currentIndex==20">
-        <el-header><p style="text-align: center;font-size: 25px">该雕塑位于法国巴黎市中心的塞纳河北岸（右岸）的卢浮宫内</p></el-header>
+        <el-header><p style="text-align: center;font-size: 25px">爱神与普西莎</p><h4>作者：卡诺瓦（Canova）</h4>
+        </el-header>
         <el-main>
             <div id="t" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
-                    <h3 style="margin-top: auto">《阿尔勒的维纳斯》在前，《米洛的维纳斯》在后</h3>
+                    <h3 style="margin-top: auto">创作背景</h3>
                     <p style="width: 900px">
-                        在《米洛的维纳斯》出土前，体现古希腊理想美的作品是《阿尔勒的维纳斯》，这件作品在1651年出土于法国阿尔勒古罗马剧场遗址。与《米洛的维纳斯》一样，《阿尔勒的维纳斯》也以其出土地点命名。其出土之时正值路易十四在位期间，太阳王对在法国发现这一古代杰作兴奋不已。当时，人们对她到底是维纳斯还是其他女神也很纠结。而太阳王则认定她是美神维纳斯，让法国古典雕塑家弗朗索瓦·吉拉登（Francois Girardon）进行修复，并给她配上美神维纳斯的标准属性元素——苹果与镜子柄。苹果代表的是特洛伊王子帕里斯献给他选中的最美女神的金苹果。
+                        普西莎与爱神是安东尼奥•卡诺瓦于1787年受命
+                        为上校约翰 •坎贝尔创作的雕塑。它刻画出神话中
+                        爱人之间情动的一刻，被视为新古典主义的杰出
+                        作品，同时也带有新兴浪漫主义运动的特点。
+                        爱神丘比特以一吻唤醒了已逝去的普西莎，后来
+                        重生的普西莎成为丘比特合法妻子，升为天庭女
+                        神，她的婆婆是维纳斯。。和小夫妻俩爱情前期
+                        的各种磨难都是这位婆婆整出来的，具体故事大
+                        家可以自己百度查购的这一雕塑真正展现出了丘
+                        比特在呼唤爱人那一刻的真挚感情与无限温柔，
+                        成为这一题材中最经典的杰作！
+                        普西莎Psyche 是[心灵]的意思
+                        丘比特 Cupid是[爱〕的意思
+                        爱和心灵的结合才能得到神的祝福，终成佳缘
                     </p>
                 </div>
                 <span class="wns" style="width: 1000px;float: right">
-                <img src="introduceImages/爱神与普西莎/f1.jpg" style="height: 400px">
+                <img src="introduceImages/爱神与普西莎/f1.jpg" style="height: 400px"class="img">
             </span>
             </div>
             <hr>
             <div style="height:400px;width:2000px">
                 <div class="a2" style="width: 1000px;float: left">
-                    <h3>起源</h3>
+                    <h3>神话故事</h3>
                     <p>
-                        维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。
-                        她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
-                        因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。
-                        同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
-                        维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
-                        因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说。
+                        普西莎是一位美丽的公主。她的美貌甚至引起美神维纳斯的嫉妒。她命令儿子爱神去惩罚普西莎。然而，爱神却对普西莎一见钟情，并把她带到一个迷人的宫殿里。对这对恋人而言，一切似乎都尽善尽美。但是，普西莎没有遵守向爱神做出的承诺，爱神一怒之下弃她而去。维纳斯对普西莎提出严峻考验，要求她前往冥界，带回装有美丽圣水的瓶子。普西莎在好奇心的驱使下，打开瓶子，吸入从中飘出的冥界之气，当场陷入死亡般的沉睡中。幸运的是，爱神及时赶到，用他的吻唤醒了普西莎。卡诺瓦的这座雕像正是再现了这一瞬间。文艺复兴时期的雕塑家阿德里亚恩·德·弗里斯也以这个神话故事为题材，创作了续篇：在朱庇特的命令下，众神使者墨丘利将手中仍拿着美丽圣水瓶的普西莎带到天界，使其获得永生。通过这个神话故事，雕塑家以象征手法，借用墨丘利代表艺术，普西莎代表灵魂（“psyché”一词在希腊语中意为灵魂），表达了艺术可将人类灵魂升华至永生境界的理念。
                     </p>
                 </div>
                 <span style="width: 1000px;float: right">
-        <img src="introduceImages/爱神与普西莎/f2.jpg" style="height: 400px">
+        <img src="introduceImages/爱神与普西莎/f2.jpg" style="height: 400px"class="img">
     </span>
             </div>
             <hr>
@@ -707,23 +751,14 @@
         el: '#app',
         data() {
             return {
-                user:{},
-                userArr:[],
-                bannerArr:[],
-                contentArr:[],
+
             }
         },
         created(){
-            this.loadBanner()
+
         },
         methods:{
-            handleDelete(index, row) {
-                console.log(index, row);
-            },
-            handleSelect(key,keyPath){
-                //key就是我们点击菜单栏时的index值
-                v.currentIndex = key
-            },
+
         }
     })
 </script>
