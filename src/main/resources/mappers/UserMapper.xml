@@ -24,5 +24,9 @@
     <select id="selectByName" resultMap="userMap">
         select * from users where user_name = #{userName}
     </select>
+<!--    查询所有用户信息-->
+    <select id="selectAll" resultMap="userMap">
+        select * from users
+    </select>
 
 </mapper>

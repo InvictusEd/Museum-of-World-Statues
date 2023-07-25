@@ -53,4 +53,41 @@ public class UserController {
         return 3;//管理员
     }
 
+    /**
+     * @description: 查询所有用户信息
+     * @param
+     * @return: java.util.List<com.museum.museumofworldstatues.entity.User>
+     * @author: qqdas
+     * @time: 2023/7/24 9:32
+     */
+    @RequestMapping("/selectUserList")
+    public List<User> selectAll(){
+        List<User> users = userMapper.selectAll();
+        return users;
+    }
+
+    /**
+     * @description: 获取当前登录对象
+     * @param session
+     * @return: com.museum.museumofworldstatues.entity.User
+     * @author: qqdas
+     * @time: 2023/7/25 8:59
+     */
+    @RequestMapping("/currentUser")
+    public User getUser(HttpSession session){
+        User u = (User)session.getAttribute("u");
+        return u;
+    }
+
+    /**
+     * @description: 退出登录，清楚对象
+     * @param session
+     * @return: void
+     * @author: qqdas
+     * @time: 2023/7/25 14:21
+     */
+    @RequestMapping("/logout")
+    public void logout(HttpSession session){
+        session.removeAttribute("u");
+    }
 }
