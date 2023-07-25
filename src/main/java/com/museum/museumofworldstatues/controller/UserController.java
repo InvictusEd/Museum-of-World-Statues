@@ -20,7 +20,7 @@ public class UserController {
     @RequestMapping("/addUser")
     public Integer addUser(@RequestBody User user){
 //        1、根据用户名判断用户是否存在，如果已存在直接返回“该用户已存在”
-//        System.out.println("前端接收到的对象为："+user);
+        System.out.println("前端接收到的对象为："+user);
         User user1 = userMapper.selectByName(user.getUserName());
         if(user1!=null){
             return 1;//用户已存在
@@ -89,5 +89,24 @@ public class UserController {
     @RequestMapping("/logout")
     public void logout(HttpSession session){
         session.removeAttribute("u");
+    }
+
+    /*删除用户信息*/
+    @RequestMapping("/removeUser")
+    public void deleteUser(Long id){
+        userMapper.deleteById(id);
+    }
+
+    /*修改用户身份*/
+    @RequestMapping("/changeUser")
+    public void change(@RequestBody User user){
+
+        Integer flag = 0;
+        //如果已经是普通用户，则修改为1（管理员）
+        if (user.getIsAdmin()==0){
+            flag = 1;
+        }
+        //根据id修改isAdmin
+        userMapper.changeAdmin(flag,user.getId());
     }
 }

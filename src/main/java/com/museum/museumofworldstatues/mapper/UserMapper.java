@@ -13,4 +13,12 @@ public interface UserMapper {
     User selectByName(String userName);
     //查询所有用户信息
     List<User> selectAll();
+    //根据用户id删除用户信息
+    void deleteById(Long id);
+    //修改管理员权限
+    void changeAdmin(Integer flag, Long id);
+//
+//    /*修改用户信息*/
+//    void updateUser(User user);
+
 }
