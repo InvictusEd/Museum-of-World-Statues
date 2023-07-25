@@ -11,5 +11,4 @@ public interface UserMapper {
     void addUser(User user);
     //根据用户名查询用户信息
     User selectByName(String userName);
-
 }

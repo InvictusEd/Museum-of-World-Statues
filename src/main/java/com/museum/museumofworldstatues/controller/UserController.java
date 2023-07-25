@@ -17,6 +17,8 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
+
+    /*注册*/
     @RequestMapping("/addUser")
     public Integer addUser(@RequestBody User user){
 //        1、根据用户名判断用户是否存在，如果已存在直接返回“该用户已存在”
@@ -43,7 +45,6 @@ public class UserController {
         if (!user.getPassword().equals(password)){
             return 1;//密码错误
         }
-
         //将user保存到u里面
         session.setAttribute("u",user);
         //登录成功普通用户和管理员，普通用户进入前台首页，管理员进入后台首页
@@ -52,6 +53,7 @@ public class UserController {
         }
         return 3;//管理员
     }
+
     /*获取当前登录对象*/
     @RequestMapping("/currentUser")
     public User getUser(HttpSession session){
@@ -64,4 +66,6 @@ public class UserController {
     public void logout(HttpSession session){
         session.removeAttribute("u");
     }
+
+
 }
