@@ -81,14 +81,13 @@
                         </el-input>
                     </el-menu>
                 </el-col>
-
             </el-row>
         </el-header>
         <!--            主体内容-->
         <el-main style="padding: 0">
 <!--            轮播图-->
             <el-carousel height="635px">
-                <el-carousel-item v-for="b in BannerArr">
+                <el-carousel-item v-for="b in bannerArrFirst">
                     <img :src="b.imgUrl" width="100%" alt="">
                 </el-carousel-item>
             </el-carousel>
@@ -147,7 +146,9 @@
                 </el-col>
             </el-row>
             <!--                精品典藏-->
-            <h2 style="text-align: center">精品典藏</h2>
+            <a href="fineCollection.html" style="text-decoration: none;color: black;">
+                <h2 style="text-align: center">精品典藏</h2>
+            </a>
             <el-row gutter="20" style="margin: 10px 60px">
                 <div>
                     <el-col span="6" >
@@ -226,22 +227,22 @@
         data: function() {
             return {
                 activeIndex: '1',
-                bannerArr:[]
+                bannerArrFirst:[]
             }
         },
         created(){
-            loadBanner()
+            this.loadBannerFirst()
         },
         methods:{
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
             },
             //加载轮播图信息
-            loadBanner(){
+            loadBannerFirst(){
                 //发送请求
                 //接收请求并把请求数据赋值给bannerArr变量
-                axios.get("/selectBanner").then(function (reponse) {
-                    v.bannerArr = reponse.data
+                axios.get("/selectBannerFirst").then(function (response) {
+                    v.bannerArrFirst = response.data
                 })
             },
         }

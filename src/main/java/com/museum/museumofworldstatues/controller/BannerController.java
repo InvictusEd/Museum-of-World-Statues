@@ -10,10 +10,23 @@ import java.util.List;
 
 @RestController
 public class BannerController {
-
     @Autowired
     BannerMapper bannerMapper;
 
+    //查询分类1的轮播图
+    @RequestMapping("/selectBannerFirst")
+    public List<Banner> selectFirst(){
+        List<Banner> banners = bannerMapper.selectFirst();
+        return banners;
+    }
+
+    //删除轮播图
+    @RequestMapping("/removeBanner")
+    public void deleteBanner(Long id){
+        bannerMapper.deleteById(id);
+    }
+
+    //查询所有轮播图
     @RequestMapping("/selectBanner")
     public List<Banner> selectAll(){
         List<Banner> banners = bannerMapper.selectAll();

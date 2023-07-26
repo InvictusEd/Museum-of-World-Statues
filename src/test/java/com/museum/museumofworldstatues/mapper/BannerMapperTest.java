@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @description:
+ * @description: 轮播图测试
  * @className: BannerMapperTest.java
  * @author: qqdas
  * @createTime: 2023/7/26 18:46
@@ -19,6 +19,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class BannerMapperTest {
     @Autowired
     BannerMapper mapper;
+    @Test
+    void selectFirst() {
+        List<Banner> banners = mapper.selectFirst();
+        banners.forEach(System.out::println);
+    }
 
     @Test
     void selectAll() {
