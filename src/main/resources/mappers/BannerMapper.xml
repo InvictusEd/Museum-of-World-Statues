@@ -10,9 +10,15 @@
         <result property="id" column="id"></result>
         <result property="imgUrl" column="img_url"></result>
     </resultMap>
+<!--    按照id删除轮播图-->
     <delete id="deleteById">
         delete from banner where id = #{id}
     </delete>
+<!--    查询分类1的轮播图-->
+    <select id="selectFirst" resultMap="bannerMap">
+        select * from banner where category=1;
+    </select>
+<!--    查询所有轮播图-->
     <select id="selectAll" resultMap="bannerMap">
         select * from banner;
     </select>
