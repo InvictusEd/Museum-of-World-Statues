@@ -31,7 +31,7 @@
         <span style="float: left; margin-top: 5px;"><img src="imagesAll/adminImages/logo.jpg" width="300px"></span>
         <span style="float: right; line-height: 100px; font-size: 30px">
           Welcome
-          <span>{{user.nickName}}</span>
+          {{user.nickName}}
           <!--注销按钮-->
           <el-popover placement="top" width="160" v-model="visible">
             <p style="font-size: 15px; color: #000000">是否退出登录</p>
@@ -91,11 +91,32 @@
         <el-container>
           <el-main>
             <!--用户表格-->
-            <el-table v-if="currentIndex==1" :data="userArr" style="width: 100%">
-              <el-table-column type="index" label="编号" width="100px"></el-table-column>
-              <el-table-column prop="userName" label="日期" width="100px"></el-table-column>
-              <el-table-column prop="nickName" label="姓名" width="100px"></el-table-column>
-              <el-table-column prop="email" label="地址" width="100px"></el-table-column>
+            <el-table v-if="currentIndex==1" :data="userArr" style="width: 100%;">
+              <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
+              <el-table-column prop="userName" label="用户名" width="100px" align="center"></el-table-column>
+              <el-table-column prop="nickName" label="昵称" width="100px" align="center"></el-table-column>
+              <el-table-column prop="email" label="邮箱" width="100px" align="center"></el-table-column>
+              <el-table-column prop="birthday" label="生日" width="100px" align="center"></el-table-column>
+              <el-table-column  label="头像"  width="200">
+                <template slot-scope="scope">
+                  <img :src="scope.row.imgUrl" width="100px" >
+                </template>
+              </el-table-column>
+              <el-table-column prop="createTime" label="创建时间" width="100px" align="center"></el-table-column>
+              <el-table-column label="管理员" width="120px" align="center">
+                <template slot-scope="scope">
+                  <el-switch v-model="scope.row.isAdmin==1?true:false"
+                             @change="changeAdmin(scope.row)"></el-switch>
+                </template>
+              </el-table-column>
+              <el-table-column prop="address" label="操作" width="200px" align="center" >
+                <template slot-scope="scope">
+                  <el-button
+                          size="mini"
+                          type="danger"
+                          @click="deleteUser(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
             </el-table>
             <!--轮播图表格-->
             <el-table v-if="currentIndex==2" :data="bannerArr">
@@ -165,7 +186,34 @@
               axios.get("/logout").then(function (){
                   location.href='login.html'
               })
-          }
+          },
+        //删除用户信息
+        deleteUser(index,user){
+          this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            axios.get("/removeUser?id="+user.id).then(function () {
+              v.$message({
+                type: 'success',
+                message: '删除成功!'
+              });
+              v.loadUser()//删除成功后重新加载列表信息
+            })
+          }).catch(() => {
+            this.$message({
+              type: 'info',
+              message: '已取消删除'
+            });
+          });
+        },
+        //切换用户身份
+        changeAdmin(user){
+          axios.post("/changeUser",user).then(function () {
+            v.loadUser()//修改成功后重新加载用户列表信息
+          })
+        }
       }
   })
 </script>

@@ -50,10 +50,11 @@
             <el-input v-model="user.email" placeholder="请输入邮箱" show-clearable></el-input>
           </el-form-item>
           <el-form-item label="生日">
-            <div class="block">
-              <el-input v-model="user.birthday" placeholder="请输入生日xxxx/xx/xx" show-clearable></el-input>
+            <el-date-picker
+                    v-model="user.birthday"
+                    type="date"
+                    placeholder="选择日期">
             </el-date-picker>
-          </div>
           </el-form-item>
           <el-form-item>
             <el-button type="warning" @click="reg" style="width: 100px;margin-left: 20px;">点击注册</el-button>
