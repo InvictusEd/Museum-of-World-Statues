@@ -19,7 +19,7 @@
     </resultMap>
     <!--    添加用户信息-->
     <insert id="addUser">
-        insert into users values(null,#{userName},#{nickName},1,#{password},#{email},0,#{birthday},0)
+        insert into users values(null,#{userName},#{nickName},0,#{password},#{email},#{createTime},#{birthday},0)
     </insert>
     <!--    修改用户身份-->
     <update id="changeAdmin">

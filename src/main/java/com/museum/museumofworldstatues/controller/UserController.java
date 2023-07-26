@@ -3,13 +3,12 @@ package com.museum.museumofworldstatues.controller;
 import com.museum.museumofworldstatues.entity.User;
 import com.museum.museumofworldstatues.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class UserController {
@@ -25,6 +24,7 @@ public class UserController {
         if(user1!=null){
             return 1;//用户已存在
         }else{
+            user.setCreateTime(new Date());
             userMapper.addUser(user);
         }
 //        2、将用户信息添加至数据库，并返回“注册成功”
@@ -125,11 +125,13 @@ public class UserController {
         if (user1 == null){
             //用户不存在
             return 0;
-        }else {
+        }else{
             userMapper.updateUserPassword(user);
         }
 //        2、将用户的密码修改，并返回“修改成功”
         return 1;
     }
+
+
 
 }
