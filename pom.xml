@@ -8,24 +8,23 @@
         <version>2.7.13</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.museum</groupId>
-    <artifactId>Museum-of-World-Statues</artifactId>
+    <groupId>cn.highedu</groupId>
+    <artifactId>yxnu</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Museum-of-World-Statues</name>
-    <description>Museum-of-World-Statues</description>
+    <name>yxnu</name>
+    <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
-<!--        阿里云-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.aliyun.oss</groupId>
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>3.15.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

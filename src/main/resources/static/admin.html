@@ -63,25 +63,25 @@
                   <i class="el-icon-star-on"></i>
                   <span>雕像管理</span>
                 </template>
-                <el-menu-item index="3-1">
+                <el-menu-item index="3">
                   <i class="el-icon-picture"></i>
                   雕像图片
                 </el-menu-item>
-                <el-menu-item index="3-2">
+                <el-menu-item index="4">
                   <i class="el-icon-tickets"></i>
                   雕像信息
                 </el-menu-item>
               </el-submenu>
-              <el-submenu index="4">
+              <el-submenu index="5">
                 <template slot="title">
                   <i class="el-icon-s-grid"></i>
                   <span>分类管理</span>
                 </template>
-                <el-menu-item index="4-1">
+                <el-menu-item index="5">
                   <i class="el-icon-map-location"></i>
                   国家
                 </el-menu-item>
-                <el-menu-item index="4-2">
+                <el-menu-item index="6">
                   <i class="el-icon-time"></i>
                   时代
                 </el-menu-item>
@@ -118,15 +118,87 @@
                 </template>
               </el-table-column>
             </el-table>
+
             <!--轮播图表格-->
             <el-table v-if="currentIndex==2" :data="bannerArr">
               <el-table-column type="index"  label="编号" width="100" align="center"></el-table-column>
+              <el-table-column prop=""  label="分类编号" width="100" align="center"></el-table-column>
               <el-table-column  label="轮播图"  width="300">
                 <template slot-scope="scope">
                   <img :src="scope.row.imgUrl" width="200px" >
                 </template>
               </el-table-column>
-              <el-table-column prop="createTime" label="创建时间" align="center"width="200px"></el-table-column>
+              <el-table-column prop="address" label="操作" width="200px" align="center" >
+                <template slot-scope="scope">
+                  <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+
+            <!--雕像图片表格-->
+            <el-table v-if="currentIndex==3" style="width: 100%;">
+              <el-table-column type="index" label="编号" width="100" align="center"></el-table-column>
+              <el-table-column prop="" label="名称" width="100px" align="center"></el-table-column>
+              <el-table-column  label="图片"  width="200">
+                <template slot-scope="scope">
+                  <img :src="scope.row.imgUrl" width="100px" >
+                </template>
+              </el-table-column>
+              <el-table-column prop="address" label="操作" width="200px" align="center" >
+                <template slot-scope="scope">
+                  <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+
+            <!--雕像信息表格-->
+            <el-table v-if="currentIndex==4" :data="statuesInfo" style="width: 100%;">
+              <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
+              <el-table-column prop="chineseName" label="名称" width="100px" align="center"></el-table-column>
+              <el-table-column  label="封面图"  width="100px">
+                <template slot-scope="scope">
+                  <img :src="scope.row.imgUrl" width="100px" >
+                </template>
+              </el-table-column>
+              <el-table-column prop="" label="国家" width="100px" align="center"></el-table-column>
+              <el-table-column prop="" label="时期" width="100px" align="center"></el-table-column>
+              <el-table-column prop="" label="地理位置" width="100px" align="center"></el-table-column>
+              <el-table-column prop="" label="建造时间" width="100px" align="center"></el-table-column>
+              <el-table-column prop="address" label="操作" width="200px" align="center" >
+                <template slot-scope="scope">
+                  <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+
+            <!--国家分类管理表格-->
+            <el-table v-if="currentIndex==5" style="width: 100%;">
+              <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
+              <el-table-column prop="" label="国家" width="100px" align="center"></el-table-column>
+              <el-table-column prop="" label="名称" width="100px" align="center"></el-table-column>
+              <el-table-column  label="封面图"  width="100px">
+                <template slot-scope="scope">
+                  <img :src="scope.row.imgUrl" width="100px" >
+                </template>
+              </el-table-column>
+
+              <el-table-column prop="address" label="操作" width="200px" align="center" >
+                <template slot-scope="scope">
+                  <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+
+            <!--时代分类管理表格-->
+            <el-table v-if="currentIndex==6" style="width: 100%;">
+              <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
+              <el-table-column prop="" label="时代" width="100px" align="center"></el-table-column>
+              <el-table-column prop="" label="名称" width="100px" align="center"></el-table-column>
+              <el-table-column  label="封面图"  width="100px">
+                <template slot-scope="scope">
+                  <img :src="scope.row.imgUrl" width="100px" >
+                </template>
+              </el-table-column>
               <el-table-column prop="address" label="操作" width="200px" align="center" >
                 <template slot-scope="scope">
                   <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
@@ -157,12 +229,16 @@
             visible: false,
             userArr:[],
             user:{},
-            currentIndex:"1"
+            currentIndex:"1",
+            bannerArr:[],
+            statuesInfo:[]
         }
       },
       created(){
           this.loadUser()
           this.getCurrentUser()
+          this.loadBanner()
+          this.loadStatuesInfo()
       },
       methods:{
           //选择侧边栏加载内容
@@ -213,7 +289,23 @@
           axios.post("/changeUser",user).then(function () {
             v.loadUser()//修改成功后重新加载用户列表信息
           })
-        }
+        },
+          //加载轮播图信息
+          loadBanner(){
+              //发送请求
+              //接收请求并把请求数据赋值给bannerArr变量
+              axios.get("/selectBanner").then(function (response){
+                  v.bannerArr = response.data
+              })
+          },
+          //加载雕像信息
+          loadStatuesInfo(){
+              //发送请求
+              //接收请求并把请求数据赋值给bannerArr变量
+              axios.get("/selectStatuesInfo").then(function (response){
+                  v.statuesInfo = response.data
+              })
+          },
       }
   })
 </script>
