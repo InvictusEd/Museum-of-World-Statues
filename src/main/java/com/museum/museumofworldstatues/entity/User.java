@@ -14,5 +14,5 @@ public class User {
     private String birthday;
     private Integer isAdmin;
     private String imgUrl;
-    private String createTime;
+    private Date createTime;
 }
