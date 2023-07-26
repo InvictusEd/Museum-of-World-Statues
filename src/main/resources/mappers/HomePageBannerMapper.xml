@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace="对应的接口文件路径"-->
+<mapper namespace="com.museum.museumofworldstatues.mapper.HomePageBannerMapper">
+    <!--    让字段匹配-->
+    <resultMap id="userMap" type="com.museum.museumofworldstatues.entity.HomePageBanner">
+        <!--        proerty:mybatic里的字段 column：数据库里的字段-->
+        <result property="id" column="id"></result>
+        <result property="imgUrl" column="img_url"></result>
+        <result property="sort" column="sort"></result>
+        <result property="createTime" column="create_time"></result>
+    </resultMap>
+    <delete id="deleteById">
+
+    </delete>
+    <select id="selectAll" resultType="com.museum.museumofworldstatues.mapper.HomePageBannerMapper">
+
+    </select>
+
+
+</mapper>
