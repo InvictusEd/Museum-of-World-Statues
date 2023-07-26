@@ -13,8 +13,8 @@ class BannerMapperTest {
     @Autowired
     BannerMapper mapper;
     @Test
-    void selectAll() {
-        List<Banner> banners = mapper.selectAll();
+    void selectFirst() {
+        List<Banner> banners = mapper.selectFirst();
         banners.forEach(System.out::println);
     }
 }

@@ -13,8 +13,8 @@
     <delete id="deleteById">
         delete from banner where id = #{id}
     </delete>
-    <select id="selectAll" resultMap="bannerMap">
-        select * from banner;
+    <select id="selectFirst" resultMap="bannerMap">
+        select * from banner where category=1;
     </select>
 
 

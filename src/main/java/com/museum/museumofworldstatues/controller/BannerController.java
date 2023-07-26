@@ -13,9 +13,9 @@ public class BannerController {
     @Autowired
     BannerMapper bannerMapper;
 
-    @RequestMapping("/selectBanner")
-    public List<Banner> selectAll(){
-        List<Banner> banners = bannerMapper.selectAll();
+    @RequestMapping("/selectBannerFirst")
+    public List<Banner> selectFirst(){
+        List<Banner> banners = bannerMapper.selectFirst();
         return banners;
     }
 
