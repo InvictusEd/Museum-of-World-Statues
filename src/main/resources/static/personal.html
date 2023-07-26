@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- 引入elementUI组件库的 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="homePage.css">
+</head>
+<body>
+<div id="app">
+    <el-container>
+        <!--            头部-->
+        <el-header style="padding: 0">
+            <el-row>
+                <el-col span="3">
+                    <a href="./login.html">
+                        <img src="./imgs/logo.jpg" style="width: 100%;height: 60px">
+                    </a>
+                </el-col>
+                <el-col span="21">
+                    <el-menu
+                            :default-active="activeIndex1"
+                            class="el-menu-demo"
+                            mode="horizontal"
+                            @select="handleSelect"
+                            background-color="rgba(0,0,0,0.8)"
+                            text-color="#fff"
+                            active-text-color="#ffd04b">
+                        <el-menu-item index="1">首页</el-menu-item>
+                        <el-submenu index="2">
+                            <template slot="title">参观服务</template>
+                            <el-submenu index="2-1">
+                                <template slot="title">网上订票</template>
+                                <el-menu-item index="2-1-1">开放时间</el-menu-item>
+                                <el-menu-item index="2-1-2">在线预约</el-menu-item>
+                                <el-menu-item index="2-1-3">餐饮服务</el-menu-item>
+                            </el-submenu>
+                            <el-menu-item index="2-2">参观须知</el-menu-item>
+                            <el-menu-item index="2-3">交通信息</el-menu-item>
+                        </el-submenu>
+                        <el-submenu index="3">
+                            <template slot="title">社会教育</template>
+                            <el-menu-item index="3-1">活动资讯</el-menu-item>
+                            <el-menu-item index="3-2">活动预约</el-menu-item>
+                            <el-menu-item index="3-3">教育资源</el-menu-item>
+                        </el-submenu>
+                        <el-submenu index="4">
+                            <template slot="title">资讯公告</template>
+                            <el-menu-item index="4-1">新闻资讯</el-menu-item>
+                            <el-menu-item index="4-2">文明宣传</el-menu-item>
+                            <el-menu-item index="4-3">数字文创</el-menu-item>
+                            <el-menu-item index="4-4">示范区创建</el-menu-item>
+                            <el-menu-item index="4-5">数字资源</el-menu-item>
+                        </el-submenu>
+                        <el-menu-item index="5">雕塑典藏</el-menu-item>
+                        <el-submenu index="6">
+                            <template slot="title">展览陈列</template>
+                            <el-menu-item index="6-1">临时展览</el-menu-item>
+                            <el-menu-item index="6-2">常设展览</el-menu-item>
+                            <el-menu-item index="6-3">虚拟展厅</el-menu-item>
+                        </el-submenu>
+                        <el-submenu index="7">
+                            <template slot="title">文化遗产</template>
+                            <el-menu-item index="7-1">考古发现</el-menu-item>
+                            <el-menu-item index="7-2">考古大事记</el-menu-item>
+                        </el-submenu>
+                        <el-submenu index="8">
+                            <template slot="title">学术研究</template>
+                            <el-menu-item index="8-1">雕塑研究文章</el-menu-item>
+                            <el-menu-item index="8-2">出版物</el-menu-item>
+                        </el-submenu>
+                        <el-menu-item index="9">文创精品</el-menu-item>
+                        <el-submenu index="10">
+                            <template slot="title">简体中文</template>
+                            <el-menu-item index="8-1">简体中文</el-menu-item>
+                            <el-menu-item index="8-2">English</el-menu-item>
+                        </el-submenu>
+                        <el-input placeholder="请输入搜索的关键字" style="width: 230px;margin-top: 10px;
+                            background-color: #7f7f7f">
+                            <el-button slot="append" icon="el-icon-search"></el-button>
+                        </el-input>
+                    </el-menu>
+                </el-col>
+
+            </el-row>
+        </el-header>
+        <!--            主体内容-->
+        <el-main>
+            <el-row gutter="20">
+                <img src="imagesAll/loginImages/personalBackground.jpg" style="float: left;width: 600px;height: 600px;margin-left: 200px;margin-right: 100px">
+                    <el-card style="height: 600px;width: 500px;">
+                        <el-form label-width="100px"style="margin-top: 20px;margin-left: 20px">
+                            <el-form-item label="头像">
+                                <img :src="user.imgUrl"
+                                     style="width: 145px;height: 145px;border-radius: 10px;float: left">
+                                <!--上传组件-->
+                                <el-upload
+                                        action="http://localhost:8080/upload"
+                                        list-type="picture-card"
+                                        :before-upload="beforeUpload"
+                                        :on-success="handleSuccess">
+                                    <i class="el-icon-plus"></i>
+                                </el-upload>
+                                <el-dialog :visible.sync="dialogVisible">
+                                    <img width="100%" :src="dialogImageUrl" alt="">
+                                </el-dialog>
+                            </el-form-item>
+                            <el-form-item label="昵称">
+                                <el-input placeholder="请输入昵称" v-model="user.nickName" style="width: 200px"></el-input>
+                            </el-form-item>
+                            <el-form-item label="用户名">
+                                <el-input v-text="user.userName" disabled style="width: 200px"></el-input>
+                            </el-form-item>
+                            <el-form-item label="密码">
+                                <el-input placeholder="请输入密码" v-model="user.password" style="width: 200px"></el-input>
+                            </el-form-item>
+                            <el-form-item label="邮箱">
+                                <el-input placeholder="请输入邮箱" v-model="user.email" style="width: 200px"></el-input>
+                            </el-form-item>
+                            <el-form-item label="生日">
+                                <el-date-picker
+                                        v-model="user.birthday"
+                                        type="date"
+                                        placeholder="选择日期">
+                                </el-date-picker>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="warning" @click="updateUser" style="margin-left: 50px">保存信息</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-card>
+
+            </el-row>
+        </el-main>
+        <el-footer>
+
+        </el-footer>
+    </el-container>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                dialogImageUrl: '',
+                dialogVisible: false,
+                user:{}
+            }
+        },
+        created(){
+            this.getCurrentUser()
+        },
+        methods:{
+            handleSuccess(response, file) {
+                v.dialogImageUrl = response
+            },
+            beforeUpload(file) {
+                //判断文件类型及大小
+                const isJPG = file.type =='image/jpeg'
+                const isLt3M = file.size / 1024 / 1024<3;
+                if(!isJPG){
+                    this.$message.error("上传的文件只能是jpg格式")
+                }
+                if (!isLt3M){
+                    this.$message.error("上传的文件不能大于3M")
+                }
+                return isJPG && isLt3M
+            },
+            //获取当前登录对象
+            getCurrentUser(){
+                axios.get('/currentUser').then(function (response){
+                    v.user = response.data
+                })
+            },
+            //修改用户信息--头像和昵称
+            updateUser(){
+                v.user.imgUrl = v.dialogImageUrl
+                axios.post("updateUser",v.user).then(function () {
+                    v.$message.success("修改成功")
+                    location.href='index.html'
+                })
+            }
+        }
+    })
+</script>
+</html>
+
