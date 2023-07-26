@@ -97,7 +97,11 @@
               <el-table-column prop="nickName" label="昵称" width="100px" align="center"></el-table-column>
               <el-table-column prop="email" label="邮箱" width="100px" align="center"></el-table-column>
               <el-table-column prop="birthday" label="生日" width="100px" align="center"></el-table-column>
-              <el-table-column prop="imgUrl" label="头像" width="100px" align="center"></el-table-column>
+              <el-table-column  label="头像"  width="200">
+                <template slot-scope="scope">
+                  <img :src="scope.row.imgUrl" width="100px" >
+                </template>
+              </el-table-column>
               <el-table-column prop="createTime" label="创建时间" width="100px" align="center"></el-table-column>
               <el-table-column label="管理员" width="120px" align="center">
                 <template slot-scope="scope">

@@ -25,4 +25,5 @@ class UserMapperTest {
         List<User> users = mapper.selectAll();
         users.forEach(System.out::println);
     }
+
 }

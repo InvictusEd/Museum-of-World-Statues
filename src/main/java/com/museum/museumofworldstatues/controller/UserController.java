@@ -109,4 +109,10 @@ public class UserController {
         //根据id修改isAdmin
         userMapper.changeAdmin(flag,user.getId());
     }
+
+    /*修改用户信息*/
+    @RequestMapping("/updateUser")
+    public void updateUser(@RequestBody User user){
+        userMapper.updateUser(user);
+    }
 }

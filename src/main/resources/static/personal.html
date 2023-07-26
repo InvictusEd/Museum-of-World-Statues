@@ -87,36 +87,49 @@
         <!--            主体内容-->
         <el-main>
             <el-row gutter="20">
-                <el-col span="20">
-                    <el-card style="height: 500px;margin-left: 300px">
-<!--                        <el-form label-width="100px">-->
-<!--                            <el-form-item label="头像">-->
-<!--                                <img :src="user.imgUrl"-->
-<!--                                     style="width: 145px;height: 145px;border-radius: 10px;float: left">-->
-<!--                                &lt;!&ndash;上传组件&ndash;&gt;-->
-<!--                                <el-upload-->
-<!--                                        action="http://localhost:8080/upload"-->
-<!--                                        list-type="picture-card"-->
-<!--                                        :before-upload="beforeUpload"-->
-<!--                                        :on-success="handleSuccess">-->
-<!--                                    <i class="el-icon-plus"></i>-->
-<!--                                </el-upload>-->
-<!--                                <el-dialog :visible.sync="dialogVisible">-->
-<!--                                    <img width="100%" :src="dialogImageUrl" alt="">-->
-<!--                                </el-dialog>-->
-<!--                            </el-form-item>-->
-<!--                            <el-form-item label="昵称">-->
-<!--                                <el-input placeholder="请输入昵称" v-model="user.nickName" style="width: 200px"></el-input>-->
-<!--                            </el-form-item>-->
-<!--                            <el-form-item label="用户名">-->
-<!--                                <el-input v-text="user.userName" disabled style="width: 200px"></el-input>-->
-<!--                            </el-form-item>-->
-<!--                            <el-form-item>-->
-<!--                                <el-button type="primary" @click="updateUser">保存信息</el-button>-->
-<!--                            </el-form-item>-->
-<!--                        </el-form>-->
+                <img src="imagesAll/loginImages/personalBackground.jpg" style="float: left;width: 600px;height: 600px;margin-left: 200px;margin-right: 100px">
+                    <el-card style="height: 600px;width: 500px;">
+                        <el-form label-width="100px"style="margin-top: 20px;margin-left: 20px">
+                            <el-form-item label="头像">
+                                <img :src="user.imgUrl"
+                                     style="width: 145px;height: 145px;border-radius: 10px;float: left">
+                                <!--上传组件-->
+                                <el-upload
+                                        action="http://localhost:8080/upload"
+                                        list-type="picture-card"
+                                        :before-upload="beforeUpload"
+                                        :on-success="handleSuccess">
+                                    <i class="el-icon-plus"></i>
+                                </el-upload>
+                                <el-dialog :visible.sync="dialogVisible">
+                                    <img width="100%" :src="dialogImageUrl" alt="">
+                                </el-dialog>
+                            </el-form-item>
+                            <el-form-item label="昵称">
+                                <el-input placeholder="请输入昵称" v-model="user.nickName" style="width: 200px"></el-input>
+                            </el-form-item>
+                            <el-form-item label="用户名">
+                                <el-input v-text="user.userName" disabled style="width: 200px"></el-input>
+                            </el-form-item>
+                            <el-form-item label="密码">
+                                <el-input placeholder="请输入密码" v-model="user.password" style="width: 200px"></el-input>
+                            </el-form-item>
+                            <el-form-item label="邮箱">
+                                <el-input placeholder="请输入邮箱" v-model="user.email" style="width: 200px"></el-input>
+                            </el-form-item>
+                            <el-form-item label="生日">
+                                <el-date-picker
+                                        v-model="user.birthday"
+                                        type="date"
+                                        placeholder="选择日期">
+                                </el-date-picker>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="warning" @click="updateUser" style="margin-left: 50px">保存信息</el-button>
+                            </el-form-item>
+                        </el-form>
                     </el-card>
-                </el-col>
+
             </el-row>
         </el-main>
         <el-footer>
@@ -129,19 +142,49 @@
 <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
 <!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="axios.min.js"></script>
 <script>
     let v = new Vue({
         el: '#app',
         data: function() {
             return {
-                activeIndex: '1'
+                dialogImageUrl: '',
+                dialogVisible: false,
+                user:{}
             }
         },
         created(){
+            this.getCurrentUser()
         },
         methods:{
-            handleSelect(key, keyPath) {
-                console.log(key, keyPath);
+            handleSuccess(response, file) {
+                v.dialogImageUrl = response
+            },
+            beforeUpload(file) {
+                //判断文件类型及大小
+                const isJPG = file.type =='image/jpeg'
+                const isLt3M = file.size / 1024 / 1024<3;
+                if(!isJPG){
+                    this.$message.error("上传的文件只能是jpg格式")
+                }
+                if (!isLt3M){
+                    this.$message.error("上传的文件不能大于3M")
+                }
+                return isJPG && isLt3M
+            },
+            //获取当前登录对象
+            getCurrentUser(){
+                axios.get('/currentUser').then(function (response){
+                    v.user = response.data
+                })
+            },
+            //修改用户信息--头像和昵称
+            updateUser(){
+                v.user.imgUrl = v.dialogImageUrl
+                axios.post("updateUser",v.user).then(function () {
+                    v.$message.success("修改成功")
+                    location.href='index.html'
+                })
             }
         }
     })

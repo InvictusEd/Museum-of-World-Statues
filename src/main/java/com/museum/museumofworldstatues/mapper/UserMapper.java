@@ -17,8 +17,8 @@ public interface UserMapper {
     void deleteById(Long id);
     //修改管理员权限
     void changeAdmin(Integer flag, Long id);
-//
-//    /*修改用户信息*/
-//    void updateUser(User user);
+
+    /*修改用户信息*/
+    void updateUser(User user);
 
 }
