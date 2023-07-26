@@ -20,7 +20,7 @@ public class UserController {
     @RequestMapping("/addUser")
     public Integer addUser(@RequestBody User user){
 //        1、根据用户名判断用户是否存在，如果已存在直接返回“该用户已存在”
-//        System.out.println("前端接收到的对象为："+user);
+        System.out.println("前端接收到的对象为："+user);
         User user1 = userMapper.selectByName(user.getUserName());
         if(user1!=null){
             return 1;//用户已存在
@@ -53,4 +53,66 @@ public class UserController {
         return 3;//管理员
     }
 
+    /**
+     * @description: 查询所有用户信息
+     * @param
+     * @return: java.util.List<com.museum.museumofworldstatues.entity.User>
+     * @author: qqdas
+     * @time: 2023/7/24 9:32
+     */
+    @RequestMapping("/selectUserList")
+    public List<User> selectAll(){
+        List<User> users = userMapper.selectAll();
+        return users;
+    }
+
+    /**
+     * @description: 获取当前登录对象
+     * @param session
+     * @return: com.museum.museumofworldstatues.entity.User
+     * @author: qqdas
+     * @time: 2023/7/25 8:59
+     */
+    @RequestMapping("/currentUser")
+    public User getUser(HttpSession session){
+        User u = (User)session.getAttribute("u");
+        return u;
+    }
+
+    /**
+     * @description: 退出登录，清楚对象
+     * @param session
+     * @return: void
+     * @author: qqdas
+     * @time: 2023/7/25 14:21
+     */
+    @RequestMapping("/logout")
+    public void logout(HttpSession session){
+        session.removeAttribute("u");
+    }
+
+    /*删除用户信息*/
+    @RequestMapping("/removeUser")
+    public void deleteUser(Long id){
+        userMapper.deleteById(id);
+    }
+
+    /*修改用户身份*/
+    @RequestMapping("/changeUser")
+    public void change(@RequestBody User user){
+
+        Integer flag = 0;
+        //如果已经是普通用户，则修改为1（管理员）
+        if (user.getIsAdmin()==0){
+            flag = 1;
+        }
+        //根据id修改isAdmin
+        userMapper.changeAdmin(flag,user.getId());
+    }
+
+    /*修改用户信息*/
+    @RequestMapping("/updateUser")
+    public void updateUser(@RequestBody User user){
+        userMapper.updateUser(user);
+    }
 }

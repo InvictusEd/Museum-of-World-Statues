@@ -21,3 +21,7 @@ body{
     height: 256px;
     background-color: #a58048;
 }
+/*底部信息*/
+#foot p:hover {
+    color: #ffffff;
+}

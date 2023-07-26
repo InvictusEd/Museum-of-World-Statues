@@ -14,15 +14,33 @@
         <result property="email" column="email"></result>
         <result property="birthday" column="birthday"></result>
         <result property="isAdmin" column="is_admin"></result>
+        <result property="imgUrl" column="img_url"></result>
+        <result property="createTime" column="create_time"></result>
     </resultMap>
-<!--    添加用户信息-->
+    <!--    添加用户信息-->
     <insert id="addUser">
-        insert into users values(null,#{userName},#{nickName},
-                                #{password},#{email},#{birthday},0)
+        insert into users values(null,#{userName},#{nickName},1,#{password},#{email},0,#{birthday},0)
     </insert>
-<!--    通过id查询用户名是否存在-->
+    <!--    修改用户身份-->
+    <update id="changeAdmin">
+        update users set is_admin=${flag} where id = #{id}
+    </update>
+    <!--    修改用户信息-->
+    <update id="updateUser">
+        update users set nick_name=#{nickName},user_password=#{password},email=#{email},
+                         birthday=#{birthday},img_url=#{imgUrl} where user_name =#{userName}
+    </update>
+    <!--    删除用户信息-->
+    <delete id="deleteById">
+        delete from users where id = #{id}
+    </delete>
+    <!--    通过用户名查询用户名是否存在-->
     <select id="selectByName" resultMap="userMap">
         select * from users where user_name = #{userName}
+    </select>
+<!--    查询所有用户信息-->
+    <select id="selectAll" resultMap="userMap">
+        select * from users
     </select>
 
 </mapper>

@@ -21,47 +21,20 @@
     }
   </style>
 </head>
-<body>
+<body style="background-color: black">
 <div id="app">
   <el-container>
-<!--    头部导航栏，后期修改-->
-    <el-header class="center" height="80px">
-      <el-row gutter="20">
-        <el-col span="6">
-          <img src="imagesAll/images/icon.png" width="196" height="65" alt="">
-        </el-col>
-        <el-col span="10">
-          <el-menu mode="horizontal" active-text-color="orange">
-            <el-menu-item index="0">首页</el-menu-item>
-            <el-menu-item index="1">食谱</el-menu-item>
-            <el-menu-item index="2">视频</el-menu-item>
-            <el-menu-item index="3">资讯</el-menu-item>
-          </el-menu>
-        </el-col>
-        <el-col span="6">
-          <el-input placeholder="请输入搜索的关键字" style="margin-top:15px ">
-            <el-button slot="append" icon="el-icon-search"></el-button>
-          </el-input>
-        </el-col>
-        <el-col span="2">
-          <el-popover
-                  placement="top-start"
-                  title="欢迎来到烘焙坊！"
-                  width="200"
-                  trigger="hover">
-            <div slot="reference">
-              <i class="el-icon-user" style="font-size: 30px;position: relative;top: 20px"></i>
-            </div>
-            <el-button type="info">注册</el-button>
-            <el-button type="warning">登录</el-button>
-          </el-popover>
-        </el-col>
-      </el-row>
+<!--    头部导航栏-->
+    <el-header height="100px" style="background-color: black">
+      <span style="float: left; margin-top: 5px;"><img src="imagesAll/adminImages/logo.jpg" width="300px"></span>
+      <span>
+        <template><a href="index.html" style="float: right; line-height: 100px; font-size: 30px;color: white;text-decoration: none">点击返回首页</a></template>
+      </span>
     </el-header>
 <!--    注册模块-->
-    <el-main style="background-image:url('imagesAll/loginImages/loginAndRegBackground.jpg');
-                                height: 700px;background-size: cover;background-position: center">
-      <el-card style="width: 500px;margin-left: 900px;margin-top: 100px;border-radius: 10px">
+    <el-main>
+      <img src="imagesAll/loginImages/regBackground.jpg" style="margin-left: 150px;height: 600px;width: 600px;float: left">
+      <el-card style="width: 500px;margin-left: 900px;margin-top: 50px;border-radius: 10px">
         <el-form label-width="80px" style="width: 400px;margin: 50px auto">
           <h2>立即注册</h2>
           <el-form-item label="用户名">
@@ -77,10 +50,11 @@
             <el-input v-model="user.email" placeholder="请输入邮箱" show-clearable></el-input>
           </el-form-item>
           <el-form-item label="生日">
-            <div class="block">
-              <el-input v-model="user.birthday" placeholder="请输入生日xxxx/xx/xx" show-clearable></el-input>
+            <el-date-picker
+                    v-model="user.birthday"
+                    type="date"
+                    placeholder="选择日期">
             </el-date-picker>
-          </div>
           </el-form-item>
           <el-form-item>
             <el-button type="warning" @click="reg" style="width: 100px;margin-left: 20px;">点击注册</el-button>
