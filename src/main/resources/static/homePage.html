@@ -88,7 +88,7 @@
         <el-main style="padding: 0">
 <!--            轮播图-->
             <el-carousel height="635px">
-                <el-carousel-item v-for="b in HomePageBannerArr">
+                <el-carousel-item v-for="b in BannerArr">
                     <img :src="b.imgUrl" width="100%" alt="">
                 </el-carousel-item>
             </el-carousel>
@@ -226,22 +226,22 @@
         data: function() {
             return {
                 activeIndex: '1',
-                HomePageBannerArr:[]
+                BannerArr:[]
             }
         },
         created(){
-            loadHomePageBanner()
+            loadBanner()
         },
         methods:{
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
             },
             //加载轮播图信息
-            loadHomePageBanner(){
+            loadBanner(){
                 //发送请求
                 //接收请求并把请求数据赋值给bannerArr变量
-                axios.get("/selectHomePageBanner").then(function (response) {
-                    v.HomePageBannerArr = response.data
+                axios.get("/selectBanner").then(function (reponse) {
+                    v.bannerArr = reponse.data
                 })
             },
         }
