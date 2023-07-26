@@ -21,4 +21,6 @@ public interface UserMapper {
     /*修改用户信息*/
     void updateUser(User user);
 
+    /*修改密码*/
+    void updateUserPassword(User user);
 }

@@ -88,8 +88,8 @@
         <el-main>
             <el-row gutter="20">
                 <img src="imagesAll/loginImages/personalBackground.jpg" style="float: left;width: 600px;height: 600px;margin-left: 200px;margin-right: 100px">
-                    <el-card style="height: 600px;width: 500px;">
-                        <el-form label-width="100px"style="margin-top: 20px;margin-left: 20px">
+                    <el-card style="height: 800px;width: 600px;">
+                        <el-form label-width="100px"style="margin-top: 20px;margin-left: 50px">
                             <el-form-item label="头像">
                                 <img :src="user.imgUrl"
                                      style="width: 145px;height: 145px;border-radius: 10px;float: left">
@@ -132,7 +132,43 @@
 
             </el-row>
         </el-main>
-        <el-footer>
+        <el-footer style="background-color: #000000;height: 280px;padding: 50px 0">
+            <div class="center" style="text-align: center;color: #666">
+                <el-row id="foot">
+                    <el-col span="8">
+                        <img src="imgs/logo.jpg" style="width: 180px;height: 60px" alt="">
+                        <p>世界雕像就看博物院</p>
+                        <p>雕像展览网络社区平台</p>
+                        <p>全球著名文物雕像展览会</p>
+                    </el-col>
+                    <el-col span="8">
+                        <el-row id="foot_center">
+                            <el-col span="8">
+                                <h3>关于我们</h3>
+                                <p>关于我们</p><p>学术研究</p>
+                                <p>社会教育</p><p>分类信息</p>
+                            </el-col>
+                            <el-col span="8">
+                                <h3>支持与服务</h3>
+                                <p>联系我们</p><p>广告投放</p>
+                                <p>用户协议</p><p>友情链接</p>
+                            </el-col>
+                            <el-col span="8">
+                                <h3>底部导航</h3>
+                                <p>博物院地图</p>
+                                <p>搜索收藏</p>
+                                <p>文创精品</p>
+                            </el-col>
+                        </el-row>
+                    </el-col>
+                    <el-col span="8">
+                        <div style="font-size: 58px;margin-top: 30px">
+                            <span style="color: orange">世界</span><span style="color: #666666">博物院</span>
+                        </div>
+                        <p>雕像展览网络社区平台</p>
+                    </el-col>
+                </el-row>
+            </div>
 
         </el-footer>
     </el-container>
@@ -183,7 +219,7 @@
                 v.user.imgUrl = v.dialogImageUrl
                 axios.post("updateUser",v.user).then(function () {
                     v.$message.success("修改成功")
-                    location.href='index.html'
+                    location.href='homePage.html'
                 })
             }
         }

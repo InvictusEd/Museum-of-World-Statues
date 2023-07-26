@@ -25,19 +25,18 @@
 <!--    登录模块-->
     <el-main style="background-color: black">
       <img src="imagesAll/loginImages/loginBackground.jpg" style="margin-left: 150px;height: 600px;width: 600px;float: left">
-      <el-card style="width: 500px;height: 350px;margin-left: 900px;margin-top: 100px;border-radius: 10px">
-        <a href="forgetPsd.html" style="float: right;text-decoration: none;color: black">忘记密码？点此重置</a>
+      <el-card style="width: 500px;height: 400px;margin-left: 900px;margin-top: 100px;border-radius: 10px">
         <el-form label-width="80px" style="width: 400px;margin: 50px auto">
-          <h2>立即登录</h2>
+          <h2>忘记密码</h2>
           <el-form-item label="用户名">
-            <el-input v-model="userName" placeholder="请输入用户名" clearable></el-input>
+            <el-input v-model="user.userName" placeholder="请输入用户名" clearable></el-input>
           </el-form-item>
-          <el-form-item label="密码">
-            <el-input v-model="password" placeholder="请输入密码" show-password></el-input>
+          <el-form-item label="新密码">
+            <el-input v-model="user.password" placeholder="请输入新密码" show-password></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="warning" @click="login">登录</el-button>
-            <a href="reg.html"><el-button type="warning" style="margin-left: 100px">注册</el-button></a>
+            <el-button type="warning" @click="forgetPsd">确认修改</el-button>
+            <a href="login.html"><el-button type="warning" style="margin-left: 100px">返回登录</el-button></a>
           </el-form-item>
         </el-form>
       </el-card>
@@ -95,26 +94,20 @@
     data: function() {
       return {
         //变量
-        userName:'',
-        password:''
+        user:{}
       }
     },
     created(){
 
     },
     methods:{
-      login(){
-        axios.get("/login?userName="+v.userName+"&password="+v.password).then(function (response) {
+      forgetPsd(){
+        console.log(v.user)
+        axios.post("/updateUserPassword",v.user).then(function (response) {
           if (response.data == 0){
             v.$message.error("用户名不存在")
-          }else if (response.data == 1){
-            v.$message.error("密码错误")
-          }else if (response.data == 2){
-            v.$message.success("用户登录成功")
-            location.href = 'homePage.html'
           }else {
-            v.$message.success("管理员登录成功")
-            location.href = 'admin.html'
+            v.$message.success("修改成功！请返回登录！")
           }
         })
       }

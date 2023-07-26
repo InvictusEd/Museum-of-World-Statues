@@ -30,6 +30,10 @@
         update users set nick_name=#{nickName},user_password=#{password},email=#{email},
                          birthday=#{birthday},img_url=#{imgUrl} where user_name =#{userName}
     </update>
+    <!--    修改用户密码-->
+    <update id="updateUserPassword">
+        update users set user_password=#{password} where user_name=#{userName}
+    </update>
     <!--    删除用户信息-->
     <delete id="deleteById">
         delete from users where id = #{id}
