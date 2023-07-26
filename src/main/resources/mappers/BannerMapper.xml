@@ -5,18 +5,16 @@
 <!--namespace="对应的接口文件路径"-->
 <mapper namespace="com.museum.museumofworldstatues.mapper.BannerMapper">
     <!--    让字段匹配-->
-    <resultMap id="userMap" type="com.museum.museumofworldstatues.entity.Banner">
+    <resultMap id="bannerMap" type="com.museum.museumofworldstatues.entity.Banner">
         <!--        proerty:mybatic里的字段 column：数据库里的字段-->
         <result property="id" column="id"></result>
         <result property="imgUrl" column="img_url"></result>
-        <result property="sort" column="sort"></result>
-        <result property="createTime" column="create_time"></result>
     </resultMap>
     <delete id="deleteById">
-        delete from t_banner where id = #{id}
+        delete from banner where id = #{id}
     </delete>
-    <select id="selectAll" resultType="com.museum.museumofworldstatues.mapper.BannerMapper">
-        select * from t_banner;
+    <select id="selectAll" resultMap="bannerMap">
+        select * from banner;
     </select>
 
 

@@ -81,7 +81,6 @@
                         </el-input>
                     </el-menu>
                 </el-col>
-
             </el-row>
         </el-header>
         <!--            主体内容-->
@@ -147,7 +146,9 @@
                 </el-col>
             </el-row>
             <!--                精品典藏-->
-            <h2 style="text-align: center">精品典藏</h2>
+            <a href="fineCollection.html" style="text-decoration: none;color: black;">
+                <h2 style="text-align: center">精品典藏</h2>
+            </a>
             <el-row gutter="20" style="margin: 10px 60px">
                 <div>
                     <el-col span="6" >
@@ -240,8 +241,8 @@
             loadBanner(){
                 //发送请求
                 //接收请求并把请求数据赋值给bannerArr变量
-                axios.get("/selectBanner").then(function (reponse) {
-                    v.bannerArr = reponse.data
+                axios.get("/selectBanner").then(function (response) {
+                    v.bannerArr = response.data
                 })
             },
         }
