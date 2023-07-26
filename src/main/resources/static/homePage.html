@@ -86,7 +86,13 @@
         </el-header>
         <!--            主体内容-->
         <el-main style="padding: 0">
-            <img src="./imgs/banner1.jpg" style=" width: 100%;height: 650px">
+<!--            轮播图-->
+            <el-carousel height="635px">
+                <el-carousel-item v-for="b in BannerArr">
+                    <img :src="b.imgUrl" width="100%" alt="">
+                </el-carousel-item>
+            </el-carousel>
+<!--            <img src="./imgs/banner1.jpg" style=" width: 100%;height: 650px">-->
             <!--                博物院介绍-->
             <el-row style="margin: 10px 70px">
                 <el-col span="7">
@@ -114,7 +120,8 @@
                     <el-card id="service" style="background-color: #376a5d">
                         <h2 style="color: white">预约服务</h2>
                         <p>1、门票限选定参观日当日使用，入园、综合馆、雕塑馆、青铜馆、修复馆各使用一次</p>
-                        <p>2、普通票、学生票请在三星堆博物馆微信公众号购买，游园票、免票请在售票窗口办理</p>
+                        <p>2、普通票、学生票请在博物院微信公众号购买，游园票、免票请在售票窗口办理</p>
+                        <p>3、餐饮服务请提前预约</p>
                     </el-card>
                 </el-col>
                 <el-col span="7" id="link" style="padding-right: 0">
@@ -142,29 +149,67 @@
             <!--                精品典藏-->
             <h2 style="text-align: center">精品典藏</h2>
             <el-row gutter="20" style="margin: 10px 60px">
-                <el-col span="6" >
-                    <el-card >
-                        <img src="./imgs/005.jpg" style="width: 100%;height: 350px" alt="">
-                    </el-card>
-                </el-col>
-                <el-col span="6">
-                    <el-card>
-                        <img src="./imgs/006.jpg" style="width: 100%;height: 350px" alt="">
-                    </el-card>
-                </el-col>
-                <el-col span="6">
-                    <el-card>
-                        <img src="./imgs/007.jpg" style="width: 100%;height: 350px" alt="">
-                    </el-card>
-                </el-col>
-                <el-col span="6">
-                    <el-card>
-                        <img src="./imgs/008.png" style="width: 100%;height: 350px" alt="">
-                    </el-card>
-                </el-col>
+                <div>
+                    <el-col span="6" >
+                        <el-card >
+                            <img src="./imgs/005.jpg" style="width: 100%;height: 350px" alt="">
+                        </el-card>
+                    </el-col>
+                    <el-col span="6">
+                        <el-card>
+                            <img src="./imgs/006.jpg" style="width: 100%;height: 350px" alt="">
+                        </el-card>
+                    </el-col>
+                    <el-col span="6">
+                        <el-card>
+                            <img src="./imgs/007.jpg" style="width: 100%;height: 350px" alt="">
+                        </el-card>
+                    </el-col>
+                    <el-col span="6">
+                        <el-card>
+                            <img src="./imgs/008.png" style="width: 100%;height: 350px" alt="">
+                        </el-card>
+                    </el-col>
+                </div>
             </el-row>
         </el-main>
-        <el-footer>
+        <el-footer style="background-color: #000000;height: 280px;padding: 50px 0">
+            <div class="center" style="text-align: center;color: #666">
+                <el-row id="foot">
+                    <el-col span="8">
+                        <img src="imgs/logo.jpg" style="width: 180px;height: 60px" alt="">
+                        <p>世界雕像就看博物院</p>
+                        <p>雕像展览网络社区平台</p>
+                        <p>全球著名文物雕像展览会</p>
+                    </el-col>
+                    <el-col span="8">
+                        <el-row id="foot_center">
+                            <el-col span="8">
+                                <h3>关于我们</h3>
+                                <p>关于我们</p><p>学术研究</p>
+                                <p>社会教育</p><p>分类信息</p>
+                            </el-col>
+                            <el-col span="8">
+                                <h3>支持与服务</h3>
+                                <p>联系我们</p><p>广告投放</p>
+                                <p>用户协议</p><p>友情链接</p>
+                            </el-col>
+                            <el-col span="8">
+                                <h3>底部导航</h3>
+                                <p>博物院地图</p>
+                                <p>搜索收藏</p>
+                                <p>文创精品</p>
+                            </el-col>
+                        </el-row>
+                    </el-col>
+                    <el-col span="8">
+                        <div style="font-size: 58px;margin-top: 30px">
+                            <span style="color: orange">世界</span><span style="color: #666666">博物院</span>
+                        </div>
+                        <p>雕像展览网络社区平台</p>
+                    </el-col>
+                </el-row>
+            </div>
 
         </el-footer>
     </el-container>
@@ -174,20 +219,31 @@
 <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
 <!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="axios.min.js"></script>
 <script>
     let v = new Vue({
         el: '#app',
         data: function() {
             return {
-                activeIndex: '1'
+                activeIndex: '1',
+                BannerArr:[]
             }
         },
         created(){
+            loadBanner()
         },
         methods:{
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
-            }
+            },
+            //加载轮播图信息
+            loadBanner(){
+                //发送请求
+                //接收请求并把请求数据赋值给bannerArr变量
+                axios.get("/selectBanner").then(function (reponse) {
+                    v.bannerArr = reponse.data
+                })
+            },
         }
     })
 </script>
