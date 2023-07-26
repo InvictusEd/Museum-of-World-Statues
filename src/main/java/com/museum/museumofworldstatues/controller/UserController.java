@@ -115,4 +115,21 @@ public class UserController {
     public void updateUser(@RequestBody User user){
         userMapper.updateUser(user);
     }
+
+    /*用户忘记密码，自行修改用户密码*/
+    @RequestMapping("/updateUserPassword")
+    public Integer updateUserPassword(@RequestBody User user){
+        System.out.println(user);
+//        1.根据用户名判断用户是否存在，如果不存在返回“用户不存在”
+        User user1 = userMapper.selectByName(user.getUserName());
+        if (user1 == null){
+            //用户不存在
+            return 0;
+        }else {
+            userMapper.updateUserPassword(user);
+        }
+//        2、将用户的密码修改，并返回“修改成功”
+        return 1;
+    }
+
 }
