@@ -6,4 +6,5 @@ import lombok.Data;
 public class Banner {
     private Long id;
     private String imgUrl;
+    private Integer category;
 }
