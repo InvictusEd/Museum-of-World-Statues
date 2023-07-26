@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace="对应的接口文件路径"-->
+<mapper namespace="com.museum.museumofworldstatues.mapper.StatuesInfoMapper">
+    <!--    让字段匹配-->
+    <resultMap id="statuesInfoMap" type="com.museum.museumofworldstatues.entity.StatuesInfo">
+        <!--        proerty:mybatic里的字段 column：数据库里的字段-->
+        <result property="id" column="id"></result>
+        <result property="countryId" column="country_id"></result>
+        <result property="periodId" column="period_id"></result>
+        <result property="coverImg" column="cover_img"></result>
+        <result property="chineseName" column="chinese_name"></result>
+        <result property="foreignName" column="foreign_name"></result>
+        <result property="description" column="description"></result>
+        <result property="location" column="location"></result>
+        <result property="constructionTime" column="constructionTime"></result>
+        <result property="creationBackground" column="creation_background"></result>
+        <result property="afterlifeInfluence" column="afterlife_influence"></result>
+    </resultMap>
+
+    <!--查询所有的雕像信息-->
+    <select id="selectAll" resultMap="statuesInfoMap">
+        select * from statues_info;
+    </select>
+
+</mapper>

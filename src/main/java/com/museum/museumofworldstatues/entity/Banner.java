@@ -7,6 +7,4 @@ import java.util.Date;
 public class Banner {
     private Long id;
     private String imgUrl;
-    private Integer sort;
-    private Date createTime;
 }
