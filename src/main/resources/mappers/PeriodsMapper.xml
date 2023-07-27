@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace="对应的接口文件路径"-->
+<mapper namespace="com.museum.museumofworldstatues.mapper.PeriodsMapper">
+    <!--    让字段匹配-->
+    <resultMap id="periodsMap" type="com.museum.museumofworldstatues.entity.Periods">
+        <!--        proerty:mybatic里的字段 column：数据库里的字段-->
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+    </resultMap>
+
+<!--    查询所有雕像时代信息-->
+    <select id="selectAll" resultMap="periodsMap">
+        select * from periods;
+    </select>
+
+</mapper>

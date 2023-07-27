@@ -1,6 +1,6 @@
 package com.museum.museumofworldstatues.mapper;
 
-import com.museum.museumofworldstatues.entity.StatuesInfo;
+import com.museum.museumofworldstatues.entity.StatuesImages;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,19 +10,19 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @description: 雕像信息测试
- * @className: StatuesInfoMapperTest.java
+ * @description:
+ * @className: StatuesImagesMapperTest.java
  * @author: qqdas
- * @createTime: 2023/7/26 20:02
+ * @createTime: 2023/7/27 9:13
  */
 @SpringBootTest
-class StatuesInfoMapperTest {
+class StatuesImagesMapperTest {
     @Autowired
-    StatuesInfoMapper mapper;
+    StatuesImagesMapper statuesImagesMapper;
+
     @Test
     void selectAll() {
-        List<StatuesInfo> statuesInfos = mapper.selectAll();
-        statuesInfos.forEach(System.out::println);
+        List<StatuesImages> statuesImages = statuesImagesMapper.selectAll();
+        statuesImages.forEach(System.out::println);
     }
-
 }

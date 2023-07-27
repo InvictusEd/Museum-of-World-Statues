@@ -1,5 +1,6 @@
 package com.museum.museumofworldstatues.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,5 +16,6 @@ public class User {
     private String birthday;//生日
     private Integer isAdmin;//是否为管理员 0 1
     private String imgUrl;//头像
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createTime;//创建时间
 }
