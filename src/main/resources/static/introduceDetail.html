@@ -1006,7 +1006,11 @@
             }
         },
         created(){
-
+            let id = location.search.split("=")[1]  //获取内容id
+            //根据id发送请求获取对应的内容信息
+            axios.get("/selectById?id="+id).then(function (response){
+                v.contentDo = response.data
+            })
         },
         methods:{
 
