@@ -25,4 +25,11 @@
         select * from statues_info;
     </select>
 
+
+    <select id="selectByWd" resultType="com.museum.museumofworldstatues.entity.StatuesInfo">
+        select
+            statues_info.id,statues_info.chinese_name,statues_info.description
+        from statues_info
+        where statues_info.chinese_name like concat('%',#{wd},'%')
+    </select>
 </mapper>

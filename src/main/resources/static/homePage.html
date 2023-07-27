@@ -77,7 +77,7 @@
                         </el-submenu>
                         <el-input placeholder="请输入搜索的关键字" v-model="wd" style="width: 230px;margin-top: 10px;
                             background-color: #7f7f7f">
-                            <el-button slot="append" icon="el-icon-search" @click="selectContentByWd"></el-button>
+                            <el-button slot="append" icon="el-icon-search" @click="selectStatusInfoByWd"></el-button>
                         </el-input>
                     </el-menu>
                 </el-col>
@@ -247,7 +247,7 @@
                 })
             },
             // 根据关键字搜索内容
-            selectContentByWd(){
+            selectStatuesInfoByWd(){
                 if (v.wd==''){
                     location.reload();//刷新页面
                 }else{

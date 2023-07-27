@@ -24,4 +24,10 @@ class StatuesInfoMapperTest {
         List<StatuesInfo> statuesInfos = mapper.selectAll();
         statuesInfos.forEach(System.out::println);
     }
+
+    @Test
+    void selectByWd() {
+        List<StatuesInfo> list = mapper.selectByWd("维纳斯");
+        list.forEach(System.out::println);
+    }
 }
