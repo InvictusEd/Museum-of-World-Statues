@@ -30,4 +30,5 @@ class StatuesInfoMapperTest {
         List<StatuesInfo> list = mapper.selectByWd("维纳斯");
         list.forEach(System.out::println);
     }
+
 }

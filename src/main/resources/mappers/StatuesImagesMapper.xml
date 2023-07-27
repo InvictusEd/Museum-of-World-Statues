@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace="对应的接口文件路径"-->
+<mapper namespace="com.museum.museumofworldstatues.mapper.StatuesImagesMapper">
+    <!--    让字段匹配-->
+    <resultMap id="statuesImagesMap" type="com.museum.museumofworldstatues.entity.StatuesImages">
+        <!--        proerty:mybatic里的字段 column：数据库里的字段-->
+        <result property="id" column="id"></result>
+        <result property="statueId" column="statue_id"></result>
+        <result property="imgUrl" column="img_url"></result>
+        <result property="chineseName" column="chinese_name"></result>
+    </resultMap>
+
+<!--    查询所有雕像图片-->
+    <select id="selectAll" resultMap="statuesImagesMap">
+        select
+            t1.id, t1.img_url,
+            t2.chinese_name
+        from statues_images t1
+                 left join statues_info t2 on t1.statue_id=t2.id;
+    </select>
+
+</mapper>

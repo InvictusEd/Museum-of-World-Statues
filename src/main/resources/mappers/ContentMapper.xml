@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace="对应的接口文件路径"-->
+<mapper namespace="com.museum.museumofworldstatues.mapper.ContentMapper">
+    <!--    让字段匹配-->
+    <resultMap id="contentMap" type="com.museum.museumofworldstatues.entity.Content">
+        <!--        proerty:mybatic里的字段 column：数据库里的字段-->
+        <result property="id" column="id"></result>
+        <result property="imgUrl" column="img_url"></result>
+        <result property="chineseName" column="user_name"></result>
+        <result property="author" column="author"></result>
+        <result property="countries" column="countries"></result>
+        <result property="englishName" column="english_name"></result>
+    </resultMap>
+    <!--根据图片查询详情信息-->
+    <select id="selectById" resultType="com.museum.museumofworldstatues.entity.ContentDo">
+        select
+            staues_images.id,staues_images.img_url as imgUrl,
+            staues_info.img_url as avatar,t3.user_name as author
+        from staues_images as t1
+                 left join img_Url staues_info on t1.img_Url=t2.id
+        where t1.id=#{id}
+    </select>
+
+<!--    <select id="" resultType="com.museum.museumofworldstatues.entity.ContentDo">-->
+<!--        select-->
+<!--            查询字段（t1  t2两个表所需的所有都写，当两个表字段名相同。表名.字段名） t1.user_name as userName-->
+<!--        from t_user (as)  t1-->
+<!--                 left join  t2 on 关联关系-->
+<!--        where 条件 -->
+<!--    </select>-->
+
+</mapper>

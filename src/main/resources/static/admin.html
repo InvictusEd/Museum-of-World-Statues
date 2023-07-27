@@ -21,6 +21,17 @@
         background-color: #303133;
     }
 
+
+    .demo-drawer__footer{
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-top: 1px solid #e8e8e8;
+        padding: 10px 16px;
+        text-align: center;
+    }
+
   </style>
 </head>
 <body>
@@ -122,23 +133,51 @@
             <!--轮播图表格-->
             <el-table v-if="currentIndex==2" :data="bannerArr">
               <el-table-column type="index"  label="编号" width="100" align="center"></el-table-column>
-              <el-table-column prop=""  label="分类编号" width="100" align="center"></el-table-column>
+              <el-table-column prop="category"  label="分类编号" width="100" align="center"></el-table-column>
               <el-table-column  label="轮播图"  width="300">
                 <template slot-scope="scope">
                   <img :src="scope.row.imgUrl" width="200px" >
                 </template>
               </el-table-column>
-              <el-table-column prop="address" label="操作" width="200px" align="center" >
+              <el-table-column label="操作" width="200px" align="center" >
                 <template slot-scope="scope">
                   <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
                 </template>
               </el-table-column>
             </el-table>
 
+            <!--添加轮播图-->
+            <div v-if="currentIndex==2" align="center" style="margin-top: 20px;">
+              <el-button type="primary" @click="dialogBanner = true">添加轮播图</el-button>
+            </div>
+            <el-drawer
+                    title="添加轮播图"
+                    :before-close="handleClose"
+                    :visible.sync="dialogBanner"
+                    direction="rtl"
+                    custom-class="demo-drawer"
+                    ref="drawer"
+            >
+              <div class="demo-drawer__content">
+                <el-form :model="form">
+                  <el-form-item label="分类" :label-width="formLabelWidth">
+                    <el-select v-model="form.region" placeholder="请选择分类" style="width: 150px;">
+                    </el-select>
+                  </el-form-item>
+                </el-form>
+
+                <div class="demo-drawer__footer">
+                  <el-button @click="cancelForm" style="min-width: 200px">取 消</el-button>
+                  <el-button style="min-width: 200px" type="success" @click="$refs.drawer.closeDrawer()" :loading="loading">{{ loading ? '提交中 ...' : '确 定' }}</el-button>
+                </div>
+              </div>
+            </el-drawer>
+
+
             <!--雕像图片表格-->
-            <el-table v-if="currentIndex==3" style="width: 100%;">
+            <el-table v-if="currentIndex==3" style="width: 100%;" :data="statuesImages">
               <el-table-column type="index" label="编号" width="100" align="center"></el-table-column>
-              <el-table-column prop="" label="名称" width="100px" align="center"></el-table-column>
+              <el-table-column prop="chineseName" label="名称" width="100px" align="center"></el-table-column>
               <el-table-column  label="图片"  width="200">
                 <template slot-scope="scope">
                   <img :src="scope.row.imgUrl" width="100px" >
@@ -152,58 +191,30 @@
             </el-table>
 
             <!--雕像信息表格-->
-            <el-table v-if="currentIndex==4" :data="statuesInfo" style="width: 100%;">
+            <el-table v-if="currentIndex==4" :data="statuesDo" style="width: 100%;">
               <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
               <el-table-column prop="chineseName" label="名称" width="100px" align="center"></el-table-column>
               <el-table-column  label="封面图"  width="100px">
                 <template slot-scope="scope">
-                  <img :src="scope.row.imgUrl" width="100px" >
+                  <img :src="scope.row.coverImg" width="100px" >
                 </template>
               </el-table-column>
-              <el-table-column prop="" label="国家" width="100px" align="center"></el-table-column>
-              <el-table-column prop="" label="时期" width="100px" align="center"></el-table-column>
-              <el-table-column prop="" label="地理位置" width="100px" align="center"></el-table-column>
-              <el-table-column prop="" label="建造时间" width="100px" align="center"></el-table-column>
-              <el-table-column prop="address" label="操作" width="200px" align="center" >
-                <template slot-scope="scope">
-                  <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
-                </template>
-              </el-table-column>
+              <el-table-column prop="countryName" label="国家" width="100px" align="center"></el-table-column>
+              <el-table-column prop="periodName" label="时期" width="100px" align="center"></el-table-column>
+              <el-table-column prop="location" label="地理位置" width="100px" align="center"></el-table-column>
+              <el-table-column prop="constructionTime" label="建造时间" width="100px" align="center"></el-table-column>
             </el-table>
 
             <!--国家分类管理表格-->
-            <el-table v-if="currentIndex==5" style="width: 100%;">
+            <el-table v-if="currentIndex==5" style="width: 100%;" :data="countryArr">
               <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
-              <el-table-column prop="" label="国家" width="100px" align="center"></el-table-column>
-              <el-table-column prop="" label="名称" width="100px" align="center"></el-table-column>
-              <el-table-column  label="封面图"  width="100px">
-                <template slot-scope="scope">
-                  <img :src="scope.row.imgUrl" width="100px" >
-                </template>
-              </el-table-column>
-
-              <el-table-column prop="address" label="操作" width="200px" align="center" >
-                <template slot-scope="scope">
-                  <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
-                </template>
-              </el-table-column>
+              <el-table-column prop="name" label="国家" width="100px" align="center"></el-table-column>
             </el-table>
 
             <!--时代分类管理表格-->
-            <el-table v-if="currentIndex==6" style="width: 100%;">
+            <el-table v-if="currentIndex==6" style="width: 100%;" :data="periodArr">
               <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
-              <el-table-column prop="" label="时代" width="100px" align="center"></el-table-column>
-              <el-table-column prop="" label="名称" width="100px" align="center"></el-table-column>
-              <el-table-column  label="封面图"  width="100px">
-                <template slot-scope="scope">
-                  <img :src="scope.row.imgUrl" width="100px" >
-                </template>
-              </el-table-column>
-              <el-table-column prop="address" label="操作" width="200px" align="center" >
-                <template slot-scope="scope">
-                  <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
-                </template>
-              </el-table-column>
+              <el-table-column prop="name" label="时代" width="100px" align="center"></el-table-column>
             </el-table>
           </el-main>
 
@@ -225,20 +236,40 @@
       el: '#app',
       data: function () {
         return {
+            dialogBanner: false,
+            loading: false,
+            form: {
+                name: '',
+                region: '',
+                date1: '',
+                date2: '',
+                delivery: false,
+                type: [],
+                resource: '',
+                desc: ''
+            },
+            formLabelWidth: '80px',
+            timer: null,
             //变量
             visible: false,
             userArr:[],
             user:{},
             currentIndex:"1",
             bannerArr:[],
-            statuesInfo:[]
+            statuesImagesArr:[],
+            statuesDoArr:[],
+            countryArr:[],
+            periodArr:[]
         }
       },
       created(){
           this.loadUser()
           this.getCurrentUser()
           this.loadBanner()
-          this.loadStatuesInfo()
+          this.loadStatuesImages()
+          this.loadStatuesDo()
+          this.loadCountries()
+          this.loadPeriod()
       },
       methods:{
           //选择侧边栏加载内容
@@ -284,6 +315,27 @@
             });
           });
         },
+          //删除轮播图信息
+          deleteBanner(index,banner){
+              this.$confirm('此操作将永久删除该轮播图, 是否继续?', '提示', {
+                  confirmButtonText: '确定',
+                  cancelButtonText: '取消',
+                  type: 'warning'
+              }).then(() => {
+                  axios.get("/removeBanner?id="+banner.id).then(function () {
+                      v.$message({
+                          type: 'success',
+                          message: '删除成功!'
+                      });
+                      v.loadBanner()//删除成功后重新加载列表信息
+                  })
+              }).catch(() => {
+                  this.$message({
+                      type: 'info',
+                      message: '已取消删除'
+                  });
+              });
+          },
         //切换用户身份
         changeAdmin(user){
           axios.post("/changeUser",user).then(function () {
@@ -298,14 +350,53 @@
                   v.bannerArr = response.data
               })
           },
-          //加载雕像信息
-          loadStatuesInfo(){
-              //发送请求
-              //接收请求并把请求数据赋值给bannerArr变量
-              axios.get("/selectStatuesInfo").then(function (response){
-                  v.statuesInfo = response.data
+          //加载所有雕像图片
+          loadStatuesImages(){
+              axios.get("/selectStatuesImages").then(function (response){
+                  v.statuesImages = response.data
               })
           },
+          //加载所有雕像信息，包括国家和时代
+          loadStatuesDo(){
+              axios.get("/selectStatuesDo").then(function (response){
+                  v.statuesDo = response.data
+              })
+          },
+          //加载国家分类信息
+          loadCountries(){
+              axios.get("/selectCountries").then(function (response){
+                  v.countryArr = response.data
+              })
+          },
+          //加载时代分类信息
+          loadPeriod(){
+              axios.get("/selectPeriods").then(function (response){
+                  v.periodArr = response.data
+              })
+          },
+          //轮播图抽屉
+          handleClose(done) {
+              if (this.loading) {
+                  return;
+              }
+              this.$confirm('确定要提交表单吗？')
+                  .then(_ => {
+                      this.loading = true;
+                      this.timer = setTimeout(() => {
+                          done();
+                          // 动画关闭需要一定的时间
+                          setTimeout(() => {
+                              this.loading = false;
+                          }, 400);
+                      }, 2000);
+                  })
+                  .catch(_ => {});
+          },
+          cancelForm() {
+              this.loading = false;
+              this.dialogBanner = false;
+              clearTimeout(this.timer);
+          }
       }
   })
 </script>

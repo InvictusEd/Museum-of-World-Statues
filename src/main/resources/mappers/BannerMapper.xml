@@ -9,6 +9,7 @@
         <!--        proerty:mybatic里的字段 column：数据库里的字段-->
         <result property="id" column="id"></result>
         <result property="imgUrl" column="img_url"></result>
+        <result property="category" column="category"></result>
     </resultMap>
 <!--    按照id删除轮播图-->
     <delete id="deleteById">
@@ -26,5 +27,9 @@
     <select id="selectAll" resultMap="bannerMap">
         select * from banner;
     </select>
+<!--    添加轮播图-->
+    <insert id="addBanner">
+        insert into banner values(null,#{imgUrl},#{category})
+    </insert>
 
 </mapper>

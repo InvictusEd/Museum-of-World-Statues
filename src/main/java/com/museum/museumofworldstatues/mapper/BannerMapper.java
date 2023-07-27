@@ -15,4 +15,6 @@ public interface BannerMapper {
     List<Banner> selectAll();
     //根据轮播图id删除轮播图
     void deleteById(Long id);
+    //添加轮播图
+    void addBanner(Banner banner);
 }

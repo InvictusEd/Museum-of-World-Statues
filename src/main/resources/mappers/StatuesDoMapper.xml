@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace="对应的接口文件路径"-->
+<mapper namespace="com.museum.museumofworldstatues.mapper.StatuesDoMapper">
+    <!--    让字段匹配-->
+    <resultMap id="statuesDoMap" type="com.museum.museumofworldstatues.entity.StatuesDo">
+        <!--        proerty:mybatic里的字段 column：数据库里的字段-->
+        <result property="id" column="id"></result>
+        <result property="countryId" column="country_id"></result>
+        <result property="periodId" column="period_id"></result>
+        <result property="countryName" column="country_name"></result>
+        <result property="periodName" column="period_name"></result>
+        <result property="coverImg" column="cover_img"></result>
+        <result property="chineseName" column="chinese_name"></result>
+        <result property="foreignName" column="foreign_name"></result>
+        <result property="description" column="description"></result>
+        <result property="location" column="location"></result>
+        <result property="constructionTime" column="construction_time"></result>
+        <result property="creationBackground" column="creation_background"></result>
+        <result property="afterlifeInfluence" column="afterlife_influence"></result>
+    </resultMap>
+
+    <!--查询所有的雕像Do信息-->
+    <select id="selectAll" resultMap="statuesDoMap">
+        select
+            t1.id, t1.country_id, t1.period_id, t1.cover_img, t1.chinese_name, t1.foreign_name,
+            t1.description, t1.location, t1.construction_time, t1.creation_background, t1.afterlife_influence,
+            t2.name as country_name,
+            t3.name as period_name
+        from statues_info t1
+            left join countries t2 on t1.country_id=t2.id
+            left join periods t3 on t1.period_id=t3.id
+    </select>
+
+</mapper>

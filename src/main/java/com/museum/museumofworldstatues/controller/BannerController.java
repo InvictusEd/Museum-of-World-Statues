@@ -3,6 +3,7 @@ package com.museum.museumofworldstatues.controller;
 import com.museum.museumofworldstatues.entity.Banner;
 import com.museum.museumofworldstatues.mapper.BannerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,5 +38,11 @@ public class BannerController {
     public List<Banner> selectAll(){
         List<Banner> banners = bannerMapper.selectAll();
         return banners;
+    }
+
+    //添加轮播图
+    @RequestMapping("/addBanner")
+    public void addBanner(@RequestBody Banner banner){
+        bannerMapper.addBanner(banner);
     }
 }
