@@ -23,8 +23,21 @@
 <el-container>
     <!--    维纳斯介绍-->
     <el-table v-if="currentIndex==1">>
-    <el-header><p style="text-align: center;font-size: 25px">维纳斯</p><h4>作者：阿海山纳</h4>
+    <el-header><p style="text-align: center;font-size: 25px">维纳斯</p>
     </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+            <h5>中文名：维纳斯</h5>
+            <h5>英文名：Venus</h5>
+            <h5>作者：阿海山纳</h5>
+            <h5>所属国家：法国</h5>
+            </div>
+            <hr>
+        </el-card>
     <el-main>
         <div id="a" style="height: 400px;width: 2000px">
             <div class="a1" style="width: 1000px;float: left">
@@ -60,8 +73,21 @@
     </el-table>
 <!--    沉思者介绍-->
     <el-table v-if="currentIndex==2">
-        <el-header><p style="text-align: center;font-size: 25px">沉思者</p><h4>作者：奥古斯特·罗丹</h4>
+        <el-header><p style="text-align: center;font-size: 25px">沉思者</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：沉思者</h5>
+                <h5>英文名：The Thinker</h5>
+                <h5>作者：作者：奥古斯特·罗丹</h5>
+                <h5>所属国家：法国</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="b" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -98,8 +124,21 @@
     </el-table>
 <!--    米开朗基罗-->
     <el-table v-if="currentIndex==3">
-        <el-header><p style="text-align: center;font-size: 25px">米开朗基罗长廊</p>作者：米开朗基罗
+        <el-header><p style="text-align: center;font-size: 25px">米开朗基罗长廊</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：米开朗基罗长廊</h5>
+                <h5>英文名：Galerie Michel-Ange</h5>
+                <h5>作者：米开朗基罗</h5>
+                <h5>所属国家：法国</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="c" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -135,8 +174,21 @@
     </el-table>
 <!--    马利中庭-->
     <el-table v-if="currentIndex==4">
-        <el-header><p style="text-align: center;font-size: 25px">马利骏马史诗</p>作者：奥古斯特·罗丹
+        <el-header><p style="text-align: center;font-size: 25px">马利骏马史诗</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：马利中庭</h5>
+                <h5>英文名：Cour Marly</h5>
+                <h5>作者：奥古斯特·罗丹</h5>
+                <h5>所属国家：法国</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="d" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -170,6 +222,19 @@
     <el-table v-if="currentIndex==5">
         <el-header><p style="text-align: center;font-size: 25px">胜利女神</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：胜利女神</h5>
+                <h5>英文名：Goddess of Victory</h5>
+                <h5>作者：不详</h5>
+                <h5>所属国家：希腊</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="e" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -201,8 +266,21 @@
     </el-table>
 <!--    雅典娜-->
     <el-table v-if="currentIndex==6">
-        <el-header><p style="text-align: center;font-size: 25px">雅典娜</p><h4>作者：菲迪亚斯</h4>
+        <el-header><p style="text-align: center;font-size: 25px">雅典娜</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：雅典娜</h5>
+                <h5>英文名：Athena</h5>
+                <h5>作者：菲迪亚斯</h5>
+                <h5>所属国家：希腊</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="f" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -235,8 +313,21 @@
     </el-table>
 <!--    阿瑞斯-->
     <el-table v-if="currentIndex==7">
-        <el-header><p style="text-align: center;font-size: 25px">阿瑞斯</p><h4>作者：阿尔卡姆内斯</h4>
+        <el-header><p style="text-align: center;font-size: 25px">阿瑞斯</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：阿瑞斯</h5>
+                <h5>英文名：Ares</h5>
+                <h5>作者：阿尔卡姆内斯</h5>
+                <h5>所属国家：英国</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="g" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -271,8 +362,21 @@
     </el-table>
 <!--    自由女神像-->
     <el-table v-if="currentIndex==8">
-        <el-header><p style="text-align: center;font-size: 25px">狄安娜</p><h4>作者：弗雷德里克·奥古斯特·巴托尔迪</h4>
+        <el-header><p style="text-align: center;font-size: 25px">狄安娜</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：自由女神像</h5>
+                <h5>英文名：Statue of Liberty</h5>
+                <h5>作者：弗雷德里克·奥古斯特·巴托尔迪</h5>
+                <h5>国家：美国</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="h" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -307,8 +411,21 @@
     </el-table>
 <!--    救世基督像-->
     <el-table v-if="currentIndex==9">
-        <el-header><p style="text-align: center;font-size: 25px">救世基督像</p><h4>作者：保罗·兰多斯基</h4>
+        <el-header><p style="text-align: center;font-size: 25px">救世基督像</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：救世基督像</h5>
+                <h5>英文名：Christ the Redeemer</h5>
+                <h5>作者：保罗·兰多斯基</h5>
+                <h5>国家：巴西</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="i" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -345,8 +462,21 @@
     </el-table>
 <!--    圣母怜子像-->
     <el-table v-if="currentIndex==10">
-        <el-header><p style="text-align: center;font-size: 25px">圣母怜子像</p><h4>作者：米开朗基罗</h4>
+        <el-header><p style="text-align: center;font-size: 25px">圣母怜子像</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：圣母怜子像</h5>
+                <h5>英文名：Pieta of the Virgin Mary</h5>
+                <h5>作者：米开朗基罗</h5>
+                <h5>国家：梵蒂冈</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="j" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -380,8 +510,21 @@
     </el-table>
 <!--    赫耳墨斯和小酒神-->
     <el-table v-if="currentIndex==11">
-        <el-header><p style="text-align: center;font-size: 25px">赫耳墨斯和小酒神</p><h4>作者：普拉克西特列斯 </h4>
+        <el-header><p style="text-align: center;font-size: 25px">赫耳墨斯和小酒神</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：赫耳墨斯和小酒神</h5>
+                <h5>英文名：Hermes and Bacchus</h5>
+                <h5>作者：普拉克西特列斯</h5>
+                <h5>国家：希腊</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="k" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -417,8 +560,21 @@
     </el-table>
 <!--    阿波罗-->
     <el-table v-if="currentIndex==12">
-        <el-header><p style="text-align: center;font-size: 25px">阿波罗</p><h4>作者：“列奥卡列斯”</h4>
+        <el-header><p style="text-align: center;font-size: 25px">阿波罗</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：阿波罗</h5>
+                <h5>英文名：Apollo</h5>
+                <h5>作者：列奥卡列斯(疑似)</h5>
+                <h5>所属国家：意大利</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="l" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -450,8 +606,21 @@
     </el-table>
 <!--    垂死的高卢人-->
     <el-table v-if="currentIndex==13">
-        <el-header><p style="text-align: center;font-size: 25px">垂死的高卢人</p><h4>作者：不详</h4>
+        <el-header><p style="text-align: center;font-size: 25px">垂死的高卢人</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：垂死的高卢人</h5>
+                <h5>英文名：The Dying Gaul</h5>
+                <h5>作者：不详</h5>
+                <h5>所属国家：希腊</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="m" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -483,8 +652,21 @@
     </el-table>
 <!--    赫拉-->
     <el-table v-if="currentIndex==14">
-        <el-header><p style="text-align: center;font-size: 25px">赫拉</p><h4>作者：阿格拉库里多斯</h4>
+        <el-header><p style="text-align: center;font-size: 25px">赫拉</p><h4></h4>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：赫拉</h5>
+                <h5>英文名：Hera</h5>
+                <h5>作者：阿格拉库里多斯</h5>
+                <h5>所属国家：法国</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="n" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -517,8 +699,21 @@
     </el-table>
 <!--    狮身人面像-->
     <el-table v-if="currentIndex==15">
-        <el-header><p style="text-align: center;font-size: 25px">狮身人面像</p><h4>作者：雷吉德夫</h4>
+        <el-header><p style="text-align: center;font-size: 25px">狮身人面像</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：狮身人面像</h5>
+                <h5>英文名：sphinx</h5>
+                <h5>作者：雷吉德夫</h5>
+                <h5>所属国家：埃及</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="o" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -554,7 +749,20 @@
 <!--    缪斯-->
     <el-table v-if="currentIndex==16">
         <el-header><p style="text-align: center;font-size: 25px">缪斯</p>
-            <h4>作者：切利尼</h4></el-header>
+        </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：缪斯</h5>
+                <h5>英文名：Muse</h5>
+                <h5>作者：切利尼</h5>
+                <h5>所属国家：英国</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="p" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -585,8 +793,21 @@
     </el-table>
 <!--    大卫-->
     <el-table v-if="currentIndex==17">
-        <el-header><p style="text-align: center;font-size: 25px">大卫</p><h4>作者:米开朗基罗·博那罗蒂</h4>
+        <el-header><p style="text-align: center;font-size: 25px">大卫</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：大卫</h5>
+                <h5>英文名：David</h5>
+                <h5>作者:米开朗基罗·博那罗蒂</h5>
+                <h5>国家：意大利</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="q" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -624,8 +845,21 @@
     </el-table>
 <!--    祖国母亲在召唤-->
     <el-table v-if="currentIndex==18">
-        <el-header><p style="text-align: center;font-size: 25px">祖国母亲在召唤</p><h4>作者：叶夫根尼·武切季奇</h4>
+        <el-header><p style="text-align: center;font-size: 25px">祖国母亲在召唤</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：祖国母亲在召唤</h5>
+                <h5>英文名：The Motherland Calls</h5>
+                <h5>作者：叶夫根尼·武切季奇</h5>
+                <h5>国家：俄国</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="r" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -658,8 +892,21 @@
     </el-table>
 <!--    掷铁饼者-->
     <el-table v-if="currentIndex==19">
-        <el-header><p style="text-align: center;font-size: 25px">掷铁饼者</p><h4>作者：米隆</h4>
+        <el-header><p style="text-align: center;font-size: 25px">掷铁饼者</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：掷铁饼者</h5>
+                <h5>英文名：discus thrower</h5>
+                <h5>作者：米隆</h5>
+                <h5>所属国家：古希腊</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="s" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -691,8 +938,21 @@
     </el-table>
 <!--    爱神与普西莎-->
     <el-table v-if="currentIndex==20">
-        <el-header><p style="text-align: center;font-size: 25px">爱神与普西莎</p><h4>作者：卡诺瓦（Canova）</h4>
+        <el-header><p style="text-align: center;font-size: 25px">爱神与普西莎</p>
         </el-header>
+        <el-card class="box-card">
+            <div>
+                <span>基本信息</span>
+            </div>
+            <hr>
+            <div class="information">
+                <h5>中文名：爱神与普西莎</h5>
+                <h5>英文名：Cupid and Psyche</h5>
+                <h5>作者：卡诺瓦（Canova)</h5>
+                <h5>国家：意大利</h5>
+            </div>
+            <hr>
+        </el-card>
         <el-main>
             <div id="t" style="height: 400px;width: 2000px">
                 <div class="a1" style="width: 1000px;float: left">
@@ -746,7 +1006,11 @@
             }
         },
         created(){
-
+            let id = location.search.split("=")[1]  //获取内容id
+            //根据id发送请求获取对应的内容信息
+            axios.get("/selectById?id="+id).then(function (response){
+                v.contentDo = response.data
+            })
         },
         methods:{
 
