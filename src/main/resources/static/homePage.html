@@ -75,9 +75,9 @@
                             <el-menu-item index="8-1">简体中文</el-menu-item>
                             <el-menu-item index="8-2">English</el-menu-item>
                         </el-submenu>
-                        <el-input placeholder="请输入搜索的关键字" style="width: 230px;margin-top: 10px;
+                        <el-input placeholder="请输入搜索的关键字" v-model="wd" style="width: 230px;margin-top: 10px;
                             background-color: #7f7f7f">
-                            <el-button slot="append" icon="el-icon-search"></el-button>
+                            <el-button slot="append" icon="el-icon-search" @click="selectContentByWd"></el-button>
                         </el-input>
                     </el-menu>
                 </el-col>
@@ -227,7 +227,8 @@
         data: function() {
             return {
                 activeIndex: '1',
-                bannerArrFirst:[]
+                bannerArrFirst:[],
+                wd:''
             }
         },
         created(){
@@ -245,6 +246,14 @@
                     v.bannerArrFirst = response.data
                 })
             },
+            // 根据关键字搜索内容
+            selectContentByWd(){
+                if (v.wd==''){
+                    location.reload();//刷新页面
+                }else{
+                    location.href='introduceDetail.html?wd='+v.wd
+                }
+            }
         }
     })
 </script>

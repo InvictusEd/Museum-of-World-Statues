@@ -18,6 +18,10 @@
     <select id="selectFirst" resultMap="bannerMap">
         select * from banner where category=1;
     </select>
+    <!--    查询分类2的轮播图-->
+    <select id="selectSecond" resultMap="bannerMap">
+        select * from banner where category=2;
+    </select>
 <!--    查询所有轮播图-->
     <select id="selectAll" resultMap="bannerMap">
         select * from banner;

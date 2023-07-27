@@ -15,4 +15,6 @@ import java.util.List;
 public interface StatuesInfoMapper {
     //查询所有雕像的信息
     List<StatuesInfo> selectAll();
+    //模糊查询
+    List<StatuesInfo> selectByWd(String wd);
 }
