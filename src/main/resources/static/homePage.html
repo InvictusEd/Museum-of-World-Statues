@@ -139,7 +139,12 @@
                     </el-card>
                 </el-col>
                 <el-col span="4">
-                    <img style="width: 210px;height: 256px;z-index: 5" src="./imgs/002.jpg">
+                    <el-carousel height="256px" width="210px">
+                        <el-carousel-item v-for="b in bannerArrThird">
+                            <img :src="b.imgUrl" width="100%">
+                        </el-carousel-item>
+                    </el-carousel>
+<!--                    <img style="width: 210px;height: 256px;z-index: 5" src="./imgs/002.jpg">-->
                 </el-col>
                 <el-col span="7" >
                         <img src="./imgs/003.png" style="width: 405px;height: 256px;" alt="">
@@ -228,11 +233,13 @@
             return {
                 activeIndex: '1',
                 bannerArrFirst:[],
+                bannerArrThird:[],
                 wd:''
             }
         },
         created(){
             this.loadBannerFirst()
+            this.loadBannerThird()
         },
         methods:{
             handleSelect(key, keyPath) {
@@ -244,6 +251,13 @@
                 //接收请求并把请求数据赋值给bannerArr变量
                 axios.get("/selectBannerFirst").then(function (response) {
                     v.bannerArrFirst = response.data
+                })
+            },
+            loadBannerThird(){
+                //发送请求
+                //接收请求并把请求数据赋值给bannerArr变量
+                axios.get("/selectBannerThird").then(function (response) {
+                    v.bannerArrThird = response.data
                 })
             },
             // 根据关键字搜索内容
