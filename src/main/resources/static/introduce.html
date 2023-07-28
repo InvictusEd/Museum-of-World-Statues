@@ -2,117 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>雕塑图像展示</title>
     <!-- 引入elementUI组件库的 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <title>雕塑介绍</title>
     <style>
         body{
             margin: 0;
             background-color: rgb(26, 26, 26);
         }
-        #image{
-            width: 100%;
-            text-align: center;
-
-        }
     </style>
+</head>
 <body>
-<!--<a name="top" id="top"></a>-->
-<div id="a">
-<el-row>
-    <el-col :span="4">
-        <h3 style="font-size: 25px;text-align: center;color: white">雕塑展示</h3>
-        <el-aside>
-            <el-menu @select="handleSelect">
-                <div id="image">
-                <el-menu-item index="1">
-        <div style="text-align: center">
-            <a href="introduceDetail.html">
-                <img src="introduceImages/维纳斯/a2.jpg" style="width: 350px;height: 280px;margin: 5px 5px;"  title="维纳斯">
-            </a>
-            <a href="introduceDetail.html">
-                <img src="introduceImages/沉思者/b1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;"  title="沉思者">
-            </a>
-                <a href="introduceDetail.html">
-                <img src="introduceImages/米开朗基罗/c1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;"  title=“奴隶”>
-            </a>
-                <a href="introduceDetail.html">
-                <img src="introduceImages/马利中庭/d1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;"  title=“马利骏马”>
-            </a>
+<h3 style="font-size: 25px;text-align: center;color: white">雕塑展示</h3>
+<div id="app">
+    <div v-for="a in Arr">
+        <a :href="'introduceDetail.html?id='+a.id">
+            <img :src="a.imgUrl" style="width: 350px;height: 280px;margin: 5px 5px;">
+            <img :src="a.imgUrls" style="width: 350px;height: 280px;margin: 5px 5px;">
+            <img :src="a.imgUrlss" style="width: 350px;height: 280px;margin: 5px 5px;">
+            <img :src="a.imgUrlsss" style="width: 350px;height: 280px;margin: 5px 5px;">
+        </a>
     </div>
-                    </el-menu-item>
-                <el-menu-item index="2">
-                    <div style="text-align: center">
-                        <a href="JavaScript:void(0)">
-                            <img src="introduceImages/胜利女神/e1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title="胜利女神">
-                        </a>
-                        <a href="introduceDetail.html">
-                        <img src="introduceImages/雅典娜/f1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title="雅典娜">
-                    </a><a href="introduceDetail.html">
-                        <img src="introduceImages/阿瑞斯/j2.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title=“阿瑞斯”>
-                    </a><a href="introduceDetail.html">
-                        <img src="introduceImages/自由女神像/h1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title=“狄安娜”>
-                    </a>
-                    </div>
-                </el-menu-item>
-                <el-menu-item index="3">
-                    <div style="text-align: center">
-                        <a href="introduceDetail.html">
-                            <img src="introduceImages/救世基督像/i1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title="救世基督像">
-                        </a><a href="introduceDetail.html">
-                        <img src="introduceImages/圣母怜子像/k1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title="圣母怜子像">
-                    </a><a href="introduceDetail.html">
-                        <img src="introduceImages/赫尔墨斯和小酒神/l1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title=“赫尔墨斯和小酒神”>
-                    </a><a href="introduceDetail.html">
-                        <img src="introduceImages/阿波罗/m1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title=“阿波罗”>
-                    </a>
-                    </div>
-                </el-menu-item>
-                <el-menu-item index="4">
-                    <div style="text-align: center">
-                        <a href="introduceDetail.html">
-                            <img src="introduceImages/垂死的高卢人/n2.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title="垂死的高卢人">
-                        </a><a href="introduceDetail.html">
-                        <img src="introduceImages/赫拉/o1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title="赫拉">
-                    </a><a href="introduceDetail.html">
-                        <img src="introduceImages/狮身人面像/q1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title=“狮身人面像”>
-                    </a><a href="introduceDetail.html">
-                        <img src="introduceImages/缪斯/r1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title=“缪斯”>
-                    </a>
-                    </div>
-                </el-menu-item>
-                <el-menu-item index="5">
-                    <div style="text-align: center">
-                        <a href="introduceDetail.html">
-                            <img src="introduceImages/大卫/p1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title="大卫">
-                        </a><a href="introduceDetail.html">
-                        <img src="introduceImages/祖国母亲在召唤/s1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title="祖国母亲在召唤">
-                    </a><a href="introduceDetail.html">
-                        <img src="introduceImages/掷铁饼者/t1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title=“掷铁饼者”>
-                    </a><a href="introduceDetail.html">
-                        <img src="introduceImages/爱神与普西莎/f1.jpg" style="width: 350px;height: 280px;margin: 5px 5px;" title=“爱神与普西莎”>
-                    </a>
-                    </div>
-                </el-menu-item>
-                </div>
-                </el-menu>
-        </el-aside>
-    </el-col>
-</el-row>
 </div>
-<!--<a href="#top" target="_self" style="font-size: 20px;color: white">返回顶部</a>-->
 </body>
 <!-- import Vue before Element -->
 <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
 <!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="js/axios.min.js"></script>
 <script>
     let v = new Vue({
-        el:"#app",
-        data:function (){
-            return{
+        el: '#app',
+        data() {
+            return {
+                currentIndex:2,
+                Arr:[{id:1,imgUrl:"introduceImages/维纳斯/a2.jpg",imgUrls:"introduceImages/沉思者/b1.jpg",imgUrlss:"introduceImages/米开朗基罗/c1.jpg",imgUrlsss:"introduceImages/马利中庭/d1.jpg"},
+                    {id:2,imgUrl:"introduceImages/胜利女神/e1.jpg",imgUrls:"introduceImages/雅典娜/f1.jpg",imgUrlss:"introduceImages/阿瑞斯/j2.jpg",imgUrlsss:"introduceImages/自由女神像/h1.jpg"},
+                    {id:3,imgUrl:"introduceImages/救世基督像/i1.jpg",imgUrls:"introduceImages/圣母怜子像/k1.jpg",imgUrlss:"introduceImages/赫尔墨斯和小酒神/l1.jpg",imgUrlsss:"introduceImages/阿波罗/m1.jpg"},
+                    {id:4,imgUrl:"introduceImages/垂死的高卢人/n2.jpg",imgUrls:"introduceImages/赫拉/o1.jpg",imgUrlss:"introduceImages/狮身人面像/q1.jpg",imgUrlsss:"introduceImages/缪斯/r1.jpg"},
+                    {id:5,imgUrl:"introduceImages/大卫/p1.jpg",imgUrls:"introduceImages/祖国母亲在召唤/s1.jpg",imgUrlss:"introduceImages/掷铁饼者/t1.jpg",imgUrlsss:"introduceImages/爱神与普西莎/f1.jpg"},
+                ]
 
             }
+        },
+        created(){
+            // let id = location.search.split("=")[1]  //获取内容id
+            // //根据id发送请求获取对应的内容信息
+            // axios.get("/selectById?id="+id).then(function (response){
+            //     v.statuesDo = response.data
+            // })
         },
         methods:{
 
