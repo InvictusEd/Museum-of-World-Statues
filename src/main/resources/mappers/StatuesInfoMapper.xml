@@ -24,6 +24,15 @@
     <select id="selectAll" resultMap="statuesInfoMap">
         select * from statues_info;
     </select>
+<!--    根据id删除雕像信息-->
+    <delete id="deleteStatuesInfo">
+        delete from statues_info where id = #{id}
+    </delete>
+<!--    添加雕像信息-->
+    <insert id="addStatuesInfo">
+        insert into statues_info values (null,#{countryId},#{periodId},#{coverImg},#{chineseName},#{foreignName},
+        #{description},#{location},#{constructionTime},#{creationBackground},#{afterlifeInfluence})
+    </insert>
 
 
     <select id="selectByWd" resultType="com.museum.museumofworldstatues.entity.StatuesInfo">

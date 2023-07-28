@@ -15,5 +15,16 @@
     <select id="selectAll" resultMap="countriesMap">
         select * from countries;
     </select>
-
+<!--    根据id删除国家-->
+    <delete id="deleteCountry">
+        delete from countries where id = #{id}
+    </delete>
+<!--添加国家-->
+    <insert id="addCountry">
+        insert into countries values(null,#{name})
+    </insert>
+    <!--    通过国家名查询国家是否存在-->
+    <select id="selectByName" resultMap="countriesMap">
+        select * from countries where name = #{name}
+    </select>
 </mapper>

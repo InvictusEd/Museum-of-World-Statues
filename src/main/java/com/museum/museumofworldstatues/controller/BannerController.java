@@ -48,7 +48,13 @@ public class BannerController {
 
     //添加轮播图
     @RequestMapping("/addBanner")
-    public void addBanner(@RequestBody Banner banner){
-        bannerMapper.addBanner(banner);
+    public Integer addBanner(@RequestBody Banner banner){
+        if (banner.getImgUrl() == null){
+            return 1;
+        } else {
+            System.out.println(banner);
+            bannerMapper.addBanner(banner);
+        }
+        return 0;
     }
 }

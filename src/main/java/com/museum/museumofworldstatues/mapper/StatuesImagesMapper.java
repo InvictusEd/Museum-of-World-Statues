@@ -15,4 +15,8 @@ import java.util.List;
 public interface StatuesImagesMapper {
     //查询所有雕像图片
     List<StatuesImages> selectAll();
+    //添加雕像图片
+    void addStatuesImages(StatuesImages statuesImages);
+    //删除雕像图片
+    void deleteById(Long id);
 }
