@@ -33,5 +33,12 @@
             left join countries t2 on t1.country_id=t2.id
             left join periods t3 on t1.period_id=t3.id
     </select>
+<!--    模糊查询-->
+    <select id="selectByWd" resultMap="statuesDoMap">
+        select
+            statues_info.id,statues_info.chinese_name,statues_info.description
+        from statues_info
+        where statues_info.chinese_name like concat('%',#{wd},'%')
+    </select>
 
 </mapper>
