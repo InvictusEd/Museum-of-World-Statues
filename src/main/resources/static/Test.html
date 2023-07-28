@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <!-- 引入elementUI组件库的 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+  <el-container>
+    <el-header style="width: 1200px;margin: 0 auto;">
+      头部内容：详情展示
+    </el-header>
+    <el-main style="width: 1200px;margin: 0 auto;">
+      <div v-for="(b,i) in Arr">
+      <el-row v-if="currentIndex == b.id">
+
+        <h3 >{{b.name}}</h3>
+        <span>基本信息</span>
+        <el-divider></el-divider>
+        <el-col span="16">
+        <h5>中文名：维纳斯</h5>
+        <h5>英文名：Venus</h5>
+        <h5>作者：阿海山纳</h5>
+        <h5>所属国家：法国</h5>
+        <h3 style="margin-top: auto">起源</h3>
+        <p>
+          维纳斯起初是意大利本土的女神。她的名字可能是青菜的同义词。最初她是一种果园的精灵，使果园丰收。在庆祝维纳利亚节时，果园工人会放假。她的罗马别名穆耳忒亚，也许就源于拉丁语的山桃或番石榴树，代表了她果园女神的身份。同时她起初也是“神的恩惠”的人格化。
+          因为后期埃涅阿斯神话在罗马的流传，维纳斯被罗马人与希腊阿佛洛狄忒女神对应起来，因此维纳斯才在后期成为美与爱的女神。同时庞培修建了维纳斯·维克特里克斯神庙，维纳斯也被与胜利女神对应。同时埃及、近东的女神伊西斯、阿斯塔耳忒也被与维纳斯对应起来。
+          维纳斯有“慈悲的”、“清除罪恶的”、“马上的”、“落发的”等别名，代表了与高卢作战时，罗马妇女剪掉头发做绳子供军用。
+          因为后期受阿佛洛狄忒的影响，罗马也给维纳斯新造了一些相关传说
+        </p>
+        </el-col>
+        <el-col span="8">
+          <span class="wns" style="float: right">
+                <img src="introduceImages/维纳斯/a1.jpg" style="height: 400px" class="img">
+            </span>
+        </el-col>
+      </el-row>
+      </div>
+    </el-main>
+  </el-container>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+  let v = new Vue({
+    el: '#app',
+    data() {
+      return {
+        currentIndex:1,
+        Arr:[{id:1,name:"维纳斯"},
+          {id:2,name:"沉思者"},
+          {id:3,name:"自由女神像"},
+          {id:4,name:"阿波罗"},
+        ]
+
+      }
+    },
+    created(){
+      // let id = location.search.split("=")[1]  //获取内容id
+      // //根据id发送请求获取对应的内容信息
+      // axios.get("/selectById?id="+id).then(function (response){
+      //     v.statuesDo = response.data
+      // })
+      //获取地址栏中的这个id值
+      axios.get("").then(function (){
+        v.currentIndex = location.search.split("=")[1];
+        console.log(v.currentIndex)
+      })
+
+
+    },
+    methods:{
+    }
+  })
+</script>
+</html>
