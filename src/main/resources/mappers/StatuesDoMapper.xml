@@ -40,5 +40,17 @@
         from statues_info
         where statues_info.chinese_name like concat('%',#{wd},'%')
     </select>
+    <!--根据id查询详情信息-->
+    <select id="selectById" resultType="com.museum.museumofworldstatues.entity.StatuesDo">
+        select
+            t2.img_url as imgUrl,t2.id,
+            t1.chinese_name as chineseName,t1.foreign_name as foreignName,
+            t1.cover_img as coverImg,t1.id,
+            t1.description,t1.creation_background as creationBackground,
+            t1.afterlife_influence as afterlifeInfluence
+        from statues_info t1
+                 left join statues_images t2 on t2.statue_id=t1.id
+        where t1.id=#{id}
+    </select>
 
 </mapper>
