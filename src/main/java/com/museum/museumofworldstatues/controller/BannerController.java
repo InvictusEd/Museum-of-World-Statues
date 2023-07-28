@@ -20,6 +20,18 @@ public class BannerController {
         List<Banner> banners = bannerMapper.selectFirst();
         return banners;
     }
+    //查询分类2的轮播图
+    @RequestMapping("/selectBannerSecond")
+    public List<Banner> selectSecond(){
+        List<Banner> banners = bannerMapper.selectSecond();
+        return banners;
+    }
+    //查询分类3的轮播图
+    @RequestMapping("/selectBannerThird")
+    public List<Banner> selectThird(){
+        List<Banner> banners = bannerMapper.selectThird();
+        return banners;
+    }
 
     //删除轮播图
     @RequestMapping("/removeBanner")

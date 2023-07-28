@@ -75,9 +75,9 @@
                             <el-menu-item index="8-1">简体中文</el-menu-item>
                             <el-menu-item index="8-2">English</el-menu-item>
                         </el-submenu>
-                        <el-input placeholder="请输入搜索的关键字" style="width: 230px;margin-top: 10px;
+                        <el-input placeholder="请输入搜索的关键字" v-model="wd" style="width: 230px;margin-top: 10px;
                             background-color: #7f7f7f">
-                            <el-button slot="append" icon="el-icon-search"></el-button>
+                            <el-button slot="append" icon="el-icon-search" @click="selectStatusInfoByWd"></el-button>
                         </el-input>
                     </el-menu>
                 </el-col>
@@ -139,7 +139,12 @@
                     </el-card>
                 </el-col>
                 <el-col span="4">
-                    <img style="width: 210px;height: 256px;z-index: 5" src="./imgs/002.jpg">
+                    <el-carousel height="256px" width="210px">
+                        <el-carousel-item v-for="b in bannerArrThird">
+                            <img :src="b.imgUrl" width="100%">
+                        </el-carousel-item>
+                    </el-carousel>
+<!--                    <img style="width: 210px;height: 256px;z-index: 5" src="./imgs/002.jpg">-->
                 </el-col>
                 <el-col span="7" >
                         <img src="./imgs/003.png" style="width: 405px;height: 256px;" alt="">
@@ -227,11 +232,14 @@
         data: function() {
             return {
                 activeIndex: '1',
-                bannerArrFirst:[]
+                bannerArrFirst:[],
+                bannerArrThird:[],
+                wd:''
             }
         },
         created(){
             this.loadBannerFirst()
+            this.loadBannerThird()
         },
         methods:{
             handleSelect(key, keyPath) {
@@ -245,6 +253,21 @@
                     v.bannerArrFirst = response.data
                 })
             },
+            loadBannerThird(){
+                //发送请求
+                //接收请求并把请求数据赋值给bannerArr变量
+                axios.get("/selectBannerThird").then(function (response) {
+                    v.bannerArrThird = response.data
+                })
+            },
+            // 根据关键字搜索内容
+            selectStatuesInfoByWd(){
+                if (v.wd==''){
+                    location.reload();//刷新页面
+                }else{
+                    location.href='introduceDetail.html?wd='+v.wd
+                }
+            }
         }
     })
 </script>

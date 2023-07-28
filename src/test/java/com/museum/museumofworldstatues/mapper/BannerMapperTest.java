@@ -31,4 +31,15 @@ class BannerMapperTest {
         banners.forEach(System.out::println);
     }
 
+    @Test
+    void selectSecond() {
+        List<Banner> banners = mapper.selectSecond();
+        banners.forEach(System.out::println);
+    }
+
+    @Test
+    void selectThird() {
+        List<Banner> banners = mapper.selectThird();
+        banners.forEach(System.out::println);
+    }
 }

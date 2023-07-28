@@ -40,4 +40,11 @@ public class StatuesInfoController {
         statuesInfoMapper.addStatuesInfo(statuesInfo);
         return 0;
     }
+
+    //根据关键字搜索信息
+    @RequestMapping("/selectByWd")
+    public List<StatuesInfo> selectByWd(String wd){
+        List<StatuesInfo> contents = statuesInfoMapper.selectByWd(wd);
+        return contents;
+    }
 }
