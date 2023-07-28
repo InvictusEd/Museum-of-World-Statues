@@ -20,4 +20,6 @@ public interface StatuesInfoMapper {
     void deleteStatuesInfo(Long id);
     //添加雕像信息
     void addStatuesInfo(StatuesInfo statuesInfo);
+    //模糊查询
+    List<StatuesInfo> selectByWd(String wd);
 }

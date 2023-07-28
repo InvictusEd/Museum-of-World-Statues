@@ -9,6 +9,10 @@ import java.util.List;
 public interface BannerMapper {
     //查询第一分类轮播图信息
     List<Banner> selectFirst();
+    //查询第二分类轮播图信息
+    List<Banner> selectSecond();
+    //查询第三分类轮播图信息
+    List<Banner> selectThird();
     //查询所有轮播图信息
     List<Banner> selectAll();
     //根据轮播图id删除轮播图

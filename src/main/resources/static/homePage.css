@@ -21,7 +21,7 @@ body{
     height: 256px;
     background-color: #a58048;
 }
-a:hover{
+a>h2:hover{
     color: #b9cdc9;
 }
 
