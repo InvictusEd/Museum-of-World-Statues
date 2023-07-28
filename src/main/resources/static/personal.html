@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <title>修改用户信息</title>
     <!-- 引入elementUI组件库的 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="homePage.css">
@@ -13,7 +14,7 @@
         <el-header style="padding: 0">
             <el-row>
                 <el-col span="3">
-                    <a href="./login.html">
+                    <a href="./personal.html">
                         <img src="./imgs/logo.jpg" style="width: 100%;height: 60px">
                     </a>
                 </el-col>
@@ -69,21 +70,22 @@
                             <el-menu-item index="8-1">雕塑研究文章</el-menu-item>
                             <el-menu-item index="8-2">出版物</el-menu-item>
                         </el-submenu>
-                        <el-menu-item index="9">文创精品</el-menu-item>
+
+                        <el-menu-item index="9"><a href="./introduceDetail.html" style="text-decoration: none">文创精品</a></el-menu-item>
                         <el-submenu index="10">
                             <template slot="title">简体中文</template>
                             <el-menu-item index="8-1">简体中文</el-menu-item>
                             <el-menu-item index="8-2">English</el-menu-item>
                         </el-submenu>
-                        <el-input placeholder="请输入搜索的关键字" style="width: 230px;margin-top: 10px;
+                        <el-input placeholder="请输入搜索的关键字" v-model="wd" style="width: 230px;margin-top: 10px;
                             background-color: #7f7f7f">
-                            <el-button slot="append" icon="el-icon-search"></el-button>
+                            <el-button slot="append" icon="el-icon-search" @click="f()"></el-button>
                         </el-input>
                     </el-menu>
                 </el-col>
-
             </el-row>
         </el-header>
+
         <!--            主体内容-->
         <el-main>
             <el-row gutter="20">
@@ -132,6 +134,7 @@
 
             </el-row>
         </el-main>
+        <!--        底部-->
         <el-footer style="background-color: #000000;height: 280px;padding: 50px 0">
             <div class="center" style="text-align: center;color: #666">
                 <el-row id="foot">

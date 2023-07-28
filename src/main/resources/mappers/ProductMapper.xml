@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:对应的接口文件路劲-->
+<mapper namespace="com.museum.museumofworldstatues.mapper.ProductMapper">
+    <resultMap id="productMap" type="com.museum.museumofworldstatues.entity.Product">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="price" column="price"></result>
+        <result property="typeId" column="typeid"></result>
+        <result property="imgUrl" column="img_url"></result>
+        <result property="intPUrl" column="int_p_url"></result>
+        <result property="intUrl" column="int_url"></result>
+
+    </resultMap>
+<!--    增:insert into 表名 values(值1，值2。。。。值n)
+        删:delete from 表名 where 条件
+        改：update 表名 set 字段名=字段h值 where 条件
+        查:select * from 表名 where 条件-->
+<!--id属性值必须与接口文件的方法名保持一致且不重复-->
+    <select id="selectAll" resultMap="productMap">
+        select * from m_product;
+    </select>
+<!--    <delete id="deleteById">-->
+<!--        delete from  t_banner where id#{id}-->
+<!--    </delete>-->
+    <select id="selectById" resultMap="productMap">
+        select * from m_product where typeid=1
+    </select>
+    <select id="selectById1" resultMap="productMap">
+        select * from m_product where typeid=2
+    </select>
+    <select id="selectById2" resultMap="productMap">
+        select * from m_product where typeid=3
+    </select>
+    <select id="selectById3" resultMap="productMap">
+        select * from m_product where typeid=4
+    </select>
+</mapper>

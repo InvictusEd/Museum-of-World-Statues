@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>付款</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        body{
+            background-color: rgb(241,242,243);
+            margin: 0;
+        }
+        .center{
+            width: 550px;
+            margin: 0 auto;
+            background-color: antiquewhite;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app" >
+    <el-main class="center">
+<!--        商品图片-->
+        <div>
+            <el-row gutter="15">
+            <el-col span="2"></el-col>
+            <el-col span="20">
+                <img src="imgs/20.jpg" style="width: 500px;height: 500px;" alt="">
+            </el-col>
+            <el-col span="2"></el-col>
+            </el-row>
+        </div>
+
+
+<!--        产品介绍-->
+        <div>
+
+        </div>
+        <el-row gutter="20">
+            <el-col span="8"></el-col>
+            <el-col span="8">
+                <template>
+                    <!--抢购页面-->
+                    <div>
+                        <div style="display: inline-block; font-size:15px;width: 250px;border-bottom: crimson;line-height: 60px">
+                            <el-statistic :value="deadline2" time-indices title="商品降价">
+                                <template slot="suffix" style="font-size: 1px;border-bottom: crimson"> 抢购即将开始 </template>
+                            </el-statistic>
+                        </div>
+<!--                        <div style="width: 100%; display: inline-block; margin-top: 50px; ">-->
+<!--                            <el-statistic @finish="hilarity" :value="deadline3" time-indices title="添加时间">-->
+<!--                                <template slot="suffix">-->
+<!--                                    <el-button type="primary " size="small" @click="add">add 10 second</el-button>-->
+<!--                                </template>-->
+<!--                            </el-statistic>-->
+<!--                        </div>-->
+                    </div>
+                    <div style="margin-left: 75px">
+                        <img src="imgs/27.jpg" style="width: 350px;height: 700px; ">
+                        <img src="imgs/29.png" style="width: 350px;height: 700px; ">
+                        <img src="imgs/28.jpg" style="width: 350px;height: 700px;">
+                    </div>
+                    <div style="width: 100%">
+                        <a href=""><i class="el-icon-shopping-cart-2" style="width: 20px;height: 20px;font-size: 30px;line-height:120px"></i></a>
+                        <a href="mall.html"> <i class="el-icon-s-shop" style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px; "></i></a>
+                        <a href=""><i class="el-icon-headset" style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px "></i></a>
+                        <el-button type="warning"style="float: right;margin-top: 40px;margin-right: -300px">点击支付</el-button>
+                    </div>
+                </template>
+            </el-col>
+            <el-col span="8">
+
+            </el-col>
+        </el-row>
+    </el-main>
+
+
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    let v=new Vue({
+        el: '#app',
+        data() {
+            return {
+                deadline2: Date.now() + 1000 * 60 * 60 * 8,
+                deadline3: Date.now() + 1000 * 60 * 30,
+                deadline4: Date.now() + (new Date().setHours(23, 59, 59) - Date.now()),
+                stop: true,
+            };
+        },
+        methods: {
+            hilarity() {
+                this.$notify({
+                    title: '提示',
+                    message: '时间已到，你可知寸金难买寸光阴？',
+                    duration: 0,
+                });
+            },
+            clickFn() {
+                this.$refs.statistic.suspend(this.stop);
+                this.stop = !this.stop;
+            },
+            add() {
+                this.deadline3 = this.deadline3 + 1000 * 10;
+            },
+        },
+
+    })
+</script>
+</html>

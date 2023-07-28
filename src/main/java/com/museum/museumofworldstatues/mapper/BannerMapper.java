@@ -15,10 +15,17 @@ public interface BannerMapper {
     List<Banner> selectThird();
     //查询第四分类轮播图信息
     List<Banner> selectFourth();
+    //查询第五分类轮播图信息
+    List<Banner> selectFifth();
     //查询所有轮播图信息
     List<Banner> selectAll();
     //根据轮播图id删除轮播图
     void deleteById(Long id);
     //添加轮播图
     void addBanner(Banner banner);
+    //通过id获取轮播图信息
+    List<Banner> selectById(Long id);
+    //修改轮播图
+    void updateBanner(Banner banner);
+
 }

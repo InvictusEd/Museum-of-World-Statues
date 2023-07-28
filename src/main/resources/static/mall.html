@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>商城</title>
+  <!-- import elementUI组件库中 CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+      body{
+          margin: 0;
+      }
+      .el-carousel__item h3 {
+          color: #475669;
+          font-size: 14px;
+          opacity: 0.75;
+          line-height: 200px;
+          margin: 0;
+      }
+
+      .el-carousel__item:nth-child(2n) {
+          background-color: #99a9bf;
+      }
+
+      .el-carousel__item:nth-child(2n+1) {
+          background-color: #d3dce6;
+      }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!-- 轮播图-->
+  <div id="middle">
+    <template style="background-color: #333333;height:375px;width: 100%;">
+      <el-carousel :interval="4000" type="card" height="500px">
+        <el-carousel-item v-for="item in bannerArr">
+          <img :src="item.imgUrl" width="100%">
+        </el-carousel-item>
+      </el-carousel>
+    </template>
+    <div>
+      <el-row style="background-color: white">
+        <el-col span="3">
+          <p style="font-size: 28px;line-height: 65px;margin:0">艺术产品</p>
+        </el-col>
+        <el-col span="21">
+          <template>
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+              <el-tab-pane label="全部文创" index="1" name="first">
+                <div>
+                  <el-row gutter="20">
+                    <el-col span="6" v-for="b in productArr">
+                      <!--                        v-for="item in 4"-->
+                      <el-card style="margin: 10px 0">
+                        <img :src="b.imgUrl" width="100%" height="200px" alt="">
+                        <a style="height: 40px" href="Pay.html">{{b.name}}</a>
+                        <el-row gutter="20">
+                          <el-col span="4">
+                            <el-avatar size="small" src="imgs/head.jpg"></el-avatar>
+                            <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
+                              点击购买
+                            </el-button>
+
+                            <el-drawer
+
+                                    :visible.sync="drawer"
+                                    size="50%">
+                              <el-row gutter="20">
+                                <el-col span="8">
+                                  <template>
+                                    <!--抢购页面-->
+                                    <div>
+                                      <div style="display: inline-block; font-size:15px;width: 250px;border-bottom: crimson;line-height: 60px">
+                                        <el-statistic :value="deadline2" time-indices title="商品降价">
+                                          <template slot="suffix" style="font-size: 1px;border-bottom: crimson">
+                                            抢购即将开始
+                                          </template>
+                                        </el-statistic>
+                                      </div>
+                                    </div>
+                                    <div style="margin-left: 75px">
+                                      <img :src="b.intPUrl" style="width: 350px;height: 700px; ">
+                                      <img :src="b.intUrl" style="width: 350px;height: 700px; ">
+                                    </div>
+                                    <div style="width: 100%">
+                                      <a href=""><i class="el-icon-shopping-cart-2"
+                                                    style="width: 20px;height: 20px;font-size: 30px;line-height:120px"></i></a>
+                                      <a href="mall.html"> <i class="el-icon-s-shop"
+                                                              style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px; "></i></a>
+                                      <a href=""><i class="el-icon-headset"
+                                                    style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px "></i></a>
+                                    </div>
+                                  </template>
+                                </el-col>
+
+                              </el-row>
+                              <div>
+                                <el-button @click="innerDrawer= true" style="margin-left: 300px ;margin-top:-100px ">
+                                  立即支付
+                                </el-button>
+                                <el-drawer
+
+                                        :append-to-body="true"
+                                        :before-close="handleClose"
+                                        :visible.sync="innerDrawer">
+                                  <p>_(:зゝ∠)_</p>
+                                </el-drawer>
+                              </div>
+                            </el-drawer>
+
+                          </el-col>
+                          <el-col span="20">
+                            <span style="font-size: 15px;color: #000;float: right;">{{b.price}}¥</span>
+                          </el-col>
+                        </el-row>
+                      </el-card>
+                    </el-col>
+                  </el-row>
+                </div>
+              </el-tab-pane>
+              <el-tab-pane label="青铜纺制品" index="1" name="second">
+                <el-row gutter="20">
+                  <el-col span="6" v-for="a in productDoArr">
+                    <!--                        v-for="item in 4"-->
+                    <el-card style="margin: 10px 0">
+                      <img :src="a.imgUrl" width="100%" height="200px" alt="">
+                      <a style="height: 40px">{{a.name}}</a>
+                      <el-row gutter="20">
+                        <el-col span="4">
+                          <el-avatar size="small" src="imgs/head.jpg"></el-avatar>
+                          <el-button @click="drawer1 = true" type="primary" style="margin-left: 16px;">
+                            点击购买
+                          </el-button>
+                          <el-drawer
+                                  title="我是外面的 Drawer3"
+                                  :visible.sync="drawer1"
+                                  size="50%">
+                            <el-row gutter="20">
+                              <el-col span="8"></el-col>
+                              <el-col span="8">
+                                <template>
+                                  <!--抢购页面-->
+                                  <div>
+                                    <div style="display: inline-block; font-size:15px;width: 250px;border-bottom: crimson;line-height: 60px">
+                                      <el-statistic :value="deadline2" time-indices title="商品降价">
+                                        <template slot="suffix" style="font-size: 1px;border-bottom: crimson">
+                                          抢购即将开始
+                                        </template>
+                                      </el-statistic>
+                                    </div>
+                                  </div>
+                                  <div style="margin-left: 75px">
+                                    <img :src="a.intPUrl" style="width: 350px;height: 700px; ">
+                                    <img :src="a.intUrl" style="width: 350px;height: 700px; ">
+
+                                  </div>
+                                  <div style="width: 100%">
+                                    <a href=""><i class="el-icon-shopping-cart-2"
+                                                  style="width: 20px;height: 20px;font-size: 30px;line-height:120px"></i></a>
+                                    <a href="mall.html"> <i class="el-icon-s-shop"
+                                                            style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px; "></i></a>
+                                    <a href=""><i class="el-icon-headset"
+                                                  style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px "></i></a>
+
+                                  </div>
+                                </template>
+                              </el-col>
+                              <el-col span="8">
+
+                              </el-col>
+                            </el-row>
+                            <div>
+                              <el-button @click="innerDrawer1= true" style="margin-left: 300px ;margin-top:-100px ">
+                                立即支付
+                              </el-button>
+                              <el-drawer
+
+                                      :append-to-body="true"
+                                      :before-close="handleClose"
+                                      :visible.sync="innerDrawer1">
+                                <p>_(:зゝ∠)_</p>
+                              </el-drawer>
+                            </div>
+                          </el-drawer>
+                        </el-col>
+                        <el-col span="20">
+                          <span style="font-size: 15px;color: #000;float: right">{{a.price}}¥</span>
+                        </el-col>
+                      </el-row>
+                    </el-card>
+                  </el-col>
+                </el-row>
+              </el-tab-pane>
+              <el-tab-pane label="小心机首饰" index="1" name="third">
+                <el-row gutter="20">
+                  <el-col span="6" v-for="c in productDoArr1">
+                    <!--  数据库建好后，将图片以数组的形式遍历用for循环 v-for="item in 4"-->
+                    <el-card style="margin: 10px 0">
+                      <img :src="c.imgUrl" width="100%" height="200px" alt="">
+                      <a style="height: 40px">{{c.name}}</a>
+                      <el-row gutter="20">
+                        <el-col span="4">
+                          <el-avatar size="small" src="imgs/head.jpg"></el-avatar>
+                          <el-button @click="drawer2 = true" type="primary" style="margin-left: 16px;">
+                            点击购买
+                          </el-button>
+                          <el-drawer
+                                  title="我是外面的 Drawer3"
+                                  :visible.sync="drawer2"
+                                  size="50%">
+                            <el-row gutter="20">
+                              <el-col span="8"></el-col>
+                              <el-col span="8">
+                                <template>
+                                  <!--抢购页面-->
+                                  <div>
+                                    <div style="display: inline-block; font-size:15px;width: 250px;border-bottom: crimson;line-height: 60px">
+                                      <el-statistic :value="deadline2" time-indices title="商品降价">
+                                        <template slot="suffix" style="font-size: 1px;border-bottom: crimson">
+                                          抢购即将开始
+                                        </template>
+                                      </el-statistic>
+                                    </div>
+                                  </div>
+                                  <div style="margin-left: 75px">
+                                    <img :src="c.intPUrl" style="width: 350px;height: 700px; ">
+                                    <img :src="c.intUrl" style="width: 350px;height: 700px; ">
+                                  </div>
+                                  <div style="width: 100%">
+                                    <a href=""><i class="el-icon-shopping-cart-2"
+                                                  style="width: 20px;height: 20px;font-size: 30px;line-height:120px"></i></a>
+                                    <a href="mall.html"> <i class="el-icon-s-shop"
+                                                            style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px; "></i></a>
+                                    <a href=""><i class="el-icon-headset"
+                                                  style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px "></i></a>
+
+                                  </div>
+                                </template>
+                              </el-col>
+                              <el-col span="8">
+
+                              </el-col>
+                            </el-row>
+                            <div>
+                              <el-button @click="innerDrawer2= true" style="margin-left: 300px ;margin-top:-100px ">
+                                立即支付
+                              </el-button>
+                              <el-drawer
+
+                                      :append-to-body="true"
+                                      :before-close="handleClose"
+                                      :visible.sync="innerDrawer2">
+                                <p>_(:зゝ∠)_</p>
+                              </el-drawer>
+                            </div>
+                          </el-drawer>
+                        </el-col>
+                        <el-col span="20">
+
+                          <span style="font-size: 15px;color: #000;float: right">{{c.price}}¥</span>
+                        </el-col>
+                      </el-row>
+                    </el-card>
+                  </el-col>
+                </el-row>
+              </el-tab-pane>
+              <el-tab-pane label="创意文具" index="1" name="fourth">
+                <el-row gutter="20">
+                  <el-col span="6" v-for="d in productDoArr2">
+                    <!--                        v-for="item in 4"-->
+                    <el-card style="margin: 10px 0">
+
+                      <img :src="d.imgUrl" width="100%" height="200px" alt="">
+                      <a style="height: 40px">{{d.name}}</a>
+                      <el-row gutter="20">
+                        <el-col span="4">
+                          <el-avatar size="small" src="imgs/head.jpg"></el-avatar>
+                          <el-button @click="drawer4 = true" type="primary" style="margin-left: 16px;">
+                            点击购买
+                          </el-button>
+                          <el-drawer :visible.sync="drawer4" size="50%">
+                            <el-row gutter="20">
+                              <el-col span="8">
+                                <template>
+                                  <!--抢购页面-->
+                                  <div>
+                                    <div style="display: inline-block; font-size:15px;width: 250px;border-bottom: crimson;line-height: 60px">
+                                      <el-statistic :value="deadline2" time-indices title="商品降价">
+                                        <template slot="suffix" style="font-size: 1px;border-bottom: crimson">
+                                          抢购即将开始
+                                        </template>
+                                      </el-statistic>
+                                    </div>
+                                  </div>
+                                  <div style="margin-left: 75px">
+                                    :<img :src="d.intPUrl" style="width: 350px;height: 700px; ">
+                                    :<img :src="d.intPUrl" style="width: 350px;height: 700px; ">
+                                  </div>
+                                  <div style="width: 100%">
+                                    <a href=""><i class="el-icon-shopping-cart-2"
+                                                  style="width: 20px;height: 20px;font-size: 30px;line-height:120px"></i></a>
+                                    <a href="mall.html"> <i class="el-icon-s-shop"
+                                                            style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px; "></i></a>
+                                    <a href=""><i class="el-icon-headset"
+                                                  style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px "></i></a>
+
+                                  </div>
+                                </template>
+                              </el-col>
+                            </el-row>
+                            <div>
+                              <el-button @click="innerDrawer4= true" style="margin-left: 300px ;margin-top:-100px ">
+                                立即支付
+                              </el-button>
+                              <el-drawer
+                                      :append-to-body="true"
+                                      :before-close="handleClose"
+                                      :visible.sync="innerDrawer4">
+                                <p>_(:зゝ∠)_</p>
+                              </el-drawer>
+                            </div>
+                          </el-drawer>
+                        </el-col>
+                        <el-col span="20">
+                          <span style="font-size: 15px;color: #000;float: right">{{d.price}}¥</span>
+                        </el-col>
+                      </el-row>
+                    </el-card>
+                  </el-col>
+                </el-row>
+              </el-tab-pane>
+              <el-tab-pane label="日常穿搭" index="1" name="fifth">
+                <el-row gutter="20">
+                  <el-col span="6" v-for="e in productDoArr3">
+                    <!--                        v-for="item in 4"-->
+                    <el-card style="margin: 10px 0">
+
+                      <img :src="e.imgUrl" width="100%" height="200px" alt="">
+                      <a style="height: 40px">{{e.name}}</a>
+                      <el-row gutter="20">
+                        <el-col span="4">
+                          <el-avatar size="small" src="imgs/head.jpg"></el-avatar>
+                          <el-button @click="drawer3 = true" type="primary" style="margin-left: 16px;">
+                            点击购买
+                          </el-button>
+                          <el-drawer
+
+                                  :visible.sync="drawer3"
+                                  size="50%">
+                            <el-row gutter="20">
+                              <el-col span="8">
+                                <template>
+                                  <!--抢购页面-->
+                                  <div>
+                                    <div style="display: inline-block; font-size:15px;width: 250px;border-bottom: crimson;line-height: 60px">
+                                      <el-statistic :value="deadline2" time-indices title="商品降价">
+                                        <template slot="suffix" style="font-size: 1px;border-bottom: crimson">
+                                          抢购即将开始
+                                        </template>
+                                      </el-statistic>
+                                    </div>
+                                  </div>
+                                  <div style="margin-left: 75px">
+                                    :<img :src="e.intPUrl" style="width: 350px;height: 700px; ">
+                                    :<img :src="e.intPUrl" style="width: 350px;height: 700px; ">
+                                  </div>
+                                  <div style="width: 100%">
+                                    <a href=""><i class="el-icon-shopping-cart-2"
+                                                  style="width: 20px;height: 20px;font-size: 30px;line-height:120px"></i></a>
+                                    <a href="mall.html"> <i class="el-icon-s-shop"
+                                                            style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px; "></i></a>
+                                    <a href=""><i class="el-icon-headset"
+                                                  style="width: 20px;height: 20px;font-size: 30px;line-height:120px;margin-left: 30px "></i></a>
+
+                                  </div>
+                                </template>
+                              </el-col>
+                            </el-row>
+                            <div>
+                              <el-button @click="innerDrawer3= true" style="margin-left: 300px ;margin-top:-100px ">
+                                立即支付
+                              </el-button>
+                              <el-drawer
+                                      :append-to-body="true"
+                                      :before-close="handleClose"
+                                      :visible.sync="innerDrawer3">
+                                <p>_(:зゝ∠)_</p>
+                              </el-drawer>
+                            </div>
+                          </el-drawer>
+                        </el-col>
+                        <!-- <el-col span="10">汤姆</el-col>-->
+                        <el-col span="20">
+                          <span style="font-size: 15px;color: #000;float: right">{{e.price}}¥</span>
+                        </el-col>
+                      </el-row>
+                    </el-card>
+                  </el-col>
+                </el-row>
+              </el-tab-pane>
+            </el-tabs>
+          </template>
+        </el-col>
+      </el-row>
+      <!--            产品列表-->
+
+
+    </div>
+  </div>
+  <!--        底部-->
+  <el-footer style="background-color: #000000;height: 280px;padding: 50px 0">
+    <div class="center" style="text-align: center;color: #666">
+      <el-row id="foot">
+        <el-col span="8">
+          <img src="imgs/logo.jpg" style="width: 180px;height: 60px" alt="">
+          <p>世界雕像就看博物院</p>
+          <p>雕像展览网络社区平台</p>
+          <p>全球著名文物雕像展览会</p>
+        </el-col>
+        <el-col span="8">
+          <el-row id="foot_center">
+            <el-col span="8">
+              <h3>关于我们</h3>
+              <p>关于我们</p><p>学术研究</p>
+              <p>社会教育</p><p>分类信息</p>
+            </el-col>
+            <el-col span="8">
+              <h3>支持与服务</h3>
+              <p>联系我们</p><p>广告投放</p>
+              <p>用户协议</p><p>友情链接</p>
+            </el-col>
+            <el-col span="8">
+              <h3>底部导航</h3>
+              <p>博物院地图</p>
+              <p>搜索收藏</p>
+              <p>文创精品</p>
+            </el-col>
+          </el-row>
+        </el-col>
+        <el-col span="8">
+          <div style="font-size: 58px;margin-top: 30px">
+            <span style="color: orange">世界</span><span style="color: #666666">博物院</span>
+          </div>
+          <p>雕像展览网络社区平台</p>
+        </el-col>
+      </el-row>
+    </div>
+
+  </el-footer>
+</div>
+
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                activeName: 'first',
+                bannerArr: [],
+                productArr: [],
+                productDoArr: [],
+                productDoArr1: [],
+                productDoArr2: [],
+                productDoArr3: [],
+                introduceArr: [],
+                introduceArr1: [],
+                introduceArr2: [],
+                introduceArr3: [],
+                drawer: false,
+                innerDrawer: false,
+                drawer1: false,
+                innerDrawer1: false,
+                drawer2: false,
+                innerDrawer2: false,
+                drawer3: false,
+                innerDrawer3: false,
+                drawer4: false,
+                innerDrawer4: false,
+                deadline2: Date.now() + 1000 * 60 * 60 * 8,
+                deadline3: Date.now() + 1000 * 60 * 30,
+                deadline4: Date.now() + (new Date().setHours(23, 59, 59) - Date.now()),
+                stop: true,
+
+            };
+        },
+        created() {
+            this.loadBanner()
+            this.loadProduct()
+            this.loadProductDo()
+            this.loadProductDo1()
+            this.loadProductDo2()
+            this.loadProductDo3()
+            this.loadIntroduce()
+
+        },
+        methods: {
+            loadBanner() {
+                //发送请求
+                //接受请求 并把请求数据赋值给banner
+                axios.get("/selectBannerFifth").then(function (response) {
+                    v.bannerArr = response.data
+                })
+            },
+            hilarity() {
+                this.$notify({
+                    title: '提示',
+                    message: '时间已到，你可知寸金难买寸光阴？',
+                    duration: 0,
+                });
+            },
+            clickFn() {
+                this.$refs.statistic.suspend(this.stop);
+                this.stop = !this.stop;
+            },
+            add() {
+                this.deadline3 = this.deadline3 + 1000 * 10;
+            },
+            loadProduct() {
+                //发送请求
+                //接受请求 并把请求数据赋值给banner
+                axios.get("/selectProduct").then(function (response) {
+                    v.productArr = response.data
+                })
+            },
+            loadProductDo() {
+                axios.get("/selectProductById").then(function (response) {
+                    v.productDoArr = response.data
+                })
+            },
+            loadProductDo1() {
+                axios.get("/selectProductById1").then(function (response) {
+                    v.productDoArr1 = response.data
+                })
+            },
+            loadProductDo2() {
+                axios.get("/selectProductById2").then(function (response) {
+                    v.productDoArr2 = response.data
+                })
+            },
+            loadProductDo3() {
+                axios.get("/selectProductById3").then(function (response) {
+                    v.productDoArr3 = response.data
+                })
+            },
+            handleClick(tab, event) {
+                console.log(tab, event);
+
+            },
+
+            handleClose(done) {
+                this.$confirm('还有未保存的工作哦确定关闭吗？')
+                    .then(_ => {
+                        done();
+                    })
+                    .catch(_ => {
+                    });
+            },
+            loadIntroduce() {
+                axios.get("/selectIntroduce").then(function (response) {
+                    v.introduceArr = response.data
+                })
+            }
+
+
+        }
+
+
+    })
+</script>
+
+</html>

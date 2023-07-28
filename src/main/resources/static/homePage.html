@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="homePage.css">
     <title>雕塑博物馆</title>
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -27,33 +32,12 @@
                             background-color="rgba(0,0,0,0.8)"
                             text-color="#fff"
                             active-text-color="#ffd04b">
-                        <el-menu-item index="1">首页</el-menu-item>
-                        <el-submenu index="2">
-                            <template slot="title">参观服务</template>
-                            <el-submenu index="2-1">
-                                <template slot="title">网上订票</template>
-                                <el-menu-item index="2-1-1">开放时间</el-menu-item>
-                                <el-menu-item index="2-1-2">在线预约</el-menu-item>
-                                <el-menu-item index="2-1-3">餐饮服务</el-menu-item>
-                            </el-submenu>
-                            <el-menu-item index="2-2">参观须知</el-menu-item>
-                            <el-menu-item index="2-3">交通信息</el-menu-item>
-                        </el-submenu>
-                        <el-submenu index="3">
-                            <template slot="title">社会教育</template>
-                            <el-menu-item index="3-1">活动资讯</el-menu-item>
-                            <el-menu-item index="3-2">活动预约</el-menu-item>
-                            <el-menu-item index="3-3">教育资源</el-menu-item>
-                        </el-submenu>
-                        <el-submenu index="4">
-                            <template slot="title">资讯公告</template>
-                            <el-menu-item index="4-1">新闻资讯</el-menu-item>
-                            <el-menu-item index="4-2">文明宣传</el-menu-item>
-                            <el-menu-item index="4-3">数字文创</el-menu-item>
-                            <el-menu-item index="4-4">示范区创建</el-menu-item>
-                            <el-menu-item index="4-5">数字资源</el-menu-item>
-                        </el-submenu>
-                        <el-menu-item index="5">雕塑典藏</el-menu-item>
+                        <el-menu-item index="1"><a href="homePage.html">首页</a></el-menu-item>
+                        <el-menu-item index="2"><a href="login.html">登录</a></el-menu-item>
+                        <el-menu-item index="3"><a href="reg.html">注册</a></el-menu-item>
+                        <el-menu-item index="4"><a href="category.html">雕像分类</a></el-menu-item>
+                        <el-menu-item index="5"><a href="mall.html">雕像商城</a></el-menu-item>
+                        <el-menu-item index="5"><a href="introduce.html">雕像展示</a></el-menu-item>
                         <el-submenu index="6">
                             <template slot="title">展览陈列</template>
                             <el-menu-item index="6-1">临时展览</el-menu-item>
@@ -181,6 +165,7 @@
                 </div>
             </el-row>
         </el-main>
+<!--        底部-->
         <el-footer style="background-color: #000000;height: 280px;padding: 50px 0">
             <div class="center" style="text-align: center;color: #666">
                 <el-row id="foot">

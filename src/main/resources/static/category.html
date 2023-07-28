@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <title>雕像分类</title>
   <!-- 引入element组件库的 CSS -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <!--    <link rel="stylesheet" href="D:\Idea_project\index.css">-->
@@ -105,7 +106,8 @@
               <el-menu-item index="8-1">雕塑研究文章</el-menu-item>
               <el-menu-item index="8-2">出版物</el-menu-item>
             </el-submenu>
-            <el-menu-item index="9">文创精品</el-menu-item>
+
+            <el-menu-item index="9"><a href="./introduceDetail.html" style="text-decoration: none">文创精品</a></el-menu-item>
             <el-submenu index="10">
               <template slot="title">简体中文</template>
               <el-menu-item index="8-1">简体中文</el-menu-item>
@@ -113,7 +115,7 @@
             </el-submenu>
             <el-input placeholder="请输入搜索的关键字" v-model="wd" style="width: 230px;margin-top: 10px;
                             background-color: #7f7f7f">
-              <el-button slot="append" icon="el-icon-search" @click="selectStatusInfoByWd"></el-button>
+              <el-button slot="append" icon="el-icon-search" @click="f()"></el-button>
             </el-input>
           </el-menu>
         </el-col>
@@ -181,6 +183,7 @@
       </el-row>
     </el-main>
 
+    <!--        底部-->
     <el-footer style="background-color: #000000;height: 280px;padding: 50px 0">
       <div class="center" style="text-align: center;color: #666">
         <el-row id="foot">
@@ -227,7 +230,7 @@
 <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
 <!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script src="axios.min.js"></script>
+<script src="js/axios.min.js"></script>
 <script>
     let v = new Vue({
         el: '#app',
@@ -247,6 +250,9 @@
             this.loadPeriod()
         },
         methods: {
+            f(){
+                location.href='introduceDetail.html'
+            },
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
             },

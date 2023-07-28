@@ -10,6 +10,8 @@
   <style>
     body{
         margin: 0;
+        padding: 0;
+        height: 800px;
     }
 
     .el-header{
@@ -54,12 +56,39 @@
         height: 178px;
         display: block;
     }
+  /*返回顶部和底部按钮*/
+    .scroll-to-top,
+    .scroll-to-bottom {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    .scroll-to-top {
+        bottom: 70px;
+    }
+
+    .scroll-to-top:hover,
+    .scroll-to-bottom:hover {
+        background-color: #0056b3;
+    }
 
   </style>
 </head>
 <body>
   <div id="app">
     <el-container>
+      <!-- 滚动到顶部按钮 -->
+      <button class="scroll-to-top" onclick="scrollToTop()">返回顶部</button>
+      <!-- 滚动到底部按钮 -->
+      <button class="scroll-to-bottom" onclick="scrollToBottom()">返回底部</button>
       <!--后台管理的页头-->
       <el-header height="100px">
         <span style="float: left; margin-top: 5px;"><img src="imagesAll/adminImages/logo.jpg" width="300px"></span>
@@ -169,6 +198,7 @@
               <el-table-column label="操作" width="200px" align="center" >
                 <template slot-scope="scope">
                   <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
+<!--            TODO      <el-button size="mini" type="success" @click="dialogBannerEdit = true;updateBanner(scope.$index, scope.row)">编辑</el-button>-->
                 </template>
               </el-table-column>
             </el-table>
@@ -211,6 +241,47 @@
                 </div>
               </div>
             </el-drawer>
+
+<!--            &lt;!&ndash;编辑轮播图&ndash;&gt; TODO -->
+<!--            <el-drawer-->
+<!--                    title="编辑轮播图"-->
+<!--                    :before-close="handleCloseBannerEdit"-->
+<!--                    :visible.sync="dialogBannerEdit"-->
+<!--                    direction="rtl"-->
+<!--                    custom-class="demo-drawer"-->
+<!--                    ref="drawerBannerEdit"-->
+<!--            >-->
+<!--              <div class="demo-drawer__content">-->
+<!--                <el-form :model="banner">-->
+<!--                  <el-form-item label="分类" :label-width="formLabelWidthBannerEdit">-->
+<!--                    <el-select v-model="banner.category" placeholder="请选择分类" style="width: 150px;">-->
+<!--                      <el-option v-for="item in bannerOption"-->
+<!--                                 :key="item.id"-->
+<!--                                 :label="item.category"-->
+<!--                                 :value="item.category">-->
+<!--                      </el-option>-->
+<!--                    </el-select>-->
+<!--                  </el-form-item>-->
+<!--                  <el-form-item label="轮播图片" style="margin-left: 40px;">-->
+<!--                    <el-upload-->
+<!--                            class="avatar-uploader"-->
+<!--                            action="http://localhost:8080/upload"-->
+<!--                            :show-file-list="false"-->
+<!--                            :on-success="handleBannerSuccess"-->
+<!--                            :before-upload="beforeUpload">-->
+<!--                      <img v-if="banner.imgUrl" :src="banner.imgUrl" class="avatar">-->
+<!--                      <i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
+<!--                    </el-upload>-->
+<!--                  </el-form-item>-->
+<!--                </el-form>-->
+<!--                <div class="demo-drawer__footer">-->
+<!--                  <el-button @click="cancelFormBannerEdit" style="min-width: 200px">取 消</el-button>-->
+<!--                  &lt;!&ndash;一定要修改refs.xxx&ndash;&gt;-->
+<!--                  <el-button style="min-width: 200px" type="success" @click="$refs.drawerBannerEdit.closeDrawer()" :loading="loadingBannerEdit">{{ loadingBannerEdit ? '提交中 ...' : '确 定' }}</el-button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </el-drawer>-->
+
 
 
             <div v-if="currentIndex==3" align="center">
@@ -430,6 +501,17 @@
       </el-container>
     </el-container>
   </div>
+  <script>
+      // JavaScript函数，用于滚动到页面顶部
+      function scrollToTop() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // JavaScript函数，用于滚动到页面底部
+      function scrollToBottom() {
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }
+  </script>
 </body>
 
 <!-- import Vue before Element -->
@@ -449,6 +531,11 @@
             loadingBanner: false,
             formLabelWidthBanner: '80px',
             timerBanner: null,
+            //轮播图编辑抽屉变量
+            dialogBannerEdit: false,
+            loadingBannerEdit: false,
+            formLabelWidthBannerEdit: '80px',
+            timerBannerEdit: null,
             //雕像图抽屉变量
             dialogStatuesImages: false,
             loadingStatuesImages: false,
@@ -485,8 +572,11 @@
                 category: 3
             },{
                 id:4,
-                category: 4}
-                ],
+                category: 4
+            },{
+                id:5,
+                category: 5
+            }],
             //国家对话框
             dialogFormVisible: false,
             form: {
@@ -721,6 +811,36 @@
               this.dialogBanner = false;
               clearTimeout(this.timerBanner);
           },
+          // //轮播图编辑抽屉 TODO
+          // handleCloseBannerEdit(done) {
+          //     if (this.loadingBannerEdit) {
+          //         return;
+          //     }
+          //     this.$confirm('确定要提交表单吗？')
+          //         .then(_ => {
+          //             this.loadingBannerEdit = true;
+          //             this.timerBannerEdit = setTimeout(() => {
+          //                 done();
+          //                 // 动画关闭需要一定的时间
+          //                 setTimeout(() => {
+          //                     this.loadingBannerEdit = false;
+          //                 }, 400);
+          //             }, 2000);
+          //             axios.post("updateBanner",v.banner).then(function (response){
+          //                 if (v.banner.imgUrl == null){
+          //                     v.$message.error("没有上传图片！")
+          //                 } else {
+          //                     setTimeout("v.$message.success(\"添加成功！\")",3000)
+          //                 }
+          //             });
+          //         })
+          //         .catch(_ => {});
+          // },
+          // cancelFormBannerEdit() {
+          //     this.loadingBannerEdit = false;
+          //     this.dialogBannerEdit = false;
+          //     clearTimeout(this.timerBannerEdit);
+          // },
           //上传轮播图片
           handleBannerSuccess(res, file) {
               v.banner.imgUrl = res
@@ -797,18 +917,25 @@
           },
           //添加国家
           addCountry(){
-              axios.post("addCountry", v.country).then(function (){
+              axios.post("/addCountry", v.country).then(function (){
                   v.$message.success("添加成功！")
                   v.loadCountries()//修改成功后重新加载列表信息
               })
           },
           //添加时期
           addPeriod(){
-              axios.post("addPeriod", v.period).then(function (){
+              axios.post("/addPeriod", v.period).then(function (){
                   v.$message.success("添加成功！")
                   v.loadPeriod()//修改成功后重新加载列表信息
               })
           },
+          // //编辑轮播图，先获取该轮播图信息 TODO
+          // BannerById(index,banner){
+          //     //通过id获取轮播图信息
+          //     axios.get("/BannerById?id="+banner.id).then(function (response){
+          //         v.banner = response.data
+          //     })
+          // },
       }
   })
 </script>

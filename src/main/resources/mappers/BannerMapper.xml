@@ -31,6 +31,10 @@
     <select id="selectFourth" resultMap="bannerMap">
         select * from banner where category=4;
     </select>
+<!--    查询分类5的轮播图-->
+    <select id="selectFifth" resultMap="bannerMap">
+        select * from banner where category=5;
+    </select>
 <!--    查询所有轮播图-->
     <select id="selectAll" resultMap="bannerMap">
         select * from banner;
@@ -39,5 +43,12 @@
     <insert id="addBanner">
         insert into banner values(null,#{imgUrl},#{category})
     </insert>
-
+<!--    根据id获取轮播图信息-->
+    <select id="selectById" resultMap="bannerMap">
+        select * from banner where id=#{id}
+    </select>
+    <!--    修改轮播图信息-->
+    <update id="updateBanner">
+        update banner set img_url=#{imgUrl},category=#{category}
+    </update>
 </mapper>

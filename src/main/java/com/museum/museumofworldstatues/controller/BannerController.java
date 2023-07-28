@@ -40,6 +40,13 @@ public class BannerController {
         return banners;
     }
 
+    //查询分类5的轮播图
+    @RequestMapping("/selectBannerFifth")
+    public List<Banner> selectFifth(){
+        List<Banner> banners = bannerMapper.selectFifth();
+        return banners;
+    }
+
     //删除轮播图
     @RequestMapping("/removeBanner")
     public void deleteBanner(Long id){
@@ -63,5 +70,18 @@ public class BannerController {
             bannerMapper.addBanner(banner);
         }
         return 0;
+    }
+
+    //根据id获取轮播图信息
+    @RequestMapping("/BannerById")
+    public List<Banner> selectById(Long id){
+        List<Banner> banners = bannerMapper.selectById(id);
+        return banners;
+    }
+
+    //修改轮播图信息
+    @RequestMapping("/updateBanner")
+    public void updateBanner(@RequestBody Banner banner){
+        bannerMapper.updateBanner(banner);
     }
 }

@@ -8,9 +8,9 @@
 </head>
 <body>
 <div id="app">
-    <div v-for="statues_info in statuesArr">
+    <div v-for="a in Arr">
         <a :href="'Test.html?id='+a.id">
-            <img :src="info.imgUrl">
+            <img src="introduceImages/维纳斯/a1.jpg" style="height: 400px" class="img">
         </a>
     </div>
 </div>
@@ -26,7 +26,9 @@
         data() {
             return {
                 currentIndex:2,
-                statuesArr:[]
+                Arr:[{
+                    id:1,name:'维纳斯'},
+                ]
 
             }
         },
