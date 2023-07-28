@@ -12,7 +12,7 @@
         <result property="chineseName" column="user_name"></result>
         <result property="author" column="author"></result>
         <result property="countries" column="countries"></result>
-        <result property="englishName" column="english_name"></result>
+         <result property="englishName" column="english_name"></result>
     </resultMap>
     <!--根据图片查询详情信息-->
     <select id="selectById" resultType="com.museum.museumofworldstatues.entity.ContentDo">
