@@ -41,5 +41,6 @@ public class StatuesInfoController {
         return 0;
     }
 
+    //查询美国雕像信息
 
 }

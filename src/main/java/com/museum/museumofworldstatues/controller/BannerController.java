@@ -33,6 +33,13 @@ public class BannerController {
         return banners;
     }
 
+    //查询分类4的轮播图
+    @RequestMapping("/selectBannerFourth")
+    public List<Banner> selectFourth(){
+        List<Banner> banners = bannerMapper.selectFourth();
+        return banners;
+    }
+
     //删除轮播图
     @RequestMapping("/removeBanner")
     public void deleteBanner(Long id){

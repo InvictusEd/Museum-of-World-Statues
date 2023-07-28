@@ -153,6 +153,10 @@
               </el-table-column>
             </el-table>
 
+            <!--添加轮播图-->
+            <div v-if="currentIndex==2" align="center">
+              <el-button type="primary" @click="dialogBanner = true">添加轮播图</el-button>
+            </div>
             <!--轮播图表格-->
             <el-table v-if="currentIndex==2" :data="bannerArr">
               <el-table-column type="index"  label="编号" width="100" align="center"></el-table-column>
@@ -168,10 +172,6 @@
                 </template>
               </el-table-column>
             </el-table>
-            <!--添加轮播图-->
-            <div v-if="currentIndex==2" align="center" style="margin-top: 20px;">
-              <el-button type="primary" @click="dialogBanner = true">添加轮播图</el-button>
-            </div>
             <!--一定要修改ref-->
             <el-drawer
                     title="添加轮播图"
@@ -213,6 +213,9 @@
             </el-drawer>
 
 
+            <div v-if="currentIndex==3" align="center">
+              <el-button type="primary" @click="dialogStatuesImages = true">添加雕像图</el-button>
+            </div>
             <!--雕像图片表格-->
             <el-table v-if="currentIndex==3" style="width: 100%;" :data="statuesImagesArr">
               <el-table-column type="index" label="编号" width="100" align="center"></el-table-column>
@@ -229,9 +232,6 @@
               </el-table-column>
             </el-table>
             <!--添加雕像图-->
-            <div v-if="currentIndex==3" align="center" style="margin-top: 20px;">
-              <el-button type="primary" @click="dialogStatuesImages = true">添加雕像图</el-button>
-            </div>
             <el-drawer
                     title="添加雕像图"
                     :before-close="handleCloseStatuesImages"
@@ -272,6 +272,9 @@
             </el-drawer>
 
 
+            <div v-if="currentIndex==4" align="center">
+              <el-button type="primary" @click="dialogStatuesInfo = true">添加雕像</el-button>
+            </div>
             <!--雕像信息表格-->
             <el-table v-if="currentIndex==4" :data="statuesDoArr" style="width: 100%;">
               <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
@@ -293,9 +296,6 @@
               </el-table-column>
             </el-table>
             <!--添加雕像-->
-            <div v-if="currentIndex==4" align="center" style="margin-top: 20px;">
-              <el-button type="primary" @click="dialogStatuesInfo = true">添加雕像</el-button>
-            </div>
             <el-drawer
                     title="添加雕像"
                     :before-close="handleCloseStatuesInfo"
@@ -371,6 +371,9 @@
             </el-drawer>
 
 
+            <div v-if="currentIndex==5" align="center">
+              <el-button type="primary" @click="dialogFormVisible = true">添加国家</el-button>
+            </div>
             <!--国家分类管理表格-->
             <el-table v-if="currentIndex==5" style="width: 100%;" :data="countryArr">
               <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
@@ -382,10 +385,6 @@
               </el-table-column>
             </el-table>
             <!--添加国家-->
-            <div v-if="currentIndex==5" align="center" style="margin-top: 20px;">
-              <el-button type="primary" @click="dialogFormVisible = true">添加国家</el-button>
-            </div>
-
             <el-dialog title="添加国家" :visible.sync="dialogFormVisible">
               <el-form :model="country">
                 <el-form-item label="国家名称" :label-width="formLabelWidth">
@@ -398,6 +397,10 @@
               </div>
             </el-dialog>
 
+
+            <div v-if="currentIndex==6" align="center">
+              <el-button type="primary" @click="dialogFormVisible = true">添加时代</el-button>
+            </div>
             <!--时代分类管理表格-->
             <el-table v-if="currentIndex==6" style="width: 100%;" :data="periodArr">
               <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
@@ -409,10 +412,6 @@
               </el-table-column>
             </el-table>
             <!--添加时代-->
-            <div v-if="currentIndex==6" align="center" style="margin-top: 20px;">
-              <el-button type="primary" @click="dialogFormVisible = true">添加时代</el-button>
-            </div>
-
             <el-dialog title="添加时代" :visible.sync="dialogFormVisible">
               <el-form :model="period">
                 <el-form-item label="时代名称" :label-width="formLabelWidth">
@@ -481,7 +480,13 @@
               }, {
                 id:2,
                 category: 2
-            }],
+            },{
+                id:3,
+                category: 3
+            },{
+                id:4,
+                category: 4}
+                ],
             //国家对话框
             dialogFormVisible: false,
             form: {

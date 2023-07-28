@@ -27,6 +27,10 @@
     <select id="selectThird" resultMap="bannerMap">
         select * from banner where category=3;
     </select>
+    <!--    查询分类4的轮播图-->
+    <select id="selectFourth" resultMap="bannerMap">
+        select * from banner where category=4;
+    </select>
 <!--    查询所有轮播图-->
     <select id="selectAll" resultMap="bannerMap">
         select * from banner;

@@ -20,5 +20,4 @@ public interface StatuesInfoMapper {
     void deleteStatuesInfo(Long id);
     //添加雕像信息
     void addStatuesInfo(StatuesInfo statuesInfo);
-
 }

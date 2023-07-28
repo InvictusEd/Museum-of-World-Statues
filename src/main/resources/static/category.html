@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- 引入element组件库的 CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!--    <link rel="stylesheet" href="D:\Idea_project\index.css">-->
+  <style>
+      body {
+          margin: 0;
+          background-color: rgb(241, 242, 243);
+      }
+
+      .center {
+          width: 1200px;
+          margin: 0 auto;
+      }
+
+      #footer_center h3 {
+          color: white;
+      }
+
+      #footer_center p {
+          margin: 0;
+      }
+
+      .hover1:hover {
+          color: black;
+          width: 100%;
+      }
+
+      .hover2:hover {
+          color: black;
+          width: 100%;
+      }
+
+      .el-tabs__item {
+          color: #2f3234;
+          height: 50px;
+          line-height: 50px;
+          background-color: gainsboro;
+      }
+  </style>
+</head>
+<body>
+<div id="app">
+  <el-container>
+    <!--            头部-->
+    <el-header style="padding: 0">
+      <el-row>
+        <el-col span="3">
+          <a href="./personal.html">
+            <img src="./imgs/logo.jpg" style="width: 100%;height: 60px">
+          </a>
+        </el-col>
+        <el-col span="21">
+          <el-menu
+                  :default-active="activeIndex1"
+                  class="el-menu-demo"
+                  mode="horizontal"
+                  @select="handleSelect"
+                  background-color="rgba(0,0,0,0.8)"
+                  text-color="#fff"
+                  active-text-color="#ffd04b">
+            <el-menu-item index="1">首页</el-menu-item>
+            <el-submenu index="2">
+              <template slot="title">参观服务</template>
+              <el-submenu index="2-1">
+                <template slot="title">网上订票</template>
+                <el-menu-item index="2-1-1">开放时间</el-menu-item>
+                <el-menu-item index="2-1-2">在线预约</el-menu-item>
+                <el-menu-item index="2-1-3">餐饮服务</el-menu-item>
+              </el-submenu>
+              <el-menu-item index="2-2">参观须知</el-menu-item>
+              <el-menu-item index="2-3">交通信息</el-menu-item>
+            </el-submenu>
+            <el-submenu index="3">
+              <template slot="title">社会教育</template>
+              <el-menu-item index="3-1">活动资讯</el-menu-item>
+              <el-menu-item index="3-2">活动预约</el-menu-item>
+              <el-menu-item index="3-3">教育资源</el-menu-item>
+            </el-submenu>
+            <el-submenu index="4">
+              <template slot="title">资讯公告</template>
+              <el-menu-item index="4-1">新闻资讯</el-menu-item>
+              <el-menu-item index="4-2">文明宣传</el-menu-item>
+              <el-menu-item index="4-3">数字文创</el-menu-item>
+              <el-menu-item index="4-4">示范区创建</el-menu-item>
+              <el-menu-item index="4-5">数字资源</el-menu-item>
+            </el-submenu>
+            <el-menu-item index="5">雕塑典藏</el-menu-item>
+            <el-submenu index="6">
+              <template slot="title">展览陈列</template>
+              <el-menu-item index="6-1">临时展览</el-menu-item>
+              <el-menu-item index="6-2">常设展览</el-menu-item>
+              <el-menu-item index="6-3">虚拟展厅</el-menu-item>
+            </el-submenu>
+            <el-submenu index="7">
+              <template slot="title">文化遗产</template>
+              <el-menu-item index="7-1">考古发现</el-menu-item>
+              <el-menu-item index="7-2">考古大事记</el-menu-item>
+            </el-submenu>
+            <el-submenu index="8">
+              <template slot="title">学术研究</template>
+              <el-menu-item index="8-1">雕塑研究文章</el-menu-item>
+              <el-menu-item index="8-2">出版物</el-menu-item>
+            </el-submenu>
+            <el-menu-item index="9">文创精品</el-menu-item>
+            <el-submenu index="10">
+              <template slot="title">简体中文</template>
+              <el-menu-item index="8-1">简体中文</el-menu-item>
+              <el-menu-item index="8-2">English</el-menu-item>
+            </el-submenu>
+            <el-input placeholder="请输入搜索的关键字" v-model="wd" style="width: 230px;margin-top: 10px;
+                            background-color: #7f7f7f">
+              <el-button slot="append" icon="el-icon-search" @click="selectStatusInfoByWd"></el-button>
+            </el-input>
+          </el-menu>
+        </el-col>
+      </el-row>
+    </el-header>
+
+    <!--主体内容-->
+    <el-main class="center">
+      <!--轮播图-->
+      <el-carousel height="480px">
+        <el-carousel-item v-for="b in bannerArr">
+          <!--:src 进行属性绑定-->
+          <img :src="b.imgUrl" width="100%" alt="图片有误">
+        </el-carousel-item>
+      </el-carousel>
+
+      <el-row>
+        <el-card style="height: 1150px">
+          <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+            <el-tab-pane label="国家名称" name="1">
+              <el-card style="background-color: #e8e8e8">
+                <el-form>
+                  <el-tabs type="border-card">
+                    <!--国家分类列表-->
+                    <el-tab-pane v-for="item1 in countryArr">
+                      <span slot="label" class="hover1">{{item1.name}}</span>
+                      <el-row gutter="20">
+                        <!--循环出8个一样的：<el-col span="6" v-for="item in 8">-->
+                        <el-col span="6" v-for="item2 in statuesDoArr" :key="item2.id">
+                          <el-card style="margin: 10px 0;" v-if="item2.countryName === item1.name">
+                            <img :src="item2.coverImg" alt="图片不存在" width="100%" height="144px">
+                            <span style="margin-top: 10px">{{item2.chineseName}}</span>
+                          </el-card>
+                        </el-col>
+                      </el-row>
+                    </el-tab-pane>
+                  </el-tabs>
+                </el-form>
+              </el-card>
+            </el-tab-pane>
+
+            <el-tab-pane label="年代历程" name="2">
+              <el-card style="background-color:#e8e8e8">
+                <el-form>
+                  <el-tabs type="border-card">
+                    <!--时代分类列表-->
+                    <el-tab-pane v-for="item1 in periodArr">
+                      <span slot="label" class="hover1">{{item1.name}}</span>
+                      <el-row gutter="20">
+                        <!--循环出8个一样的：<el-col span="6" v-for="item in 8">-->
+                        <el-col span="6" v-for="item2 in statuesDoArr" :key="item2.id">
+                          <el-card style="margin: 10px 0;" v-if="item2.periodName === item1.name">
+                            <img :src="item2.coverImg" alt="图片不存在" width="100%" height="144px">
+                            <span style="margin-top: 10px">{{item2.chineseName}}</span>
+                          </el-card>
+                        </el-col>
+                      </el-row>
+                    </el-tab-pane>
+                  </el-tabs>
+                </el-form>
+              </el-card>
+            </el-tab-pane>
+          </el-tabs>
+        </el-card>
+      </el-row>
+    </el-main>
+
+    <el-footer style="background-color: #000000;height: 280px;padding: 50px 0">
+      <div class="center" style="text-align: center;color: #666">
+        <el-row id="foot">
+          <el-col span="8">
+            <img src="imgs/logo.jpg" style="width: 180px;height: 60px" alt="">
+            <p>世界雕像就看博物院</p>
+            <p>雕像展览网络社区平台</p>
+            <p>全球著名文物雕像展览会</p>
+          </el-col>
+          <el-col span="8">
+            <el-row id="foot_center">
+              <el-col span="8">
+                <h3>关于我们</h3>
+                <p>关于我们</p><p>学术研究</p>
+                <p>社会教育</p><p>分类信息</p>
+              </el-col>
+              <el-col span="8">
+                <h3>支持与服务</h3>
+                <p>联系我们</p><p>广告投放</p>
+                <p>用户协议</p><p>友情链接</p>
+              </el-col>
+              <el-col span="8">
+                <h3>底部导航</h3>
+                <p>博物院地图</p>
+                <p>搜索收藏</p>
+                <p>文创精品</p>
+              </el-col>
+            </el-row>
+          </el-col>
+          <el-col span="8">
+            <div style="font-size: 58px;margin-top: 30px">
+              <span style="color: orange">世界</span><span style="color: #666666">博物院</span>
+            </div>
+            <p>雕像展览网络社区平台</p>
+          </el-col>
+        </el-row>
+      </div>
+
+    </el-footer>
+  </el-container>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                activeName: '1',
+                bannerArr: [],
+                countryArr:[],
+                statuesDoArr:[],
+                periodArr:[],
+            }
+        },
+        created() {
+            this.loadBanner()
+            this.loadCountries()
+            this.loadStatuesDo()
+            this.loadPeriod()
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClick(tab, event) {
+                console.log(tab, event);
+            },
+            //加载轮播图信息
+            loadBanner() {
+                axios.get("/selectBannerFourth").then(function (response) {
+                    // 获取返回值
+                    v.bannerArr = response.data
+                })
+            },
+            //加载国家信息
+            loadCountries(){
+                axios.get("/selectCountries").then(function (response){
+                    v.countryArr = response.data
+                })
+            },
+            //加载所有雕像信息，包括国家和时代
+            loadStatuesDo(){
+                axios.get("/selectStatuesDo").then(function (response){
+                    v.statuesDoArr = response.data
+                })
+            },
+            //加载时代分类信息
+            loadPeriod(){
+                axios.get("/selectPeriods").then(function (response){
+                    v.periodArr = response.data
+                })
+            },
+        }
+    })
+
+</script>
+</html>
+

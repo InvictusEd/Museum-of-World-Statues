@@ -1,6 +1,7 @@
 package com.museum.museumofworldstatues.controller;
 
 import com.museum.museumofworldstatues.entity.StatuesDo;
+import com.museum.museumofworldstatues.entity.StatuesInfo;
 import com.museum.museumofworldstatues.mapper.StatuesDoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,4 +32,5 @@ public class StatuesDoController {
         List<StatuesDo> contents = statuesDoMapper.selectByWd(wd);
         return contents;
     }
+
 }
