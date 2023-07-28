@@ -17,4 +17,6 @@ public interface StatuesDoMapper {
     List<StatuesDo> selectAll();
     //模糊查询
     List<StatuesDo> selectByWd(String wd);
+    //根据id查询详情信息
+    StatuesDo selectById(Integer id);
 }

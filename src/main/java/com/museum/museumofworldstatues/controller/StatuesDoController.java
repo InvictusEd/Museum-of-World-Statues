@@ -31,4 +31,11 @@ public class StatuesDoController {
         List<StatuesDo> contents = statuesDoMapper.selectByWd(wd);
         return contents;
     }
+
+    //根据id查询详情信息
+    @RequestMapping("/selectById")
+    public StatuesDo selectById(Integer id){
+        StatuesDo statuesDo = statuesDoMapper.selectById(id);
+        return statuesDo;
+    }
 }

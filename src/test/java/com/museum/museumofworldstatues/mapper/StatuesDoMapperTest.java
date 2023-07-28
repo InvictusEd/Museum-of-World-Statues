@@ -31,4 +31,21 @@ class StatuesDoMapperTest {
         List<StatuesDo> statuesDos = statuesDoMapper.selectByWd("自由");
         statuesDos.forEach(System.out::println);
     }
+
+    @Test
+    void testSelectByWd() {
+        List<StatuesDo> statuesDos = statuesDoMapper.selectByWd("维纳斯");
+        statuesDos.forEach(System.out::println);
+
+    }
+
+    @Test
+    void selectById() {
+        StatuesDo statuesDo = statuesDoMapper.selectById(2);
+        System.out.println(statuesDo);
+    }
+
+    @Test
+    void testSelectById() {
+    }
 }
