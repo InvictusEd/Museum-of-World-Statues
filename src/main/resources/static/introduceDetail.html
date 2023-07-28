@@ -5,12 +5,72 @@
     <title>雕塑介绍</title>
   <!-- 引入elementUI组件库的 -->
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+    body{
+        margin: 0;
+    }
+
+    a{
+        text-decoration: none;
+    }
+  </style>
 </head>
 <body>
 <div id="app">
   <el-container>
-    <el-header style="width: 1200px;margin: 0 auto;">
-      头部内容：详情展示
+    <!--            头部-->
+    <el-header style="padding: 0">
+      <el-row>
+        <el-col span="3">
+          <a href="./personal.html">
+            <img src="./imgs/logo.jpg" style="width: 100%;height: 60px">
+          </a>
+        </el-col>
+        <el-col span="21">
+          <el-menu
+                  :default-active="activeIndex1"
+                  class="el-menu-demo"
+                  mode="horizontal"
+                  @select="handleSelect"
+                  background-color="rgba(0,0,0,0.8)"
+                  text-color="#fff"
+                  active-text-color="#ffd04b">
+            <el-menu-item index="1"><a href="homePage.html">首页</a></el-menu-item>
+            <el-menu-item index="2"><a href="login.html">登录</a></el-menu-item>
+            <el-menu-item index="3"><a href="reg.html">注册</a></el-menu-item>
+            <el-menu-item index="4"><a href="category.html">雕像分类</a></el-menu-item>
+            <el-menu-item index="5"><a href="mall.html">雕像商城</a></el-menu-item>
+            <el-menu-item index="5"><a href="introduce.html">雕像展示</a></el-menu-item>
+            <el-submenu index="6">
+              <template slot="title">展览陈列</template>
+              <el-menu-item index="6-1">临时展览</el-menu-item>
+              <el-menu-item index="6-2">常设展览</el-menu-item>
+              <el-menu-item index="6-3">虚拟展厅</el-menu-item>
+            </el-submenu>
+            <el-submenu index="7">
+              <template slot="title">文化遗产</template>
+              <el-menu-item index="7-1">考古发现</el-menu-item>
+              <el-menu-item index="7-2">考古大事记</el-menu-item>
+            </el-submenu>
+            <el-submenu index="8">
+              <template slot="title">学术研究</template>
+              <el-menu-item index="8-1">雕塑研究文章</el-menu-item>
+              <el-menu-item index="8-2">出版物</el-menu-item>
+            </el-submenu>
+
+            <el-menu-item index="9"><a href="./introduceDetail.html" style="text-decoration: none">文创精品</a></el-menu-item>
+            <el-submenu index="10">
+              <template slot="title">简体中文</template>
+              <el-menu-item index="8-1">简体中文</el-menu-item>
+              <el-menu-item index="8-2">English</el-menu-item>
+            </el-submenu>
+            <el-input placeholder="请输入搜索的关键字" v-model="wd" style="width: 230px;margin-top: 10px;
+                            background-color: #7f7f7f">
+              <el-button slot="append" icon="el-icon-search" @click="f()"></el-button>
+            </el-input>
+          </el-menu>
+        </el-col>
+      </el-row>
     </el-header>
     <el-main style="width: 1200px;margin: 0 auto;">
       <div v-for="(b,i) in Arr">
@@ -42,6 +102,46 @@
       </el-row>
       </div>
     </el-main>
+    <!--        底部-->
+    <el-footer style="background-color: #000000;height: 280px;padding: 50px 0">
+      <div class="center" style="text-align: center;color: #666">
+        <el-row id="foot">
+          <el-col span="8">
+            <img src="imgs/logo.jpg" style="width: 180px;height: 60px" alt="">
+            <p>世界雕像就看博物院</p>
+            <p>雕像展览网络社区平台</p>
+            <p>全球著名文物雕像展览会</p>
+          </el-col>
+          <el-col span="8">
+            <el-row id="foot_center">
+              <el-col span="8">
+                <h3>关于我们</h3>
+                <p>关于我们</p><p>学术研究</p>
+                <p>社会教育</p><p>分类信息</p>
+              </el-col>
+              <el-col span="8">
+                <h3>支持与服务</h3>
+                <p>联系我们</p><p>广告投放</p>
+                <p>用户协议</p><p>友情链接</p>
+              </el-col>
+              <el-col span="8">
+                <h3>底部导航</h3>
+                <p>博物院地图</p>
+                <p>搜索收藏</p>
+                <p>文创精品</p>
+              </el-col>
+            </el-row>
+          </el-col>
+          <el-col span="8">
+            <div style="font-size: 58px;margin-top: 30px">
+              <span style="color: orange">世界</span><span style="color: #666666">博物院</span>
+            </div>
+            <p>雕像展览网络社区平台</p>
+          </el-col>
+        </el-row>
+      </div>
+
+    </el-footer>
   </el-container>
 </div>
 </body>
