@@ -87,8 +87,8 @@
         <el-main style="padding: 0;background-color: #b9cdc9">
             <template>
                 <el-carousel :interval="4000" type="card" height="600px">
-                    <el-carousel-item v-for="item in 6" :key="item">
-                        <h3 class="medium">{{ item }}</h3>
+                    <el-carousel-item v-for="item in bannerArrSecond" :key="item">
+                        <img :src="item.imgUrl" width="100%">
                     </el-carousel-item>
                 </el-carousel>
             </template>
@@ -107,16 +107,23 @@
         data: function() {
             return {
                 activeIndex: '1',
+                bannerArrSecond:[]
             }
         },
         created(){
-
+            this.loadBannerSecond()
         },
         methods:{
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
             },
-
+            loadBannerSecond() {
+                //发送请求
+                //接收请求并把请求数据赋值给bannerArr变量
+                axios.get("/selectBannerSecond").then(function (response) {
+                    v.bannerArrSecond = response.data
+                })
+            }
         }
     })
 </script>

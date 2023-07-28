@@ -16,9 +16,9 @@ public class OSSConttroller {
     public String uploadFile(MultipartFile file) throws IOException {
         //1、获取工具类中的值
         String endpoint ="oss-cn-beijing.aliyuncs.com";
-        String accessKeyId ="LTAI5tMqzUeDg811xbV8Tgzr";
-        String accessKeySecret ="Dlhi9wfz5kBGtTcfnPA1eNEkABFklb";
-        String bucketName ="aurora4486";
+        String accessKeyId = "";
+        String accessKeySecret = "";
+        String bucketName ="";
         try {
             //2、创建oss实例
             OSS ossClient = new OSSClientBuilder().build(endpoint,accessKeyId,accessKeySecret);
