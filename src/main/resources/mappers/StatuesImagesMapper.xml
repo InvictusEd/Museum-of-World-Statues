@@ -19,7 +19,15 @@
             t1.id, t1.img_url,
             t2.chinese_name
         from statues_images t1
-                 left join statues_info t2 on t1.statue_id=t2.id;
+                 left join statues_info t2 on t1.statue_id=t2.id order by statue_id asc;
     </select>
+<!--    添加雕像图片-->
+    <insert id="addStatuesImages">
+        insert into statues_images values (null,#{statueId},#{imgUrl})
+    </insert>
+<!--    根据id删除雕像图片-->
+    <delete id="deleteById">
+        delete from statues_images where id = #{id}
+    </delete>
 
 </mapper>

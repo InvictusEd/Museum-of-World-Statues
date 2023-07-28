@@ -16,4 +16,16 @@
         select * from periods;
     </select>
 
+    <!--    根据id删除国家-->
+    <delete id="deletePeriod">
+        delete from periods where id = #{id}
+    </delete>
+    <!--添加国家-->
+    <insert id="addPeriod">
+        insert into periods values(null,#{name})
+    </insert>
+    <!--    通过时期名查询时期是否存在-->
+    <select id="selectByName" resultMap="periodsMap">
+        select * from periods where name = #{name}
+    </select>
 </mapper>

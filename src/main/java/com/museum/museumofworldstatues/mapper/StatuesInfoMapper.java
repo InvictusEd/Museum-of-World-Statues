@@ -15,4 +15,9 @@ import java.util.List;
 public interface StatuesInfoMapper {
     //查询所有雕像的信息
     List<StatuesInfo> selectAll();
+
+    //根据id删除雕像信息
+    void deleteStatuesInfo(Long id);
+    //添加雕像信息
+    void addStatuesInfo(StatuesInfo statuesInfo);
 }

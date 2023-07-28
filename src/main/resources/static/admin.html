@@ -21,7 +21,6 @@
         background-color: #303133;
     }
 
-
     .demo-drawer__footer{
         width: 100%;
         position: absolute;
@@ -30,6 +29,30 @@
         border-top: 1px solid #e8e8e8;
         padding: 10px 16px;
         text-align: center;
+    }
+
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    .avatar-uploader .el-upload:hover {
+        border-color: #409EFF;
+    }
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
     }
 
   </style>
@@ -145,37 +168,53 @@
                 </template>
               </el-table-column>
             </el-table>
-
             <!--添加轮播图-->
             <div v-if="currentIndex==2" align="center" style="margin-top: 20px;">
               <el-button type="primary" @click="dialogBanner = true">添加轮播图</el-button>
             </div>
+            <!--一定要修改ref-->
             <el-drawer
                     title="添加轮播图"
-                    :before-close="handleClose"
+                    :before-close="handleCloseBanner"
                     :visible.sync="dialogBanner"
                     direction="rtl"
                     custom-class="demo-drawer"
-                    ref="drawer"
+                    ref="drawerBanner"
             >
               <div class="demo-drawer__content">
-                <el-form :model="form">
-                  <el-form-item label="分类" :label-width="formLabelWidth">
-                    <el-select v-model="form.region" placeholder="请选择分类" style="width: 150px;">
+                <el-form>
+                  <el-form-item label="分类" :label-width="formLabelWidthBanner">
+                    <el-select v-model="banner.category" placeholder="请选择分类" style="width: 150px;">
+                      <el-option v-for="item in bannerOption"
+                                 :key="item.id"
+                                 :label="item.category"
+                                 :value="item.category">
+                      </el-option>
                     </el-select>
                   </el-form-item>
+                  <el-form-item label="轮播图片" style="margin-left: 40px;">
+                    <el-upload
+                            class="avatar-uploader"
+                            action="http://localhost:8080/upload"
+                            :show-file-list="false"
+                            :on-success="handleBannerSuccess"
+                            :before-upload="beforeUpload">
+                      <img v-if="banner.imgUrl" :src="banner.imgUrl" class="avatar">
+                      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
+                  </el-form-item>
                 </el-form>
-
                 <div class="demo-drawer__footer">
-                  <el-button @click="cancelForm" style="min-width: 200px">取 消</el-button>
-                  <el-button style="min-width: 200px" type="success" @click="$refs.drawer.closeDrawer()" :loading="loading">{{ loading ? '提交中 ...' : '确 定' }}</el-button>
+                  <el-button @click="cancelFormBanner" style="min-width: 200px">取 消</el-button>
+                  <!--一定要修改refs.xxx-->
+                  <el-button style="min-width: 200px" type="success" @click="$refs.drawerBanner.closeDrawer()" :loading="loadingBanner">{{ loadingBanner ? '提交中 ...' : '确 定' }}</el-button>
                 </div>
               </div>
             </el-drawer>
 
 
             <!--雕像图片表格-->
-            <el-table v-if="currentIndex==3" style="width: 100%;" :data="statuesImages">
+            <el-table v-if="currentIndex==3" style="width: 100%;" :data="statuesImagesArr">
               <el-table-column type="index" label="编号" width="100" align="center"></el-table-column>
               <el-table-column prop="chineseName" label="名称" width="100px" align="center"></el-table-column>
               <el-table-column  label="图片"  width="200">
@@ -185,15 +224,59 @@
               </el-table-column>
               <el-table-column prop="address" label="操作" width="200px" align="center" >
                 <template slot-scope="scope">
-                  <el-button size="mini" type="danger" @click="deleteBanner(scope.$index, scope.row)">删除</el-button>
+                  <el-button size="mini" type="danger" @click="deleteStatuesImages(scope.$index, scope.row)">删除</el-button>
                 </template>
               </el-table-column>
             </el-table>
+            <!--添加雕像图-->
+            <div v-if="currentIndex==3" align="center" style="margin-top: 20px;">
+              <el-button type="primary" @click="dialogStatuesImages = true">添加雕像图</el-button>
+            </div>
+            <el-drawer
+                    title="添加雕像图"
+                    :before-close="handleCloseStatuesImages"
+                    :visible.sync="dialogStatuesImages"
+                    direction="rtl"
+                    custom-class="demo-drawer"
+                    ref="drawerStatuesImages"
+            >
+              <div class="demo-drawer__content">
+                <el-form>
+                  <el-form-item label="雕像名称" :label-width="formLabelWidthStatuesImages">
+                    <el-select v-model="statuesImages.statueId" placeholder="请选择雕像" style="width: 150px;">
+                      <el-option v-for="item in statuesDoArr"
+                                 :key="item.id"
+                                 :label="item.chineseName"
+                                 :value="item.id">
+                      </el-option>
+                    </el-select>
+                  </el-form-item>
+                  <el-form-item label="上传图片" style="margin-left: 40px;">
+                    <el-upload
+                            class="avatar-uploader"
+                            action="http://localhost:8080/upload"
+                            :show-file-list="false"
+                            :on-success="handleStatuesImagesSuccess"
+                            :before-upload="beforeUpload">
+                      <img v-if="statuesImages.imgUrl" :src="statuesImages.imgUrl" class="avatar">
+                      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
+                  </el-form-item>
+                </el-form>
+                <div class="demo-drawer__footer">
+                  <el-button @click="cancelFormStatuesImages" style="min-width: 200px">取 消</el-button>
+                  <!--一定要修改refs.xxx-->
+                  <el-button style="min-width: 200px" type="success" @click="$refs.drawerStatuesImages.closeDrawer()" :loading="loadingStatuesImages">{{ loadingStatuesImages ? '提交中 ...' : '确 定' }}</el-button>
+                </div>
+              </div>
+            </el-drawer>
+
 
             <!--雕像信息表格-->
-            <el-table v-if="currentIndex==4" :data="statuesDo" style="width: 100%;">
+            <el-table v-if="currentIndex==4" :data="statuesDoArr" style="width: 100%;">
               <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
-              <el-table-column prop="chineseName" label="名称" width="100px" align="center"></el-table-column>
+              <el-table-column prop="chineseName" label="中文名称" width="100px" align="center"></el-table-column>
+              <el-table-column prop="foreignName" label="英文名称" width="100px" align="center"></el-table-column>
               <el-table-column  label="封面图"  width="100px">
                 <template slot-scope="scope">
                   <img :src="scope.row.coverImg" width="100px" >
@@ -203,19 +286,144 @@
               <el-table-column prop="periodName" label="时期" width="100px" align="center"></el-table-column>
               <el-table-column prop="location" label="地理位置" width="100px" align="center"></el-table-column>
               <el-table-column prop="constructionTime" label="建造时间" width="100px" align="center"></el-table-column>
+              <el-table-column prop="address" label="操作" width="200px" align="center" >
+                <template slot-scope="scope">
+                  <el-button size="mini" type="danger" @click="deleteStatuesInfo(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
             </el-table>
+            <!--添加雕像-->
+            <div v-if="currentIndex==4" align="center" style="margin-top: 20px;">
+              <el-button type="primary" @click="dialogStatuesInfo = true">添加雕像</el-button>
+            </div>
+            <el-drawer
+                    title="添加雕像"
+                    :before-close="handleCloseStatuesInfo"
+                    :visible.sync="dialogStatuesInfo"
+                    direction="rtl"
+                    custom-class="demo-drawer"
+                    ref="drawerStatuesInfo"
+            >
+              <div class="demo-drawer__content">
+                <el-form :label-position="labelPosition">
+                  <el-form-item label="国家" :label-width="formLabelWidthStatuesInfo">
+                    <el-select v-model="statuesInfo.countryId" placeholder="请选择国家" style="width: 150px;">
+                      <el-option v-for="item in countryArr"
+                                 :key="item.id"
+                                 :label="item.name"
+                                 :value="item.id">
+                      </el-option>
+                    </el-select>
+                  </el-form-item>
+                  <el-form-item label="时代" :label-width="formLabelWidthStatuesInfo">
+                    <el-select v-model="statuesInfo.periodId" placeholder="请选择时代" style="width: 150px;">
+                      <el-option v-for="item in periodArr"
+                                 :key="item.id"
+                                 :label="item.name"
+                                 :value="item.id">
+                      </el-option>
+                    </el-select>
+                  </el-form-item>
+                  <el-form-item label="雕像中文名称" style="margin-left: 40px">
+                    <el-input v-model="statuesInfo.chineseName" style="width: 300px;"></el-input>
+                  </el-form-item>
+                  <el-form-item label="雕像英文名称" style="margin-left: 40px">
+                    <el-input v-model="statuesInfo.foreignName" style="width: 300px;"></el-input>
+                  </el-form-item>
+                  <el-form-item label="地理位置" style="margin-left: 40px">
+                    <el-input v-model="statuesInfo.location" style="width: 330px;"></el-input>
+                  </el-form-item>
+                  <el-form-item label="简介描述" style="margin-left: 40px">
+                    <el-input type="textarea" v-model="statuesInfo.description"></el-input>
+                  </el-form-item>
+                  <el-form-item label="建造时间" style="margin-left: 40px">
+                    <el-date-picker
+                            v-model="statuesInfo.constructionTime"
+                            type="date"
+                            value-format="yyyy-MM-dd"
+                            placeholder="选择日期">
+                    </el-date-picker>
+                  </el-form-item>
+                  <el-form-item label="创作背景" style="margin-left: 40px">
+                    <el-input type="textarea" v-model="statuesInfo.creationBackground"></el-input>
+                  </el-form-item>
+                  <el-form-item label="后世影响" style="margin-left: 40px">
+                    <el-input type="textarea" v-model="statuesInfo.afterlifeInfluence"></el-input>
+                  </el-form-item>
+                  <el-form-item label="上传封面图片" style="margin-left: 40px;">
+                    <el-upload
+                            class="avatar-uploader"
+                            action="http://localhost:8080/upload"
+                            :show-file-list="false"
+                            :on-success="handleStatuesInfoSuccess"
+                            :before-upload="beforeUpload">
+                      <img v-if="statuesInfo.coverImg" :src="statuesInfo.coverImg" class="avatar">
+                      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
+                  </el-form-item>
+                </el-form>
+                <div class="demo-drawer__footer">
+                  <el-button @click="cancelFormStatuesInfo" style="min-width: 200px">取 消</el-button>
+                  <!--一定要修改refs.xxx-->
+                  <el-button style="min-width: 200px" type="success" @click="$refs.drawerStatuesInfo.closeDrawer()" :loading="loadingStatuesInfo">{{ loadingStatuesInfo ? '提交中 ...' : '确 定' }}</el-button>
+                </div>
+              </div>
+            </el-drawer>
+
 
             <!--国家分类管理表格-->
             <el-table v-if="currentIndex==5" style="width: 100%;" :data="countryArr">
               <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
               <el-table-column prop="name" label="国家" width="100px" align="center"></el-table-column>
+              <el-table-column prop="address" label="操作" width="200px" align="center" >
+                <template slot-scope="scope">
+                  <el-button size="mini" type="danger" @click="deleteCountry(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
             </el-table>
+            <!--添加国家-->
+            <div v-if="currentIndex==5" align="center" style="margin-top: 20px;">
+              <el-button type="primary" @click="dialogFormVisible = true">添加国家</el-button>
+            </div>
+
+            <el-dialog title="添加国家" :visible.sync="dialogFormVisible">
+              <el-form :model="country">
+                <el-form-item label="国家名称" :label-width="formLabelWidth">
+                  <el-input v-model="country.name" autocomplete="off"></el-input>
+                </el-form-item>
+              </el-form>
+              <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="addCountry();dialogFormVisible = false">确 定</el-button>
+              </div>
+            </el-dialog>
 
             <!--时代分类管理表格-->
             <el-table v-if="currentIndex==6" style="width: 100%;" :data="periodArr">
               <el-table-column type="index" label="编号" width="100px" align="center"></el-table-column>
               <el-table-column prop="name" label="时代" width="100px" align="center"></el-table-column>
+              <el-table-column prop="address" label="操作" width="200px" align="center" >
+                <template slot-scope="scope">
+                  <el-button size="mini" type="danger" @click="deletePeriod(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
             </el-table>
+            <!--添加时代-->
+            <div v-if="currentIndex==6" align="center" style="margin-top: 20px;">
+              <el-button type="primary" @click="dialogFormVisible = true">添加时代</el-button>
+            </div>
+
+            <el-dialog title="添加时代" :visible.sync="dialogFormVisible">
+              <el-form :model="period">
+                <el-form-item label="时代名称" :label-width="formLabelWidth">
+                  <el-input v-model="period.name" autocomplete="off"></el-input>
+                </el-form-item>
+              </el-form>
+              <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="addPeriod();dialogFormVisible = false">确 定</el-button>
+              </div>
+            </el-dialog>
           </el-main>
 
 <!--          <el-footer>Footer</el-footer>-->
@@ -236,20 +444,22 @@
       el: '#app',
       data: function () {
         return {
+            labelPosition: 'right',
+            //轮播图抽屉变量
             dialogBanner: false,
-            loading: false,
-            form: {
-                name: '',
-                region: '',
-                date1: '',
-                date2: '',
-                delivery: false,
-                type: [],
-                resource: '',
-                desc: ''
-            },
-            formLabelWidth: '80px',
-            timer: null,
+            loadingBanner: false,
+            formLabelWidthBanner: '80px',
+            timerBanner: null,
+            //雕像图抽屉变量
+            dialogStatuesImages: false,
+            loadingStatuesImages: false,
+            formLabelWidthStatuesImages: '80px',
+            timerStatuesImages: null,
+            //雕像信息抽屉变量
+            dialogStatuesInfo: false,
+            loadingStatuesInfo: false,
+            formLabelWidthStatuesInfo: '80px',
+            timerStatuesInfo: null,
             //变量
             visible: false,
             userArr:[],
@@ -259,7 +469,25 @@
             statuesImagesArr:[],
             statuesDoArr:[],
             countryArr:[],
-            periodArr:[]
+            periodArr:[],
+            banner:{},
+            statuesImages:{},
+            statuesInfo:{},
+            country:{},
+            period:{},
+            bannerOption:[{
+                id:1,
+                category: 1
+              }, {
+                id:2,
+                category: 2
+            }],
+            //国家对话框
+            dialogFormVisible: false,
+            form: {
+
+            },
+            formLabelWidth: '120px'
         }
       },
       created(){
@@ -336,6 +564,90 @@
                   });
               });
           },
+          //删除雕像图信息
+          deleteStatuesImages(index,statuesImages){
+              this.$confirm('此操作将永久删除该轮播图, 是否继续?', '提示', {
+                  confirmButtonText: '确定',
+                  cancelButtonText: '取消',
+                  type: 'warning'
+              }).then(() => {
+                  axios.get("/removeStatuesImages?id="+statuesImages.id).then(function () {
+                      v.$message({
+                          type: 'success',
+                          message: '删除成功!'
+                      });
+                      v.loadStatuesImages()//删除成功后重新加载列表信息
+                  })
+              }).catch(() => {
+                  this.$message({
+                      type: 'info',
+                      message: '已取消删除'
+                  });
+              });
+          },
+          //删除雕像信息
+          deleteStatuesInfo(index,statuesInfo){
+              this.$confirm('此操作将永久删除该雕像的信息, 是否继续?', '提示', {
+                  confirmButtonText: '确定',
+                  cancelButtonText: '取消',
+                  type: 'warning'
+              }).then(() => {
+                  axios.get("/removeStatuesInfo?id="+statuesInfo.id).then(function () {
+                      v.$message({
+                          type: 'success',
+                          message: '删除成功!'
+                      });
+                      v.loadStatuesDo()//删除成功后重新加载列表信息
+                  })
+              }).catch(() => {
+                  this.$message({
+                      type: 'info',
+                      message: '已取消删除'
+                  });
+              });
+          },
+          //删除国家信息
+          deleteCountry(index,country){
+              this.$confirm('此操作将永久删除该国家, 是否继续?', '提示', {
+                  confirmButtonText: '确定',
+                  cancelButtonText: '取消',
+                  type: 'warning'
+              }).then(() => {
+                  axios.get("/removeCountry?id="+country.id).then(function () {
+                      v.$message({
+                          type: 'success',
+                          message: '删除成功!'
+                      });
+                      v.loadCountries()//删除成功后重新加载列表信息
+                  })
+              }).catch(() => {
+                  this.$message({
+                      type: 'info',
+                      message: '已取消删除'
+                  });
+              });
+          },
+          //删除时代信息
+          deletePeriod(index,period){
+              this.$confirm('此操作将永久删除该时期, 是否继续?', '提示', {
+                  confirmButtonText: '确定',
+                  cancelButtonText: '取消',
+                  type: 'warning'
+              }).then(() => {
+                  axios.get("/removePeriod?id="+period.id).then(function () {
+                      v.$message({
+                          type: 'success',
+                          message: '删除成功!'
+                      });
+                      v.loadPeriod()//删除成功后重新加载列表信息
+                  })
+              }).catch(() => {
+                  this.$message({
+                      type: 'info',
+                      message: '已取消删除'
+                  });
+              });
+          },
         //切换用户身份
         changeAdmin(user){
           axios.post("/changeUser",user).then(function () {
@@ -353,13 +665,13 @@
           //加载所有雕像图片
           loadStatuesImages(){
               axios.get("/selectStatuesImages").then(function (response){
-                  v.statuesImages = response.data
+                  v.statuesImagesArr = response.data
               })
           },
           //加载所有雕像信息，包括国家和时代
           loadStatuesDo(){
               axios.get("/selectStatuesDo").then(function (response){
-                  v.statuesDo = response.data
+                  v.statuesDoArr = response.data
               })
           },
           //加载国家分类信息
@@ -375,28 +687,123 @@
               })
           },
           //轮播图抽屉
-          handleClose(done) {
-              if (this.loading) {
+          handleCloseBanner(done) {
+              if (this.loadingBanner) {
                   return;
               }
               this.$confirm('确定要提交表单吗？')
                   .then(_ => {
-                      this.loading = true;
-                      this.timer = setTimeout(() => {
+                      this.loadingBanner = true;
+                      this.timerBanner = setTimeout(() => {
                           done();
                           // 动画关闭需要一定的时间
                           setTimeout(() => {
-                              this.loading = false;
+                              this.loadingBanner = false;
                           }, 400);
                       }, 2000);
+                      axios.post("/addBanner",v.banner).then(function (response){
+                          if (v.banner.imgUrl == null){
+                              v.$message.error("没有上传图片！")
+                          } else {
+                              setTimeout("v.$message.success(\"添加成功！\")",3000)
+                          }
+                      });
                   })
                   .catch(_ => {});
           },
-          cancelForm() {
-              this.loading = false;
+          cancelFormBanner() {
+              this.loadingBanner = false;
               this.dialogBanner = false;
-              clearTimeout(this.timer);
-          }
+              clearTimeout(this.timerBanner);
+          },
+          //上传轮播图片
+          handleBannerSuccess(res, file) {
+              v.banner.imgUrl = res
+          },
+          beforeUpload(file) {
+              const isJPG = file.type === 'image/jpeg';
+              const isLt2M = file.size / 1024 / 1024 < 2;
+
+              if (!isJPG) {
+                  this.$message.error('上传头像图片只能是 JPG 格式!');
+              }
+              if (!isLt2M) {
+                  this.$message.error('上传头像图片大小不能超过 2MB!');
+              }
+              return isJPG && isLt2M;
+          },
+          //雕像图抽屉
+          handleCloseStatuesImages(done) {
+              if (this.loadingStatuesImages) {
+                  return;
+              }
+              this.$confirm('确定要提交表单吗？')
+                  .then(_ => {
+                      this.loadingStatuesImages = true;
+                      this.timerStatuesImages = setTimeout(() => {
+                          done();
+                          // 动画关闭需要一定的时间
+                          setTimeout(() => {
+                              this.loadingStatuesImages = false;
+                          }, 400);
+                      }, 2000);
+                      axios.post("/addStatuesImages",v.statuesImages).then(function (response){});
+                      setTimeout("v.$message.success(\"添加成功！\")",3000);
+                  })
+                  .catch(_ => {});
+          },
+          cancelFormStatuesImages() {
+              this.loadingStatuesImages = false;
+              this.dialogStatuesImages = false;
+              clearTimeout(this.timerStatuesImages);
+          },
+          //上传雕像图片
+          handleStatuesImagesSuccess(res, file) {
+              v.statuesImages.imgUrl = res
+          },
+          //雕像抽屉
+          handleCloseStatuesInfo(done) {
+              if (this.loadingStatuesInfo) {
+                  return;
+              }
+              this.$confirm('确定要提交表单吗？')
+                  .then(_ => {
+                      this.loadingStatuesInfo = true;
+                      this.timerStatuesInfo = setTimeout(() => {
+                          done();
+                          // 动画关闭需要一定的时间
+                          setTimeout(() => {
+                              this.loadingStatuesInfo = false;
+                          }, 400);
+                      }, 2000);
+                      axios.post("/addStatuesInfo",v.statuesInfo).then(function (response){});
+                      setTimeout("v.$message.success(\"添加成功！\")",3000);
+                  })
+                  .catch(_ => {});
+          },
+          cancelFormStatuesInfo() {
+              this.loadingStatuesInfo = false;
+              this.dialogStatuesInfo = false;
+              clearTimeout(this.timerStatuesInfo);
+          },
+          //上传雕像图片
+          handleStatuesInfoSuccess(res, file) {
+              v.statuesInfo.coverImg = res
+          },
+          //添加国家
+          addCountry(){
+              axios.post("addCountry", v.country).then(function (){
+                  v.$message.success("添加成功！")
+                  v.loadCountries()//修改成功后重新加载列表信息
+              })
+          },
+          //添加时期
+          addPeriod(){
+              axios.post("addPeriod", v.period).then(function (){
+                  v.$message.success("添加成功！")
+                  v.loadPeriod()//修改成功后重新加载列表信息
+              })
+          },
       }
   })
 </script>
