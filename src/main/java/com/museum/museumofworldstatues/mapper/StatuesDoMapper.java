@@ -1,6 +1,7 @@
 package com.museum.museumofworldstatues.mapper;
 
 import com.museum.museumofworldstatues.entity.StatuesDo;
+import com.museum.museumofworldstatues.entity.StatuesInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,4 +15,6 @@ import java.util.List;
 @Mapper
 public interface StatuesDoMapper {
     List<StatuesDo> selectAll();
+    //模糊查询
+    List<StatuesDo> selectByWd(String wd);
 }

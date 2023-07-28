@@ -24,4 +24,11 @@ public class StatuesDoController {
         List<StatuesDo> statuesDos = statuesDoMapper.selectAll();
         return statuesDos;
     }
+
+    //根据关键字搜索信息
+    @RequestMapping("/selectByWd")
+    public List<StatuesDo> selectByWd(String wd){
+        List<StatuesDo> contents = statuesDoMapper.selectByWd(wd);
+        return contents;
+    }
 }

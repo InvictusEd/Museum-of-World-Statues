@@ -25,4 +25,10 @@ class StatuesDoMapperTest {
         List<StatuesDo> statuesDos = statuesDoMapper.selectAll();
         statuesDos.forEach(System.out::println);
     }
+
+    @Test
+    void selectByWd() {
+        List<StatuesDo> statuesDos = statuesDoMapper.selectByWd("自由");
+        statuesDos.forEach(System.out::println);
+    }
 }
